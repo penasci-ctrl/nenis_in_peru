@@ -1,0 +1,1061 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Peru" />
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85'>🇵🇪</text></svg>" />
+<title>Peru · Pedro & Marina</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f5f5f7;
+    --bg-card: #ffffff;
+    --bg-sunken: #fbfbfd;
+    --ink: #1d1d1f;
+    --ink-2: #424245;
+    --ink-3: #6e6e73;
+    --ink-4: #86868b;
+    --line: #d2d2d7;
+    --line-soft: #e5e5ea;
+    --accent: #1d1d1f;
+    --green: #34c759;
+    --orange: #ff9500;
+    --red: #ff3b30;
+    --blue: #007aff;
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.04), 0 0 0 0.5px rgba(0,0,0,.06);
+    --shadow-md: 0 4px 24px rgba(0,0,0,.06), 0 0 0 0.5px rgba(0,0,0,.06);
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --bg-soft: #1c1c1e;
+      --bg-card: #1c1c1e;
+      --bg-sunken: #0c0c0e;
+      --ink: #f5f5f7;
+      --ink-2: #d1d1d6;
+      --ink-3: #98989d;
+      --ink-4: #636366;
+      --line: #38383a;
+      --line-soft: #2c2c2e;
+      --accent: #f5f5f7;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.5), 0 0 0 0.5px rgba(255,255,255,.06);
+      --shadow-md: 0 4px 24px rgba(0,0,0,.6), 0 0 0 0.5px rgba(255,255,255,.06);
+    }
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; background: var(--bg-soft); color: var(--ink); font-family: var(--font); font-feature-settings: "ss01", "cv11"; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body { min-height: 100vh; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+  input, textarea { font: inherit; color: inherit; }
+
+  /* Header */
+  .app-header {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in oklab, var(--bg-soft) 82%, transparent);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 0.5px solid var(--line-soft);
+  }
+  .app-header-inner {
+    max-width: 880px; margin: 0 auto; padding: 18px 24px 14px;
+    display: flex; align-items: baseline; justify-content: space-between;
+  }
+  .title {
+    font-size: 28px; font-weight: 700; letter-spacing: -0.022em; margin: 0;
+  }
+  .subtitle { color: var(--ink-3); font-size: 13px; letter-spacing: -0.01em; }
+
+  /* Countdown strip */
+  .countdown {
+    max-width: 880px; margin: 0 auto; padding: 0 24px;
+    display: flex; gap: 12px; margin-top: 12px;
+  }
+  .countdown-card {
+    flex: 1; background: var(--bg-card); border-radius: var(--radius-md); padding: 14px 16px;
+    box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .countdown-card .label { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+  .countdown-card .value { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+  .countdown-card .unit { font-size: 12px; color: var(--ink-3); margin-left: 4px; font-weight: 400; }
+
+  /* Tabs */
+  nav.tabs {
+    max-width: 880px; margin: 20px auto 0; padding: 0 24px;
+    display: flex; gap: 4px;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  nav.tabs::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 500; color: var(--ink-2);
+    white-space: nowrap; letter-spacing: -0.01em;
+    transition: background .15s ease, color .15s ease;
+  }
+  .tab-btn:hover { background: var(--line-soft); }
+  .tab-btn.active { background: var(--ink); color: var(--bg); }
+
+  /* Main */
+  main {
+    max-width: 880px; margin: 0 auto; padding: 20px 24px 120px;
+  }
+  section.panel { display: none; }
+  section.panel.active { display: block; animation: fadeIn .25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+  /* Section headings */
+  h2.section-title {
+    font-size: 13px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em;
+    margin: 28px 4px 10px;
+  }
+  h2.section-title:first-child { margin-top: 8px; }
+
+  /* Card */
+  .card {
+    background: var(--bg-card); border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+  .card + .card { margin-top: 10px; }
+
+  /* Row (list item) */
+  .row {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px 18px;
+    border-bottom: 0.5px solid var(--line-soft);
+    transition: background .12s ease;
+  }
+  .row:last-child { border-bottom: 0; }
+  .row.clickable { cursor: pointer; }
+  .row.clickable:hover { background: var(--bg-sunken); }
+
+  /* Checkbox */
+  .check {
+    flex: 0 0 22px; width: 22px; height: 22px; border-radius: 50%;
+    border: 1.5px solid var(--line); margin-top: 1px;
+    display: grid; place-items: center;
+    transition: all .15s ease;
+    cursor: pointer;
+  }
+  .check:hover { border-color: var(--ink-3); }
+  .check.done { background: var(--green); border-color: var(--green); }
+  .check.done::after { content: ""; width: 10px; height: 6px; border: 2px solid #fff; border-top: 0; border-right: 0; transform: rotate(-45deg) translate(1px, -1px); }
+
+  /* Row body */
+  .row-body { flex: 1; min-width: 0; }
+  .row-title { font-size: 15px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); }
+  .row-title.done { color: var(--ink-4); text-decoration: line-through; }
+  .row-meta { font-size: 13px; color: var(--ink-3); margin-top: 2px; letter-spacing: -0.005em; }
+  .row-tag { font-size: 11px; color: var(--ink-3); margin-top: 6px; display: inline-flex; gap: 8px; flex-wrap: wrap; }
+  .pill { display: inline-block; padding: 2px 8px; background: var(--bg-soft); border-radius: 999px; font-size: 11px; color: var(--ink-2); letter-spacing: 0; font-weight: 500; }
+  .pill.urgent { background: #fff1f0; color: #c11c10; }
+  .pill.warn { background: #fff6e6; color: #a85a00; }
+  .pill.ok { background: #e8f8ec; color: #0e7a2a; }
+  @media (prefers-color-scheme: dark) {
+    .pill.urgent { background: rgba(255,59,48,.18); color: #ff6961; }
+    .pill.warn { background: rgba(255,149,0,.18); color: #ffb02e; }
+    .pill.ok { background: rgba(52,199,89,.18); color: #63e08a; }
+  }
+
+  .row-action { color: var(--ink-4); font-size: 17px; margin-top: 2px; }
+
+  /* Agenda */
+  .day-card { padding: 18px 20px; }
+  .day-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+  .day-num { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+  .day-date { font-size: 17px; font-weight: 600; letter-spacing: -0.018em; }
+  .day-city { font-size: 13px; color: var(--ink-3); margin-left: auto; }
+  .day-title { font-size: 15px; color: var(--ink-2); letter-spacing: -0.005em; margin-bottom: 12px; }
+  .day-items { display: flex; flex-direction: column; gap: 8px; }
+  .day-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 10px 12px; background: var(--bg-sunken); border-radius: var(--radius-sm);
+    font-size: 13px; color: var(--ink-2); letter-spacing: -0.005em;
+  }
+  .day-item .time { flex: 0 0 48px; color: var(--ink-3); font-variant-numeric: tabular-nums; font-size: 12px; font-weight: 500; padding-top: 1px; }
+  .day-item .what { flex: 1; }
+  .day-item .what strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 2px; }
+
+  /* Editable fields (agenda) */
+  [contenteditable="plaintext-only"] {
+    outline: none;
+    border-radius: 4px;
+    transition: background .12s ease, box-shadow .12s ease;
+  }
+  [contenteditable="plaintext-only"]:hover {
+    background: color-mix(in oklab, var(--ink-4) 8%, transparent);
+  }
+  [contenteditable="plaintext-only"]:focus {
+    background: color-mix(in oklab, var(--blue) 8%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--blue) 35%, transparent);
+  }
+  [contenteditable="plaintext-only"]:empty::before {
+    content: attr(data-placeholder);
+    color: var(--ink-4);
+    font-weight: 400;
+  }
+  .day-item { position: relative; }
+  .day-item .item-del {
+    position: absolute; top: 8px; right: 8px;
+    width: 22px; height: 22px; border-radius: 50%;
+    color: var(--ink-4); font-size: 11px;
+    opacity: 0; transition: opacity .15s ease, color .15s ease, background .15s ease;
+  }
+  .day-item:hover .item-del { opacity: 1; }
+  .day-item .item-del:hover { color: var(--red); background: color-mix(in oklab, var(--red) 12%, transparent); }
+  .item-add {
+    display: block; width: 100%;
+    margin-top: 8px; padding: 8px;
+    font-size: 12px; color: var(--ink-3); letter-spacing: -0.005em;
+    border-radius: var(--radius-sm);
+    border: 0.5px dashed var(--line);
+    background: transparent;
+    transition: background .12s ease, color .12s ease, border-color .12s ease;
+  }
+  .item-add:hover { background: var(--bg-sunken); color: var(--ink-2); border-color: var(--ink-4); }
+  .day-notes {
+    margin-top: 10px;
+    width: 100%; min-height: 40px; resize: vertical;
+    padding: 10px 12px; border-radius: var(--radius-sm);
+    background: var(--bg-sunken); border: 0.5px solid var(--line-soft);
+    font-size: 13px; color: var(--ink-2); letter-spacing: -0.005em;
+    outline: none;
+    transition: border-color .15s ease;
+  }
+  .day-notes:focus { border-color: var(--ink-3); }
+  .day-notes::placeholder { color: var(--ink-4); }
+
+  /* Reservas — dl style */
+  .res-group { padding: 16px 18px; }
+  .res-group + .res-group { border-top: 0.5px solid var(--line-soft); }
+  .res-city { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 10px; }
+  .res-item { display: grid; grid-template-columns: 110px 1fr auto; gap: 12px; padding: 8px 0; align-items: baseline; }
+  .res-item + .res-item { border-top: 0.5px solid var(--line-soft); }
+  .res-key { font-size: 12px; color: var(--ink-3); letter-spacing: 0; }
+  .res-val { font-size: 14px; color: var(--ink); letter-spacing: -0.008em; }
+  .res-val .sub { display: block; color: var(--ink-3); font-size: 12px; margin-top: 2px; }
+  .res-status { font-size: 11px; font-weight: 500; }
+  .status-ok { color: #0e7a2a; }
+  .status-pending { color: #a85a00; }
+  .status-missing { color: #c11c10; }
+  @media (prefers-color-scheme: dark) {
+    .status-ok { color: #63e08a; }
+    .status-pending { color: #ffb02e; }
+    .status-missing { color: #ff6961; }
+  }
+
+  /* Money */
+  .money-form { padding: 16px 18px; display: flex; gap: 8px; border-bottom: 0.5px solid var(--line-soft); flex-wrap: wrap; }
+  .money-form input, .money-form select {
+    padding: 8px 12px; border-radius: var(--radius-sm); border: 0.5px solid var(--line);
+    background: var(--bg-sunken); font-size: 14px; min-width: 0;
+  }
+  .money-form input[name=desc] { flex: 1 1 180px; }
+  .money-form input[name=amount] { width: 110px; }
+  .money-form select { width: 100px; }
+  .money-form select[name=payer] { width: 110px; }
+  .money-form button {
+    padding: 8px 16px; border-radius: var(--radius-sm);
+    background: var(--ink); color: var(--bg); font-weight: 500; font-size: 14px;
+    letter-spacing: -0.005em;
+  }
+  .money-row { padding: 12px 18px; display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; border-bottom: 0.5px solid var(--line-soft); }
+  .money-row:last-child { border-bottom: 0; }
+  .money-row .desc { font-size: 14px; letter-spacing: -0.008em; }
+  .money-row .desc .sub { display: block; color: var(--ink-3); font-size: 11px; margin-top: 2px; }
+  .money-row .amt { font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 500; }
+  .money-row .del { color: var(--ink-4); font-size: 16px; padding: 4px 6px; border-radius: 6px; }
+  .money-row .del:hover { color: var(--red); background: var(--bg-sunken); }
+  .money-total { padding: 16px 18px; background: var(--bg-sunken); font-size: 14px; }
+  .money-total div { display: flex; justify-content: space-between; padding: 4px 0; }
+  .money-total .split { font-weight: 600; border-top: 0.5px solid var(--line-soft); margin-top: 6px; padding-top: 10px; }
+
+  /* Empty */
+  .empty { padding: 32px 20px; text-align: center; color: var(--ink-4); font-size: 13px; }
+
+  /* Small util */
+  .hint { font-size: 12px; color: var(--ink-4); padding: 0 4px; margin-top: 8px; letter-spacing: -0.005em; }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .app-header-inner { padding: 14px 18px 10px; }
+    .title { font-size: 22px; }
+    main, .countdown, nav.tabs { padding-left: 16px; padding-right: 16px; }
+    .res-item { grid-template-columns: 90px 1fr; }
+    .res-status { grid-column: 2; }
+    .money-form input[name=desc] { flex: 1 1 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="app-header-inner">
+    <div>
+      <h1 class="title">Peru</h1>
+      <div class="subtitle">Pedro & Marina · 28 jun — 12 jul</div>
+    </div>
+    <div id="countdown-big" class="subtitle" style="font-variant-numeric: tabular-nums;"></div>
+  </div>
+</header>
+
+<div class="countdown" id="countdown-cards"></div>
+
+<nav class="tabs" id="tabs">
+  <button class="tab-btn active" data-panel="checklist">Checklist</button>
+  <button class="tab-btn" data-panel="agenda">Agenda</button>
+  <button class="tab-btn" data-panel="reservas">Reservas</button>
+  <button class="tab-btn" data-panel="bolso">Bolso</button>
+  <button class="tab-btn" data-panel="info">Info</button>
+</nav>
+
+<main>
+  <section id="checklist" class="panel active">
+    <div id="checklist-content"></div>
+  </section>
+
+  <section id="agenda" class="panel">
+    <div id="agenda-content"></div>
+  </section>
+
+  <section id="reservas" class="panel">
+    <div id="reservas-content"></div>
+  </section>
+
+  <section id="bolso" class="panel">
+    <h2 class="section-title">Gastos em conjunto</h2>
+    <div class="card">
+      <div class="money-form">
+        <input name="desc" placeholder="O que foi" />
+        <input name="amount" type="number" step="0.01" placeholder="0,00" />
+        <select name="currency">
+          <option value="PEN">S/</option>
+          <option value="BRL">R$</option>
+          <option value="USD">US$</option>
+        </select>
+        <select name="payer">
+          <option value="Pedro">Pedro</option>
+          <option value="Marina">Marina</option>
+        </select>
+        <button id="add-expense">Adicionar</button>
+      </div>
+      <div id="expense-list"></div>
+      <div class="money-total" id="expense-total"></div>
+    </div>
+    <div class="hint">Registre quem pagou — o app calcula automaticamente quem deve quanto pra quem no final. Conversões usam taxas aproximadas (ajustáveis na aba Info).</div>
+  </section>
+
+  <section id="info" class="panel">
+    <h2 class="section-title">Cotações</h2>
+    <div class="card">
+      <div class="res-group">
+        <div class="res-item">
+          <div class="res-key">1 USD</div>
+          <div class="res-val"><input id="rate-usd-brl" type="number" step="0.01" class="money-form" style="border:0.5px solid var(--line); padding:4px 8px; border-radius:6px; background:var(--bg-sunken); width:90px;"> R$</div>
+          <div class="res-status"></div>
+        </div>
+        <div class="res-item">
+          <div class="res-key">1 PEN</div>
+          <div class="res-val"><input id="rate-pen-brl" type="number" step="0.01" class="money-form" style="border:0.5px solid var(--line); padding:4px 8px; border-radius:6px; background:var(--bg-sunken); width:90px;"> R$</div>
+          <div class="res-status"></div>
+        </div>
+        <div class="res-item">
+          <div class="res-key">1 USD</div>
+          <div class="res-val"><input id="rate-usd-pen" type="number" step="0.01" class="money-form" style="border:0.5px solid var(--line); padding:4px 8px; border-radius:6px; background:var(--bg-sunken); width:90px;"> S/</div>
+          <div class="res-status"></div>
+        </div>
+      </div>
+    </div>
+    <h2 class="section-title">Voos comprados</h2>
+    <div class="card">
+      <div class="res-group">
+        <div class="res-item"><div class="res-key">LA8202</div><div class="res-val">Brasil → Lima<span class="sub">28/jun · chegada 10:45</span></div><div class="res-status status-ok">✓ Comprado</div></div>
+        <div class="res-item"><div class="res-key">LA2238</div><div class="res-val">Lima → Cusco<span class="sub">30/jun · 10:10 → 11:35</span></div><div class="res-status status-ok">✓ Comprado</div></div>
+        <div class="res-item"><div class="res-key">LA2394</div><div class="res-val">Arequipa → Lima<span class="sub">12/jul · 14:00 → 15:40</span></div><div class="res-status status-ok">✓ Comprado</div></div>
+        <div class="res-item"><div class="res-key">LA2110</div><div class="res-val">Lima → Brasil<span class="sub">12/jul · 19:30</span></div><div class="res-status status-ok">✓ Comprado</div></div>
+      </div>
+    </div>
+    <h2 class="section-title">Documentos pessoais</h2>
+    <div class="card">
+      <div class="row"><div class="check" data-id="doc-rg"></div><div class="row-body"><div class="row-title">RG ou passaporte (Pedro)</div><div class="row-meta">RG com menos de 10 anos ou passaporte válido</div></div></div>
+      <div class="row"><div class="check" data-id="doc-rg-m"></div><div class="row-body"><div class="row-title">RG ou passaporte (Marina)</div><div class="row-meta">RG com menos de 10 anos ou passaporte válido</div></div></div>
+      <div class="row"><div class="check" data-id="doc-seguro"></div><div class="row-body"><div class="row-title">Seguro viagem — apólice impressa/salva offline</div><div class="row-meta">Já contratado</div></div></div>
+      <div class="row"><div class="check" data-id="doc-chip"></div><div class="row-body"><div class="row-title">Chip internacional testado (Pedro & Marina)</div><div class="row-meta">Já contratado — testar antes de embarcar</div></div></div>
+      <div class="row"><div class="check" data-id="doc-mp"></div><div class="row-body"><div class="row-title">Ingressos Machu Picchu impressos</div><div class="row-meta">Circuito 3A · 07:00 · 06/jul</div></div></div>
+      <div class="row"><div class="check" data-id="doc-voos"></div><div class="row-body"><div class="row-title">Cartões de embarque (4 voos) salvos offline</div></div></div>
+      <div class="row"><div class="check" data-id="doc-airbnbs"></div><div class="row-body"><div class="row-title">Vouchers Airbnb salvos offline</div><div class="row-meta">Lima, Cusco, Ollantaytambo, Aguas Calientes, Cusco extra</div></div></div>
+    </div>
+    <h2 class="section-title">Bagagem — essenciais</h2>
+    <div class="card">
+      <div class="row"><div class="check" data-id="bag-casaco"></div><div class="row-body"><div class="row-title">Casaco pesado + térmica (Cusco/Titicaca, −3°C de madrugada)</div></div></div>
+      <div class="row"><div class="check" data-id="bag-trekking"></div><div class="row-body"><div class="row-title">Tênis/bota de trekking</div><div class="row-meta">Machu Picchu, Vale Sagrado, Colca opcional</div></div></div>
+      <div class="row"><div class="check" data-id="bag-protetor"></div><div class="row-body"><div class="row-title">Protetor solar FPS 50+ e óculos escuros</div><div class="row-meta">Altitude = sol agressivo</div></div></div>
+      <div class="row"><div class="check" data-id="bag-garrafa"></div><div class="row-body"><div class="row-title">Garrafa reutilizável</div><div class="row-meta">Não se compra água fácil em Machu Picchu</div></div></div>
+      <div class="row"><div class="check" data-id="bag-adapt"></div><div class="row-body"><div class="row-title">Adaptador de tomada (A/B — igual Brasil na maioria, mas leve universal)</div></div></div>
+      <div class="row"><div class="check" data-id="bag-remedios"></div><div class="row-body"><div class="row-title">Kit remédios: dipirona, ibuprofeno, antiácido, soroche pills</div><div class="row-meta">Soroche pills = pastilha para mal de altitude, vende-se em qualquer farmácia no Peru</div></div></div>
+      <div class="row"><div class="check" data-id="bag-dinheiro"></div><div class="row-body"><div class="row-title">Dinheiro: ~300 USD + cartão sem IOF</div><div class="row-meta">Wise, C6 Global ou Nomad. Troque USD→soles em Lima (casas de câmbio em Miraflores têm ótima taxa)</div></div></div>
+    </div>
+  </section>
+</main>
+
+<script>
+/* ------------------------------------------------------------------
+   DATA MODEL
+------------------------------------------------------------------ */
+
+const TRIP_START = new Date("2026-06-28T00:00:00-03:00");
+
+const CHECKLIST = [
+  {
+    group: "Comprar com urgência (faltam, por ordem de prioridade)",
+    items: [
+      { id: "c-trem1", title: "Trem Ollantaytambo → Aguas Calientes", meta: "The Voyager · 19:27 → 21:09 · 05/jul · Inca Rail · USD 66/pax", tags: [{t:"Urgente",k:"urgent"}, {t:"incarail.com",k:""}] },
+      { id: "c-trem2", title: "Trem Machu Picchu → Cusco (volta)", meta: "The Voyager · 14:30 → 18:20 · 06/jul · Inca Rail · USD 119/pax", tags: [{t:"Urgente",k:"urgent"}, {t:"incarail.com",k:""}] },
+      { id: "c-inca", title: "Inca Express Cusco → Puno (Ruta del Sol)", meta: "07/jul · pickup Airbnb 06:20 · USD 35–55/pax · esgota em alta temporada", tags: [{t:"Urgente",k:"urgent"}, {t:"inkaexpress.com",k:""}] },
+      { id: "c-hotel-aqp", title: "Hampton by Hilton Arequipa", meta: "09–12/jul · 3 noites · conferir cancelamento flexível", tags: [{t:"Reservar",k:"warn"}] },
+      { id: "c-onibus-aqp", title: "Ônibus Puno → Arequipa", meta: "09/jul manhã · Cruz del Sur ou Tepsa · ~5–6h · pode comprar em Puno mesmo, mas conferir disponibilidade online antes", tags: [{t:"Pendente",k:"warn"}] },
+    ]
+  },
+  {
+    group: "Comprar na chegada ou em cada cidade",
+    items: [
+      { id: "c-transfer-lima", title: "Transfer aeroporto Lima → Airbnb (28/jun)", meta: "Uber/InDriver ou táxi oficial Airport Express. Evitar táxi de rua fora do aeroporto.", tags: [{t:"Lima",k:""}] },
+      { id: "c-cusco-ollanta", title: "Colectivo Cusco → Ollantaytambo (02/jul)", meta: "Terminal Terrestre ou Av. Grau · S/ 10–15 por pessoa · sai quando enche", tags: [{t:"Na rodoviária",k:""}] },
+      { id: "c-boleto", title: "Boleto Turístico de Cusco (integral, 10 dias)", meta: "S/ 130 · cobre Sacsayhuamán, Qenko, Tambomachay, Pisac, Ollantaytambo, Chinchero, Moray e mais · comprar na chegada em Cusco", tags: [{t:"Cusco",k:""}] },
+      { id: "c-mp-bus", title: "Ônibus Consettur Aguas Calientes ↔ Machu Picchu (opcional)", meta: "USD 24 ida e volta · compra no dia anterior na bilheteria em AC · ou subir a pé (1h30)", tags: [{t:"Aguas Calientes",k:""}] },
+      { id: "c-uros", title: "Barco Uros + Taquile em Puno", meta: "Direto no Porto de Puno sem agência · S/ 40–80 por pessoa · 08/jul", tags: [{t:"No porto",k:""}] },
+      { id: "c-salinas", title: "Tour Salinas y Aguada Blanca (Arequipa)", meta: "Saindo da Plaza de Armas · S/ 60–80 + S/ 6 entrada · 11/jul madrugada", tags: [{t:"Arequipa",k:""}] },
+    ]
+  },
+  {
+    group: "Já resolvido",
+    done: true,
+    items: [
+      { id: "d-voos", title: "Voos internacionais + domésticos comprados", meta: "LA8202 · LA2238 · LA2394 · LA2110" },
+      { id: "d-mp", title: "Entrada Machu Picchu comprada", meta: "Circuito 3A · 07:00 · 06/jul · 2 pax" },
+      { id: "d-seguro", title: "Seguro viagem contratado" },
+      { id: "d-chips", title: "Chips internacionais Pedro + Marina" },
+      { id: "d-abnbs", title: "Airbnbs: Lima, Cusco, Ollantaytambo, Aguas Calientes, Cusco pós-MP" },
+      { id: "d-puno", title: "Puno reservado no Booking (pagar no local)" },
+    ]
+  }
+];
+
+const AGENDA = [
+  { d: 1, date: "Dom 28/jun", city: "Lima", title: "Chegada a Lima",
+    items: [
+      { t: "10:45", w: "<strong>Pouso em Lima (LA8202)</strong>Aeroporto Jorge Chávez. Trocar um pouco de USD→S/ no aeroporto só pra táxi, o resto em Miraflores tem taxa melhor." },
+      { t: "~12:00", w: "<strong>Transfer até Airbnb</strong>Uber/InDriver funciona bem. Táxis pretos do aeroporto são oficiais. Fugir dos cambistas de rua dentro do aeroporto." },
+      { t: "Tarde", w: "<strong>Primeiro passeio leve</strong>Se tiver energia: Parque Kennedy (Miraflores) + Larcomar à beira do penhasco. Jantar leve, dormir cedo." },
+    ]
+  },
+  { d: 2, date: "Seg 29/jun", city: "Lima", title: "Lima · dia inteiro",
+    items: [
+      { t: "Manhã", w: "<strong>Barranco</strong>Puente de los Suspiros, MATE (museu Mario Testino, ~S/ 25), grafites. Café da manhã na La Panetteria ou Bisetti." },
+      { t: "Almoço", w: "<strong>Cevicharia em Barranco ou Miraflores</strong>Sugestões sólidas e baratas: Canta Rana (Barranco), La Mar (mais caro, vale um splurge), ou Isolina (comida criolla, almoço forte)." },
+      { t: "Tarde", w: "<strong>Centro Histórico</strong>Plaza Mayor, Catedral, Convento de San Francisco com as catacumbas (S/ 20). Se der tempo: MALI (Museu de Arte de Lima)." },
+      { t: "Noite", w: "<strong>Voltar a Miraflores, arrumar mala</strong>Voo às 10:10 amanhã, então deitar cedo." },
+    ]
+  },
+  { d: 3, date: "Ter 30/jun", city: "Lima → Cusco", title: "Voo + chegada a Cusco",
+    items: [
+      { t: "08:00", w: "<strong>Aeroporto Jorge Chávez</strong>Check-in voo LA2238." },
+      { t: "10:10", w: "<strong>Decolagem Lima</strong>Duração 1h25. Pousa 11:35 em Cusco (Alejandro Velasco Astete)." },
+      { t: "~12:30", w: "<strong>Táxi aeroporto → Airbnb Callacalle 322</strong>~15–20 soles. Táxi oficial no saguão é a aposta segura." },
+      { t: "Tarde", w: "<strong>Regra de ouro: não fazer nada</strong>Aclimatação. Andar devagar, chá de coca, comida leve (sopa, quinoa), beber muita água. Plaza de Armas se der, Mercado San Pedro se sobrar energia. Sem esforço físico — aclimatação mal feita estraga o resto da viagem." },
+    ]
+  },
+  { d: 4, date: "Qua 01/jul", city: "Cusco", title: "Ruínas ao redor de Cusco — Boleto Turístico",
+    items: [
+      { t: "Manhã", w: "<strong>Comprar o Boleto Turístico</strong>Posto da Calle Mantas ou Casa Garcilaso · S/ 130 · vale 10 dias, cobre tudo que você vai fazer no Vale Sagrado também." },
+      { t: "08:30", w: "<strong>Sacsayhuamán</strong>Subida de 15min a pé desde a Plaza de Armas, ou táxi S/ 10. Impressionante." },
+      { t: "Sequência", w: "<strong>Qenko → Puca Pucara → Tambomachay</strong>Os três ficam em linha numa estrada acima de Sacsayhuamán. Pegar coletivo de volta na estrada ou táxi. Total do circuito: ~4h calmas." },
+      { t: "Tarde", w: "<strong>San Blas</strong>Bairro bohemio, ateliês, cafés. Subida puxada mas vale. Recolher com tempo — jantar no Mauka às 20h." },
+      { t: "20:00", w: "<strong>Jantar no Mauka ✓</strong>Reserva confirmada. Cozinha contemporânea andina, um dos restaurantes mais bem avaliados de Cusco. Prelúdio perfeito pro aniversário da Marina amanhã." },
+    ]
+  },
+  { d: 5, date: "Qui 02/jul", city: "Cusco → Ollantaytambo", title: "🎂 Aniversário da Marina — deslocamento + tarde em Ollanta",
+    items: [
+      { t: "Logo cedo", w: "<strong>🎂 Feliz aniversário, Marina!</strong>Começar o dia com algo especial antes do check-out — café da manhã mais calmo, um presentinho, foto na Plaza de Armas de Cusco ainda vazia. O dia merece um tom de comemoração." },
+      { t: "Manhã", w: "<strong>Check-out Airbnb Callacalle</strong>Pegar colectivo em Pavitos (Av. Grau) → Urubamba (~S/ 15) e lá trocar para Ollantaytambo (~S/ 3); ou colectivo direto Ollanta da rua Pavitos quando tem. ~1h30–2h." },
+      { t: "~11:30", w: "<strong>Check-in Airbnb Ollantaytambo</strong>Deixar malas. A cidade é pequena, dá pra caminhar tudo." },
+      { t: "Tarde", w: "<strong>Reconhecimento</strong>Plaza de Armas, ruas de pedra, Rio Patacancha. Fortaleza principal fica pro dia 05 pela manhã." },
+      { t: "Jantar", w: "<strong>🎂 Jantar de aniversário</strong>Chuncho (restaurante do chef Virgilio Martínez, sazonal andino, opção mais memorável) ou Hearts Café (ambiente intimista, ONG). Reservar com antecedência — Chuncho lota. Se quiser uma sobremesa ou surpresa, vale combinar antes com o restaurante." },
+    ]
+  },
+  { d: 6, date: "Sex 03/jul", city: "Ollantaytambo", title: "Vale Sagrado — Pisac + Chinchero",
+    items: [
+      { t: "07:30", w: "<strong>Colectivo Ollanta → Urubamba → Pisac</strong>~1h15 total. ~S/ 10." },
+      { t: "Manhã", w: "<strong>Ruínas de Pisac</strong>Cobertas pelo Boleto Turístico. Menos visitadas que Machu Picchu, vale muito. Terraços espetaculares. ~2h." },
+      { t: "Almoço", w: "<strong>Mercado de Pisac</strong>Pechincha tranquilo, tem comida boa no 2º andar. Melhor mercado pra comprar tecido andino se quiser." },
+      { t: "Tarde", w: "<strong>Chinchero</strong>Colectivo Pisac → Urubamba → Chinchero. Sítio arqueológico + igreja colonial em cima de templo inca + oficinas de tecelagem tradicional." },
+      { t: "Fim do dia", w: "<strong>Volta a Ollanta</strong>Colectivo Chinchero → Urubamba → Ollanta." },
+    ]
+  },
+  { d: 7, date: "Sáb 04/jul", city: "Ollantaytambo", title: "Maras + Moray",
+    items: [
+      { t: "Manhã", w: "<strong>Moray</strong>Táxi compartilhado Ollanta → Moray (~S/ 80 o táxi inteiro, negociar) ou contratar um motorista pro dia todo Moray+Salinas (~S/ 150–180). Terraços circulares concêntricos, laboratório agrícola inca." },
+      { t: "Sequência", w: "<strong>Salinas de Maras</strong>~7km de Moray. Milhares de piscinas de sal escalonadas na encosta. Absolutamente único, render insano. Entrada S/ 10 (não cobre pelo Boleto)." },
+      { t: "Alternativa", w: "<strong>Opção mais brava: bike</strong>Alugar em Ollanta e descer pelas vilas. Descida longa mas possível, bonita. ~S/ 50–80." },
+      { t: "Tarde/noite", w: "<strong>Volta para Ollanta</strong>Descansar bem — amanhã é dia de trem." },
+    ]
+  },
+  { d: 8, date: "Dom 05/jul", city: "Ollantaytambo → Aguas Calientes", title: "Fortaleza + trem noturno",
+    items: [
+      { t: "09:00", w: "<strong>Fortaleza de Ollantaytambo</strong>Boleto Turístico. Subida puxada, vista do vale magnífica. ~2–3h." },
+      { t: "Tarde", w: "<strong>Almoço + arrumar bagagem</strong>Só levar o essencial pra AC — malas grandes ficam no Airbnb? (Conferir antes. Ou levar tudo e deixar no guarda-volumes em AC.)" },
+      { t: "19:27", w: "<strong>Trem Inca Rail The Voyager</strong>Embarque estação Ollantaytambo. USD 66/pax. Chegada AC 21:09." },
+      { t: "~21:30", w: "<strong>Check-in hostel Aguas Calientes</strong>Jantar rápido (cidade é cara, tem opções simples perto da praça). Dormir cedo — despertador 04:30." },
+    ]
+  },
+  { d: 9, date: "Seg 06/jul", city: "Machu Picchu → Cusco", title: "Machu Picchu (Circuito 3A, 07:00) + trem de volta",
+    items: [
+      { t: "04:30", w: "<strong>Acordar</strong>Café rápido (hostel geralmente tem kit manhã cedo) e sair com mochila pequena: água, snacks, protetor solar, chuva, ingressos impressos, passaporte." },
+      { t: "05:00", w: "<strong>Opção A: subida a pé</strong>1h30 de trilha íngreme. Grátis. Chega 06:30, ingresso às 07:00." },
+      { t: "05:30", w: "<strong>Opção B: ônibus Consettur</strong>USD 24 ida e volta. Fila começa às 05:00. Sobe em ~25 min." },
+      { t: "07:00", w: "<strong>Entrada · Circuito 3A</strong>Circuito 3A é o da parte baixa da cidadela — Templo do Sol, Casa do Inca, espelhos d'água. Menos íngreme. Tempo dentro: ~2h30 pelo circuito oficial." },
+      { t: "~10:00", w: "<strong>Descida</strong>A pé (40min) ou ônibus. Almoço em AC." },
+      { t: "14:30", w: "<strong>Trem Inca Rail The Voyager MP → Cusco</strong>USD 119/pax. Chegada Cusco (Av. El Sol 843) 18:20. Direto pro Airbnb perto do terminal Inca Express." },
+      { t: "Noite", w: "<strong>Dormir cedo</strong>Amanhã sai às 06:20." },
+    ]
+  },
+  { d: 10, date: "Ter 07/jul", city: "Cusco → Puno", title: "Inca Express Ruta del Sol (dia inteiro)",
+    items: [
+      { t: "06:20", w: "<strong>Pickup Inca Express no Airbnb</strong>Conferir a direção informada na reserva — pickup só funciona em raio específico do centro." },
+      { t: "Manhã", w: "<strong>Igreja de Andahuaylillas</strong>A \"Capela Sistina das Américas\". 1h de parada." },
+      { t: "~12:00", w: "<strong>Raqchi</strong>Ruínas do Templo de Wiracocha. Menos famoso mas bonito." },
+      { t: "Almoço", w: "<strong>Buffet em Sicuani</strong>Incluído no tour. Música andina ao vivo." },
+      { t: "~15:00", w: "<strong>Mirante La Raya (4.338m)</strong>Ponto mais alto da rota. Parada curta, fazer foto rápido e voltar pro ônibus (altitude pesa)." },
+      { t: "17:30", w: "<strong>Chegada Puno</strong>Check-in hotel reservado no Booking (pagar no local). Jantar leve — altitude alta (3.800m)." },
+    ]
+  },
+  { d: 11, date: "Qua 08/jul", city: "Puno", title: "Lago Titicaca — Uros + Taquile",
+    items: [
+      { t: "07:00", w: "<strong>Ir ao Porto de Puno</strong>Contratar barco direto sem agência. S/ 40–80 por pessoa pelo combo Uros + Taquile." },
+      { t: "Manhã", w: "<strong>Ilhas Uros</strong>Ilhas flutuantes de totora. Bastante turístico mas vale ver. ~1h30." },
+      { t: "Almoço", w: "<strong>Taquile</strong>Comunidade inca viva, homens tecem, mulheres fiam. Almoço típico (trucha, quinoa). Trilha íngreme até o topo — vista do lago impressionante." },
+      { t: "~17:00", w: "<strong>Volta a Puno</strong>Jantar em restaurante local. Puno é pequeno, a Calle Lima concentra tudo." },
+    ]
+  },
+  { d: 12, date: "Qui 09/jul", city: "Puno → Arequipa", title: "Ônibus + tarde em Arequipa",
+    items: [
+      { t: "07:00", w: "<strong>Ônibus Puno → Arequipa</strong>Cruz del Sur ou Tepsa (mais conforto). ~5–6h via Juliaca. S/ 30–60." },
+      { t: "~13:30", w: "<strong>Chegada Arequipa</strong>Terminal Terrestre. Táxi ao Hampton by Hilton (~S/ 20, 15min)." },
+      { t: "Tarde", w: "<strong>Plaza de Armas</strong>Arequipa tem uma das praças mais bonitas do continente. Sillar branco, Catedral, arcadas." },
+      { t: "Fim de tarde", w: "<strong>Yanahuara</strong>Bairro colonial com mirante da vista dos vulcões (El Misti, Chachani, Pichu Pichu). Táxi S/ 10." },
+      { t: "Jantar", w: "<strong>Chicha (do Gastón Acurio) ou ZigZag</strong>Arequipa tem gastronomia forte — rocoto relleno, adobo, chupe de camarones." },
+    ]
+  },
+  { d: 13, date: "Sex 10/jul", city: "Arequipa", title: "Santa Catalina + centro",
+    items: [
+      { t: "09:00", w: "<strong>Monasterio de Santa Catalina</strong>S/ 45. Passar 3–4h. Cidade dentro da cidade, ruas coloridas, luz incrível — ótimo pra fotografia." },
+      { t: "Almoço", w: "<strong>Picantería tradicional</strong>La Nueva Palomino ou Sol de Mayo. Aulas de cozinha arequipeña." },
+      { t: "Tarde", w: "<strong>Museo Santuarios Andinos (Juanita)</strong>A múmia da criança inca preservada no gelo. Visita guiada (~1h, S/ 30)." },
+      { t: "Fim da tarde", w: "<strong>Mirador de Sachaca ou Claustros de la Compañía</strong>Escolher conforme ritmo." },
+    ]
+  },
+  { d: 14, date: "Sáb 11/jul", city: "Arequipa", title: "Reserva Salinas y Aguada Blanca",
+    items: [
+      { t: "05:30", w: "<strong>Tour saindo da Plaza de Armas</strong>Reservar na véspera em agência local. S/ 60–80 + S/ 6 entrada." },
+      { t: "Madrugada/manhã", w: "<strong>Reserva em 4.300m</strong>Vicunhas, flamingos andinos, lagoas salinas. Vulcões ao fundo (Misti e Chachani). Paisagem altiplânica pura." },
+      { t: "~14:00", w: "<strong>Volta a Arequipa</strong>Tarde livre. Compras finais (alpaca de verdade, prata), última refeição caprichada, arrumar malas." },
+      { t: "Noite", w: "<strong>Descansar</strong>Amanhã é viagem longa de volta." },
+    ]
+  },
+  { d: 15, date: "Dom 12/jul", city: "Arequipa → Lima → Brasil", title: "Volta pra casa",
+    items: [
+      { t: "~11:30", w: "<strong>Check-out + transfer aeroporto</strong>AQP é pequeno, ~30min do centro." },
+      { t: "14:00", w: "<strong>Voo LA2394 Arequipa → Lima</strong>Chega 15:40." },
+      { t: "15:40–19:30", w: "<strong>Conexão em Lima</strong>SEM sair do aeroporto. ~3h50 — tempo confortável. Lounge Priority Pass se tiver cartão." },
+      { t: "19:30", w: "<strong>Voo LA2110 Lima → Brasil</strong>Boa viagem de volta." },
+    ]
+  },
+];
+
+const RESERVAS = [
+  { city: "Lima", items: [
+    { k: "Hospedagem", v: "Airbnb (já reservado)", sub: "28–30/jun · 2 noites", status: "ok" },
+  ]},
+  { city: "Cusco", items: [
+    { k: "Hospedagem", v: "Airbnb Callacalle 322", sub: "30/jun–02/jul · 2 noites", status: "ok" },
+    { k: "Hospedagem", v: "Airbnb Cusco (pós-MP)", sub: "06/jul · 1 noite · próx. terminal Inca Express", status: "ok" },
+  ]},
+  { city: "Ollantaytambo", items: [
+    { k: "Hospedagem", v: "Airbnb próx. Plaza de Armas", sub: "02–05/jul · 3 noites", status: "ok" },
+  ]},
+  { city: "Aguas Calientes", items: [
+    { k: "Hospedagem", v: "Airbnb (já reservado)", sub: "05/jul · 1 noite", status: "ok" },
+  ]},
+  { city: "Puno", items: [
+    { k: "Hospedagem", v: "Booking — pagar no local", sub: "07–09/jul · 2 noites", status: "ok" },
+  ]},
+  { city: "Arequipa", items: [
+    { k: "Hospedagem", v: "Hampton by Hilton", sub: "09–12/jul · 3 noites", status: "pending" },
+  ]},
+  { city: "Trem + Machu Picchu", items: [
+    { k: "Trem ida", v: "Inca Rail The Voyager", sub: "05/jul · 19:27 → 21:09 · USD 66/pax (total USD 132)", status: "pending" },
+    { k: "Trem volta", v: "Inca Rail The Voyager", sub: "06/jul · 14:30 → 18:20 · USD 119/pax (total USD 238)", status: "pending" },
+    { k: "Entrada MP", v: "Circuito 3A", sub: "06/jul · 07:00 · 2 pax", status: "ok" },
+    { k: "Ônibus Consettur", v: "Aguas Calientes ↔ MP", sub: "opcional, USD 24 ida+volta · comprar em AC", status: "missing" },
+  ]},
+  { city: "Transportes terrestres", items: [
+    { k: "Cusco → Ollanta", v: "Colectivo", sub: "02/jul · Terminal Terrestre ou Pavitos · S/ 10–15", status: "missing" },
+    { k: "Cusco → Puno", v: "Inca Express Ruta del Sol", sub: "07/jul · 06:20 pickup · USD 35–55/pax", status: "pending" },
+    { k: "Puno → Arequipa", v: "Cruz del Sur ou Tepsa", sub: "09/jul manhã · ~5–6h", status: "pending" },
+  ]},
+];
+
+/* ------------------------------------------------------------------
+   STORAGE HELPERS
+------------------------------------------------------------------ */
+
+async function storageGet(key, fallback) {
+  try {
+    if (!window.storage) return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));
+    const res = await window.storage.get(key);
+    return res && res.value ? JSON.parse(res.value) : fallback;
+  } catch { return fallback; }
+}
+async function storageSet(key, value) {
+  try {
+    if (!window.storage) { localStorage.setItem(key, JSON.stringify(value)); return; }
+    await window.storage.set(key, JSON.stringify(value));
+  } catch {}
+}
+
+/* ------------------------------------------------------------------
+   STATE
+------------------------------------------------------------------ */
+
+const state = {
+  checks: {},      // id -> bool
+  notes: {},       // day -> string
+  edits: {},       // dayNum -> { title?, city?, date?, items? }
+  expenses: [],    // {id, desc, amount, currency, payer, date}
+  rates: { usd_brl: 5.05, pen_brl: 1.35, usd_pen: 3.75 }
+};
+
+async function load() {
+  state.checks = await storageGet("checks", {});
+  state.notes = await storageGet("notes", {});
+  state.edits = await storageGet("edits", {});
+  state.expenses = await storageGet("expenses", []);
+  state.rates = await storageGet("rates", state.rates);
+}
+
+/* ------------------------------------------------------------------
+   COUNTDOWN
+------------------------------------------------------------------ */
+
+function renderCountdown() {
+  const now = new Date();
+  const diff = TRIP_START - now;
+  const days = Math.floor(diff / (1000*60*60*24));
+  const el = document.getElementById("countdown-big");
+  if (days > 0) el.textContent = `em ${days} dias`;
+  else if (days === 0) el.textContent = "hoje!";
+  else if (days >= -15) el.textContent = `dia ${-days + 1}`;
+  else el.textContent = "viagem concluída";
+
+  const cards = document.getElementById("countdown-cards");
+  let totalChecks = 0, doneChecks = 0;
+  CHECKLIST.forEach(group => {
+    group.items.forEach(item => {
+      totalChecks++;
+      if (group.done || state.checks[item.id]) doneChecks++;
+    });
+  });
+  const pendentes = totalChecks - doneChecks;
+  const expenseTotal = totalExpensesBRL();
+
+  cards.innerHTML = `
+    <div class="countdown-card">
+      <div class="label">Faltam</div>
+      <div class="value">${days > 0 ? days : 0}<span class="unit">dias</span></div>
+    </div>
+    <div class="countdown-card">
+      <div class="label">Pendentes</div>
+      <div class="value">${pendentes}<span class="unit">itens</span></div>
+    </div>
+    <div class="countdown-card">
+      <div class="label">Gastos juntos</div>
+      <div class="value">R$ ${expenseTotal.toFixed(0)}</div>
+    </div>
+  `;
+}
+
+/* ------------------------------------------------------------------
+   CHECKLIST
+------------------------------------------------------------------ */
+
+function renderChecklist() {
+  const container = document.getElementById("checklist-content");
+  container.innerHTML = CHECKLIST.map(group => `
+    <h2 class="section-title">${group.group}</h2>
+    <div class="card">
+      ${group.items.map(item => {
+        const done = group.done || state.checks[item.id];
+        return `
+          <div class="row clickable" data-check="${item.id}">
+            <div class="check ${done ? "done" : ""}"></div>
+            <div class="row-body">
+              <div class="row-title ${done ? "done" : ""}">${item.title}</div>
+              ${item.meta ? `<div class="row-meta">${item.meta}</div>` : ""}
+              ${item.tags ? `<div class="row-tag">${item.tags.map(t => `<span class="pill ${t.k}">${t.t}</span>`).join("")}</div>` : ""}
+            </div>
+          </div>
+        `;
+      }).join("")}
+    </div>
+  `).join("");
+
+  container.querySelectorAll("[data-check]").forEach(row => {
+    row.addEventListener("click", async () => {
+      const id = row.dataset.check;
+      // find the group
+      const group = CHECKLIST.find(g => g.items.some(i => i.id === id));
+      if (group.done) return; // "já resolvido" não toggla
+      state.checks[id] = !state.checks[id];
+      await storageSet("checks", state.checks);
+      renderChecklist();
+      renderCountdown();
+    });
+  });
+}
+
+/* ------------------------------------------------------------------
+   AGENDA
+------------------------------------------------------------------ */
+
+function getMergedDay(day) {
+  const edit = state.edits[day.d] || {};
+  const base = { ...day, items: day.items.map(it => ({ ...it })) };
+  if (edit.title !== undefined) base.title = edit.title;
+  if (edit.city !== undefined) base.city = edit.city;
+  if (edit.date !== undefined) base.date = edit.date;
+  if (edit.items) base.items = edit.items.map(it => ({ ...it }));
+  return base;
+}
+
+async function saveDayEdit(dayNum, patch) {
+  state.edits[dayNum] = { ...(state.edits[dayNum] || {}), ...patch };
+  await storageSet("edits", state.edits);
+  renderCountdown();
+}
+
+function escapeHtml(s) {
+  return String(s || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+}
+
+// Converte o 'w' da agenda (com <strong>Título</strong>Descrição) em dois campos: título e corpo
+function splitItem(w) {
+  const m = /^<strong>(.*?)<\/strong>([\s\S]*)$/.exec(w || "");
+  if (m) return { title: m[1], body: m[2].trim() };
+  return { title: "", body: (w || "").trim() };
+}
+function joinItem(title, body) {
+  const t = (title || "").trim();
+  const b = (body || "").trim();
+  if (t && b) return `<strong>${escapeHtml(t)}</strong>${escapeHtml(b)}`;
+  if (t) return `<strong>${escapeHtml(t)}</strong>`;
+  return escapeHtml(b);
+}
+
+function renderAgenda() {
+  const container = document.getElementById("agenda-content");
+  container.innerHTML = AGENDA.map((rawDay) => {
+    const day = getMergedDay(rawDay);
+    return `
+    <div class="card day-card" data-day="${day.d}">
+      <div class="day-head">
+        <span class="day-num">Dia ${day.d}</span>
+        <span class="day-date" contenteditable="plaintext-only" data-field="date">${escapeHtml(day.date)}</span>
+        <span class="day-city" contenteditable="plaintext-only" data-field="city">${escapeHtml(day.city)}</span>
+      </div>
+      <div class="day-title" contenteditable="plaintext-only" data-field="title">${escapeHtml(day.title)}</div>
+      <div class="day-items">
+        ${day.items.map((it, idx) => {
+          const parts = splitItem(it.w);
+          return `
+            <div class="day-item" data-item="${idx}">
+              <div class="time" contenteditable="plaintext-only" data-field="time">${escapeHtml(it.t)}</div>
+              <div class="what">
+                <strong contenteditable="plaintext-only" data-field="itemtitle" data-placeholder="Título">${escapeHtml(parts.title)}</strong>
+                <span contenteditable="plaintext-only" data-field="itembody" data-placeholder="Descrição">${escapeHtml(parts.body)}</span>
+              </div>
+              <button class="item-del" title="Remover">✕</button>
+            </div>
+          `;
+        }).join("")}
+      </div>
+      <button class="item-add">+ adicionar item</button>
+      <textarea class="day-notes" data-note="${day.d}" placeholder="Anotações do dia…">${escapeHtml(state.notes[day.d] || "")}</textarea>
+    </div>
+    `;
+  }).join("");
+
+  // ─── Notes (inalterado) ─────────────────────────────────
+  container.querySelectorAll("[data-note]").forEach(ta => {
+    let t;
+    ta.addEventListener("input", (e) => {
+      clearTimeout(t);
+      t = setTimeout(async () => {
+        state.notes[e.target.dataset.note] = e.target.value;
+        await storageSet("notes", state.notes);
+      }, 400);
+    });
+  });
+
+  // ─── Edição inline: título/cidade/data do dia ───────────
+  container.querySelectorAll(".day-card").forEach(card => {
+    const dayNum = parseInt(card.dataset.day);
+    const rawDay = AGENDA.find(d => d.d === dayNum);
+
+    // Campos do dia (não do item)
+    card.querySelectorAll(".day-head > [data-field], .day-title[data-field]").forEach(el => {
+      let t;
+      el.addEventListener("input", () => {
+        clearTimeout(t);
+        t = setTimeout(() => {
+          const field = el.dataset.field;
+          saveDayEdit(dayNum, { [field]: el.textContent });
+        }, 400);
+      });
+      el.addEventListener("blur", () => {
+        const field = el.dataset.field;
+        saveDayEdit(dayNum, { [field]: el.textContent });
+      });
+    });
+
+    // Campos dos itens + remoção + adição
+    const getCurrentItems = () => {
+      const day = getMergedDay(rawDay);
+      return day.items.map(it => ({ ...it }));
+    };
+    const commitItems = (items) => {
+      state.edits[dayNum] = { ...(state.edits[dayNum] || {}), items };
+      storageSet("edits", state.edits);
+    };
+
+    card.querySelectorAll(".day-item").forEach(row => {
+      const idx = parseInt(row.dataset.item);
+
+      row.querySelectorAll("[data-field]").forEach(el => {
+        let t;
+        const save = () => {
+          const items = getCurrentItems();
+          if (!items[idx]) return;
+          const field = el.dataset.field;
+          const parts = splitItem(items[idx].w);
+          if (field === "time") items[idx].t = el.textContent;
+          else if (field === "itemtitle") items[idx].w = joinItem(el.textContent, parts.body);
+          else if (field === "itembody") items[idx].w = joinItem(parts.title, el.textContent);
+          commitItems(items);
+        };
+        el.addEventListener("input", () => { clearTimeout(t); t = setTimeout(save, 400); });
+        el.addEventListener("blur", save);
+      });
+
+      row.querySelector(".item-del").addEventListener("click", async () => {
+        const items = getCurrentItems();
+        items.splice(idx, 1);
+        commitItems(items);
+        await storageSet("edits", state.edits);
+        renderAgenda();
+      });
+    });
+
+    card.querySelector(".item-add").addEventListener("click", async () => {
+      const items = getCurrentItems();
+      items.push({ t: "Horário", w: "<strong>Novo item</strong>Descrição" });
+      commitItems(items);
+      await storageSet("edits", state.edits);
+      renderAgenda();
+    });
+  });
+}
+
+/* ------------------------------------------------------------------
+   RESERVAS
+------------------------------------------------------------------ */
+
+function renderReservas() {
+  const container = document.getElementById("reservas-content");
+  const statusLabel = { ok: "✓ Confirmado", pending: "○ Pendente", missing: "· A comprar" };
+  container.innerHTML = `
+    <h2 class="section-title">Estado atual</h2>
+    <div class="card">
+      ${RESERVAS.map(group => `
+        <div class="res-group">
+          <div class="res-city">${group.city}</div>
+          ${group.items.map(it => `
+            <div class="res-item">
+              <div class="res-key">${it.k}</div>
+              <div class="res-val">${it.v}${it.sub ? `<span class="sub">${it.sub}</span>` : ""}</div>
+              <div class="res-status status-${it.status}">${statusLabel[it.status]}</div>
+            </div>
+          `).join("")}
+        </div>
+      `).join("")}
+    </div>
+    <div class="hint">Atualizado automaticamente pela sua conversa com o assistente. Diga o que mudou e eu atualizo o estado.</div>
+  `;
+}
+
+/* ------------------------------------------------------------------
+   BOLSO — gastos conjuntos
+------------------------------------------------------------------ */
+
+function toBRL(amount, currency) {
+  if (currency === "BRL") return amount;
+  if (currency === "USD") return amount * state.rates.usd_brl;
+  if (currency === "PEN") return amount * state.rates.pen_brl;
+  return amount;
+}
+
+function totalExpensesBRL() {
+  return state.expenses.reduce((sum, e) => sum + toBRL(e.amount, e.currency), 0);
+}
+
+function renderExpenses() {
+  const list = document.getElementById("expense-list");
+  const total = document.getElementById("expense-total");
+
+  if (state.expenses.length === 0) {
+    list.innerHTML = `<div class="empty">Nenhum gasto registrado ainda.</div>`;
+    total.innerHTML = "";
+    return;
+  }
+
+  list.innerHTML = state.expenses.slice().reverse().map(e => `
+    <div class="money-row">
+      <div class="desc">${e.desc}<span class="sub">${e.payer} pagou · ${e.date}</span></div>
+      <div class="amt">${e.currency === "BRL" ? "R$" : e.currency === "USD" ? "US$" : "S/"} ${e.amount.toFixed(2)}</div>
+      <button class="del" data-del="${e.id}">✕</button>
+    </div>
+  `).join("");
+
+  const totalBRL = totalExpensesBRL();
+  const pedroPaid = state.expenses.filter(e => e.payer === "Pedro").reduce((s,e) => s + toBRL(e.amount, e.currency), 0);
+  const marinaPaid = state.expenses.filter(e => e.payer === "Marina").reduce((s,e) => s + toBRL(e.amount, e.currency), 0);
+  const per = totalBRL / 2;
+  let settlement = "";
+  if (Math.abs(pedroPaid - marinaPaid) < 0.5) {
+    settlement = "Contas empatadas.";
+  } else if (pedroPaid > marinaPaid) {
+    settlement = `Marina deve R$ ${(pedroPaid - per).toFixed(2)} para Pedro`;
+  } else {
+    settlement = `Pedro deve R$ ${(marinaPaid - per).toFixed(2)} para Marina`;
+  }
+
+  total.innerHTML = `
+    <div><span>Total</span><span>R$ ${totalBRL.toFixed(2)}</span></div>
+    <div><span>Pedro pagou</span><span>R$ ${pedroPaid.toFixed(2)}</span></div>
+    <div><span>Marina pagou</span><span>R$ ${marinaPaid.toFixed(2)}</span></div>
+    <div class="split"><span>Acerto</span><span>${settlement}</span></div>
+  `;
+
+  list.querySelectorAll("[data-del]").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      state.expenses = state.expenses.filter(e => e.id !== btn.dataset.del);
+      await storageSet("expenses", state.expenses);
+      renderExpenses();
+      renderCountdown();
+    });
+  });
+}
+
+document.getElementById("add-expense").addEventListener("click", async () => {
+  const form = document.querySelector(".money-form");
+  const desc = form.querySelector("[name=desc]").value.trim();
+  const amount = parseFloat(form.querySelector("[name=amount]").value);
+  const currency = form.querySelector("[name=currency]").value;
+  const payer = form.querySelector("[name=payer]").value;
+  if (!desc || !amount || amount <= 0) return;
+  state.expenses.push({
+    id: Math.random().toString(36).slice(2,10),
+    desc, amount, currency, payer,
+    date: new Date().toLocaleDateString("pt-BR", { day: "2-digit", month: "short" })
+  });
+  await storageSet("expenses", state.expenses);
+  form.querySelector("[name=desc]").value = "";
+  form.querySelector("[name=amount]").value = "";
+  renderExpenses();
+  renderCountdown();
+});
+
+/* ------------------------------------------------------------------
+   INFO — rates
+------------------------------------------------------------------ */
+
+function bindRates() {
+  const inputs = {
+    usd_brl: document.getElementById("rate-usd-brl"),
+    pen_brl: document.getElementById("rate-pen-brl"),
+    usd_pen: document.getElementById("rate-usd-pen"),
+  };
+  Object.entries(inputs).forEach(([k, el]) => {
+    el.value = state.rates[k];
+    el.addEventListener("change", async () => {
+      state.rates[k] = parseFloat(el.value) || 0;
+      await storageSet("rates", state.rates);
+      renderExpenses();
+      renderCountdown();
+    });
+  });
+}
+
+/* ------------------------------------------------------------------
+   TABS
+------------------------------------------------------------------ */
+
+document.getElementById("tabs").addEventListener("click", (e) => {
+  const btn = e.target.closest(".tab-btn");
+  if (!btn) return;
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+  document.querySelectorAll("section.panel").forEach(p => p.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById(btn.dataset.panel).classList.add("active");
+});
+
+// Info panel also has checkboxes
+document.querySelectorAll("#info [data-id]").forEach(el => {
+  el.parentElement.addEventListener("click", async () => {
+    const id = el.dataset.id;
+    state.checks[id] = !state.checks[id];
+    if (state.checks[id]) el.classList.add("done");
+    else el.classList.remove("done");
+    await storageSet("checks", state.checks);
+  });
+});
+
+/* ------------------------------------------------------------------
+   BOOT
+------------------------------------------------------------------ */
+
+(async function boot() {
+  await load();
+  renderCountdown();
+  renderChecklist();
+  renderAgenda();
+  renderReservas();
+  renderExpenses();
+  bindRates();
+  // Restore info checkboxes
+  document.querySelectorAll("#info [data-id]").forEach(el => {
+    if (state.checks[el.dataset.id]) el.classList.add("done");
+  });
+  setInterval(renderCountdown, 60000);
+})();
+</script>
+
+</body>
+</html>
