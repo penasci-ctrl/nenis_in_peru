@@ -1,208 +1,393 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#f7f7f5" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<meta name="apple-mobile-web-app-title" content="Peru" />
-<link rel="apple-touch-icon" sizes="180x180" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Peru.svg/180px-Flag_of_Peru.svg.png" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#f7f7f5"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="Peru"/>
+<link rel="apple-touch-icon" sizes="180x180" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Peru.svg/180px-Flag_of_Peru.svg.png"/>
 <title>Peru · Pedro & Marina</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --bg: #f7f7f5; --bg-card: #ffffff; --bg-sunken: #f0efed;
-  --ink: #1a1a1a; --ink-2: #3d3d3d; --ink-3: #6b6b6b; --ink-4: #9b9b9b;
-  --line: #e0dfdd; --line-soft: #ebeae8;
-  --transport: #2563eb; --transport-bg: #eff6ff; --transport-border: #bfdbfe;
-  --activity: #059669; --activity-bg: #ecfdf5; --activity-border: #a7f3d0;
-  --food: #d97706; --food-bg: #fffbeb; --food-border: #fde68a;
-  --lodge: #7c3aed; --lodge-bg: #f5f3ff; --lodge-border: #c4b5fd;
-  --alert: #dc2626; --alert-bg: #fef2f2; --alert-border: #fecaca;
-  --info: #6b7280; --info-bg: #f3f4f6; --info-border: #d1d5db;
-  --green: #16a34a; --orange: #ea580c; --red: #dc2626;
-  --radius: 14px; --radius-sm: 8px;
-  --shadow: 0 1px 3px rgba(0,0,0,.04), 0 0 0 0.5px rgba(0,0,0,.05);
-  --font: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  --mono: "DM Mono", ui-monospace, monospace;
+/* ── TOKENS ── */
+:root{
+  --bg:#f7f7f5;--bg-card:#fff;--bg-sunken:#f0efed;--bg-input:#f5f5f3;
+  --ink:#1a1a1a;--ink-2:#3d3d3d;--ink-3:#6b6b6b;--ink-4:#9b9b9b;
+  --line:#e0dfdd;--line-soft:#ebeae8;
+  --c-tr:#2563eb;--c-tr-bg:#eff6ff;--c-tr-bd:#bfdbfe;
+  --c-ac:#059669;--c-ac-bg:#ecfdf5;--c-ac-bd:#a7f3d0;
+  --c-fd:#d97706;--c-fd-bg:#fffbeb;--c-fd-bd:#fde68a;
+  --c-lo:#7c3aed;--c-lo-bg:#f5f3ff;--c-lo-bd:#c4b5fd;
+  --c-al:#dc2626;--c-al-bg:#fef2f2;--c-al-bd:#fecaca;
+  --c-in:#6b7280;--c-in-bg:#f3f4f6;--c-in-bd:#d1d5db;
+  --green:#16a34a;--orange:#ea580c;--red:#dc2626;--blue:#2563eb;
+  --r:14px;--r-sm:8px;--r-xs:5px;
+  --sh:0 1px 3px rgba(0,0,0,.04),0 0 0 .5px rgba(0,0,0,.05);
+  --sh-md:0 4px 20px rgba(0,0,0,.07),0 0 0 .5px rgba(0,0,0,.05);
+  --font:"DM Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:"DM Mono",ui-monospace,monospace;
 }
 @media(prefers-color-scheme:dark){:root{
   --bg:#111110;--bg-card:#1c1c1a;--bg-sunken:#151514;
   --ink:#ededeb;--ink-2:#c5c5c3;--ink-3:#8a8a88;--ink-4:#5a5a58;
   --line:#2a2a28;--line-soft:#222220;
-  --transport-bg:#1e293b;--transport-border:#1e40af;--transport:#60a5fa;
-  --activity-bg:#052e16;--activity-border:#065f46;--activity:#34d399;
-  --food-bg:#451a03;--food-border:#92400e;--food:#fbbf24;
-  --lodge-bg:#1e1035;--lodge-border:#4c1d95;--lodge:#a78bfa;
-  --alert-bg:#2d0a0a;--alert-border:#991b1b;--alert:#f87171;
-  --info-bg:#1f2023;--info-border:#374151;--info:#9ca3af;
-  --shadow:0 1px 3px rgba(0,0,0,.5),0 0 0 .5px rgba(255,255,255,.04);
+  --c-tr:#60a5fa;--c-tr-bg:#1e293b;--c-tr-bd:#1e40af;
+  --c-ac:#34d399;--c-ac-bg:#052e16;--c-ac-bd:#065f46;
+  --c-fd:#fbbf24;--c-fd-bg:#451a03;--c-fd-bd:#92400e;
+  --c-lo:#a78bfa;--c-lo-bg:#1e1035;--c-lo-bd:#4c1d95;
+  --c-al:#f87171;--c-al-bg:#2d0a0a;--c-al-bd:#991b1b;
+  --c-in:#9ca3af;--c-in-bg:#1f2023;--c-in-bd:#374151;
+  --sh:0 1px 3px rgba(0,0,0,.5),0 0 0 .5px rgba(255,255,255,.04);
+  --sh-md:0 4px 20px rgba(0,0,0,.5),0 0 0 .5px rgba(255,255,255,.04);
 }}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0}
-html,body{background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
-input,textarea,select{font:inherit;color:inherit}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;min-height:100vh}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,textarea,select{font:inherit;color:inherit;background:none;border:0;outline:none}
+a{color:var(--c-tr);text-decoration:none}
+a:hover{text-decoration:underline}
 
-/* Header */
-.hdr{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--bg) 85%,transparent);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--line-soft)}
-.hdr-in{max-width:760px;margin:0 auto;padding:16px 20px 12px;display:flex;align-items:baseline;gap:12px}
-.hdr h1{font-size:15px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
-.hdr .flag{font-size:18px;margin-right:2px}
-.hdr .sub{color:var(--ink-3);font-size:12px;margin-left:auto;font-variant-numeric:tabular-nums}
+/* ── HEADER ── */
+.hdr{position:sticky;top:0;z-index:100;
+  background:color-mix(in oklab,var(--bg) 82%,transparent);
+  backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:.5px solid var(--line-soft)}
+.hdr-in{max-width:760px;margin:0 auto;padding:14px 20px 10px;
+  display:flex;align-items:center;gap:10px}
+.hdr-flag{font-size:20px;line-height:1}
+.hdr-title{font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.hdr-weather{margin-left:auto;display:flex;align-items:center;gap:5px;
+  font-size:12px;color:var(--ink-3);cursor:pointer;padding:4px 8px;
+  border-radius:999px;transition:background .12s}
+.hdr-weather:hover{background:var(--line-soft)}
+.hdr-temp{font-weight:600;color:var(--ink-2);font-family:var(--mono);font-size:13px}
+.hdr-loc{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-4)}
+.hdr-skeleton{width:60px;height:14px;background:var(--line);border-radius:4px;
+  animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
-/* Countdown */
-.kpi{max-width:760px;margin:12px auto 0;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.kpi-card{background:var(--bg-card);border-radius:var(--radius-sm);padding:12px 14px;box-shadow:var(--shadow)}
-.kpi-card .l{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3)}
-.kpi-card .v{font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:2px}
-.kpi-card .v small{font-size:12px;font-weight:400;color:var(--ink-3);margin-left:3px}
+/* ── KPI ── */
+.kpi{max-width:760px;margin:10px auto 0;padding:0 20px;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.kc{background:var(--bg-card);border-radius:var(--r-sm);padding:10px 12px;box-shadow:var(--sh)}
+.kc-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-4)}
+.kc-v{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-top:2px;font-family:var(--mono)}
+.kc-v small{font-size:11px;font-weight:400;color:var(--ink-3);margin-left:2px;font-family:var(--font)}
+.kc-u{background:var(--c-al-bg);border:.5px solid var(--c-al-bd)}
+.kc-u .kc-l,.kc-u .kc-v{color:var(--c-al)}
 
-/* Tabs */
-nav.tabs{max-width:760px;margin:16px auto 0;padding:0 20px;display:flex;gap:3px;overflow-x:auto;scrollbar-width:none}
+/* ── TABS ── */
+nav.tabs{max-width:760px;margin:14px auto 0;padding:0 20px;
+  display:flex;gap:3px;overflow-x:auto;scrollbar-width:none}
 nav.tabs::-webkit-scrollbar{display:none}
-.tab{padding:7px 13px;border-radius:999px;font-size:12px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;transition:all .12s ease}
+.tab{padding:7px 12px;border-radius:999px;font-size:11px;font-weight:700;
+  color:var(--ink-4);text-transform:uppercase;letter-spacing:.07em;
+  white-space:nowrap;transition:all .12s;flex-shrink:0}
 .tab:hover{background:var(--line-soft)}
 .tab.on{background:var(--ink);color:var(--bg)}
 
-/* Main */
-main{max-width:760px;margin:0 auto;padding:16px 20px 100px}
-.p{display:none}.p.on{display:block;animation:fadeIn .2s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
-
-/* Section heading */
-.sh{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-4);margin:24px 0 8px;padding:0 2px}
+/* ── MAIN ── */
+main{max-width:760px;margin:0 auto;padding:14px 20px 100px}
+.p{display:none}.p.on{display:block;animation:fi .2s ease}
+@keyframes fi{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+.sh{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--ink-4);margin:22px 0 7px;padding:0 2px}
 .sh:first-child{margin-top:4px}
-
-/* Card */
-.card{background:var(--bg-card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.card{background:var(--bg-card);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden}
 .card+.card{margin-top:8px}
 
-/* ─── CHECKLIST ─── */
-.ck-row{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:.5px solid var(--line-soft);cursor:pointer;transition:background .1s}
+/* ── CHECKLIST ── */
+.ck-row{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;
+  border-bottom:.5px solid var(--line-soft);cursor:pointer;transition:background .1s}
 .ck-row:last-child{border-bottom:0}
 .ck-row:active{background:var(--bg-sunken)}
-.ck-dot{flex:0 0 20px;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:all .15s;margin-top:1px}
+.ck-dot{flex:0 0 20px;width:20px;height:20px;border-radius:50%;
+  border:1.5px solid var(--line);display:grid;place-items:center;
+  transition:all .15s;margin-top:1px;flex-shrink:0}
 .ck-dot.on{background:var(--green);border-color:var(--green)}
-.ck-dot.on::after{content:"";width:9px;height:5px;border:2px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+.ck-dot.on::after{content:"";width:9px;height:5px;border:2px solid #fff;
+  border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
 .ck-body{flex:1;min-width:0}
-.ck-t{font-size:14px;font-weight:500;letter-spacing:-.008em}.ck-t.on{color:var(--ink-4);text-decoration:line-through}
-.ck-m{font-size:12px;color:var(--ink-3);margin-top:2px}
-.ck-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px}
-.pill{font-size:10px;font-weight:600;padding:2px 7px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
-.pill-urgent{background:var(--alert-bg);color:var(--alert);border:.5px solid var(--alert-border)}
-.pill-warn{background:var(--food-bg);color:var(--food);border:.5px solid var(--food-border)}
-.pill-ok{background:var(--activity-bg);color:var(--activity);border:.5px solid var(--activity-border)}
-.pill-neutral{background:var(--info-bg);color:var(--info);border:.5px solid var(--info-border)}
+.ck-t{font-size:14px;font-weight:500;letter-spacing:-.008em}
+.ck-t.on{color:var(--ink-4);text-decoration:line-through}
+.ck-m{font-size:12px;color:var(--ink-3);margin-top:2px;line-height:1.4}
+.ck-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.ck-dead{font-size:10px;font-weight:700;color:var(--c-al);margin-top:4px;
+  text-transform:uppercase;letter-spacing:.04em}
+.pill{font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;
+  text-transform:uppercase;letter-spacing:.04em}
+.pu{background:var(--c-al-bg);color:var(--c-al);border:.5px solid var(--c-al-bd)}
+.pw{background:var(--c-fd-bg);color:var(--c-fd);border:.5px solid var(--c-fd-bd)}
+.pn{background:var(--c-in-bg);color:var(--c-in);border:.5px solid var(--c-in-bd)}
 
-/* ─── AGENDA ─── */
-.day{background:var(--bg-card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:10px}
-.day-top{padding:14px 16px 12px;display:flex;align-items:baseline;gap:8px;border-bottom:.5px solid var(--line-soft)}
-.day-num{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-4)}
-.day-date{font-size:16px;font-weight:600;letter-spacing:-.01em}
-.day-city{font-size:12px;color:var(--ink-3);margin-left:auto;text-transform:uppercase;letter-spacing:.04em;font-weight:500}
-.day-title{font-size:13px;color:var(--ink-2);padding:0 16px;margin:8px 0 4px;letter-spacing:-.005em}
-.day-bday{display:inline-block;background:var(--food-bg);border:.5px solid var(--food-border);border-radius:999px;padding:1px 8px;font-size:11px;color:var(--food);font-weight:600;margin-left:4px}
+/* ── AGENDA ── */
+.day{background:var(--bg-card);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:10px}
+.day-top{padding:13px 16px 11px;display:flex;align-items:baseline;gap:8px;border-bottom:.5px solid var(--line-soft)}
+.d-num{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-4)}
+.d-date{font-size:16px;font-weight:600;letter-spacing:-.01em;font-family:var(--mono)}
+.d-city{font-size:11px;color:var(--ink-3);margin-left:auto;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.d-bday{display:inline-block;background:var(--c-fd-bg);border:.5px solid var(--c-fd-bd);
+  border-radius:999px;padding:1px 8px;font-size:10px;color:var(--c-fd);
+  font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-left:6px}
+.d-title{font-size:13px;color:var(--ink-2);padding:8px 16px 4px;letter-spacing:-.005em;line-height:1.4;outline:none}
+.d-title:focus{background:color-mix(in oklab,var(--c-tr) 5%,transparent)}
 
-/* Period blocks */
-.period{border-top:.5px solid var(--line-soft)}
-.period:first-of-type{border-top:0}
-.period-head{padding:10px 16px 6px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-4)}
+/* Period */
+.period{border-top:1.5px solid var(--line)}
+.period-h{padding:10px 16px 5px;font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.12em;color:var(--ink-3);outline:none}
+.period-h:focus{background:color-mix(in oklab,var(--c-tr) 5%,transparent)}
 
-/* Event item */
-.ev{display:flex;gap:10px;padding:8px 16px;cursor:pointer;transition:background .1s ease;align-items:flex-start}
+/* Event row — larger tap area */
+.ev{display:flex;gap:10px;padding:11px 14px 11px 16px;
+  align-items:flex-start;position:relative;cursor:pointer;
+  transition:background .1s;border-bottom:.5px solid var(--line-soft)}
+.ev:last-of-type{border-bottom:0}
 .ev:active{background:var(--bg-sunken)}
-.ev-stripe{width:3px;border-radius:2px;min-height:32px;flex-shrink:0;margin-top:2px}
-.ev-stripe.transport{background:var(--transport)}
-.ev-stripe.activity{background:var(--activity)}
-.ev-stripe.food{background:var(--food)}
-.ev-stripe.lodge{background:var(--lodge)}
-.ev-stripe.alert{background:var(--alert)}
-.ev-stripe.info{background:var(--info)}
+.ev.dragging{opacity:.4;background:var(--bg-sunken)}
+.ev.drag-over{border-top:2px solid var(--c-tr)}
+.ev-handle{color:var(--ink-4);font-size:14px;cursor:grab;padding:2px 4px 2px 0;
+  opacity:0;transition:opacity .12s;align-self:center;flex-shrink:0;touch-action:none}
+.ev:hover .ev-handle{opacity:1}
+.ev-stripe{width:3px;border-radius:2px;min-height:36px;flex-shrink:0;margin-top:2px}
+.s-tr{background:var(--c-tr)}.s-ac{background:var(--c-ac)}
+.s-fd{background:var(--c-fd)}.s-lo{background:var(--c-lo)}
+.s-al{background:var(--c-al)}.s-in{background:var(--c-in)}
 .ev-body{flex:1;min-width:0}
-.ev-head{display:flex;align-items:baseline;gap:8px}
-.ev-time{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:0 0 auto;min-width:44px}
-.ev-name{font-size:13px;font-weight:500;letter-spacing:-.005em}
-.ev-cat-icon{font-size:12px;flex-shrink:0}
-.ev-desc{font-size:12px;color:var(--ink-3);line-height:1.5;padding:4px 0 6px 0;display:none;letter-spacing:-.005em}
-.ev-desc.open{display:block;animation:fadeIn .15s ease}
-.ev-chevron{color:var(--ink-4);font-size:14px;transition:transform .15s ease;margin-top:2px;flex-shrink:0}
-.ev-chevron.open{transform:rotate(90deg)}
-
-/* Day notes */
-.day-notes{width:calc(100% - 32px);margin:8px 16px 14px;padding:8px 10px;min-height:36px;resize:vertical;border-radius:var(--radius-sm);background:var(--bg-sunken);border:.5px solid var(--line-soft);font-size:12px;color:var(--ink-2);outline:none;transition:border-color .15s}
-.day-notes:focus{border-color:var(--ink-3)}
-.day-notes::placeholder{color:var(--ink-4)}
-
-/* Edit controls */
-.ev-edit{display:flex;gap:4px;margin-left:auto}
-.ev-del{width:20px;height:20px;border-radius:50%;font-size:10px;color:var(--ink-4);opacity:0;transition:all .12s}
+.ev-top{display:flex;align-items:baseline;gap:6px}
+.ev-time{font-family:var(--mono);font-size:11px;color:var(--ink-3);
+  flex-shrink:0;min-width:44px;outline:none;border-radius:3px}
+.ev-time:focus{background:color-mix(in oklab,var(--c-tr) 6%,transparent);padding:0 2px}
+.ev-icon{font-size:13px;flex-shrink:0}
+.ev-name{font-size:14px;font-weight:500;letter-spacing:-.01em;flex:1;outline:none;border-radius:3px}
+.ev-name:focus{background:color-mix(in oklab,var(--c-tr) 6%,transparent);padding:0 2px}
+.ev-desc{font-size:12px;color:var(--ink-3);line-height:1.6;
+  padding:5px 0 2px;display:none;outline:none;border-radius:3px}
+.ev-desc.open{display:block}
+.ev-desc:focus{background:color-mix(in oklab,var(--c-tr) 6%,transparent);padding:4px;display:block}
+.ev-chev{color:var(--ink-4);font-size:16px;transition:transform .15s;
+  flex-shrink:0;padding:4px;margin:-4px;border-radius:50%;align-self:flex-start;margin-top:-2px}
+.ev-chev.open{transform:rotate(90deg)}
+.ev-actions{display:flex;gap:3px;margin-left:4px;align-items:flex-start}
+.ev-del{width:24px;height:24px;border-radius:50%;font-size:11px;
+  color:var(--ink-4);opacity:0;transition:all .12s;display:grid;place-items:center;flex-shrink:0}
 .ev:hover .ev-del{opacity:1}
-.ev-del:hover{color:var(--red);background:var(--alert-bg)}
-.ev-add{display:block;width:calc(100% - 32px);margin:4px 16px 12px;padding:6px;font-size:11px;color:var(--ink-4);border-radius:var(--radius-sm);border:.5px dashed var(--line);background:transparent;text-transform:uppercase;letter-spacing:.06em;font-weight:600;transition:all .12s}
+.ev-del:hover{color:var(--red);background:var(--c-al-bg)}
+.ev-cat-sel{font-size:11px;padding:2px 4px;border-radius:4px;
+  background:var(--bg-sunken);border:.5px solid var(--line);color:var(--ink-3);
+  opacity:0;transition:opacity .12s;cursor:pointer}
+.ev:hover .ev-cat-sel{opacity:1}
+.sort-btn{display:flex;align-items:center;gap:5px;padding:5px 10px;
+  margin:4px 16px 0;font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--ink-4);border-radius:999px;
+  background:var(--bg-sunken);transition:all .12s;width:fit-content}
+.sort-btn:hover{color:var(--c-tr);background:var(--c-tr-bg)}
+.ev-add{display:block;width:calc(100% - 32px);margin:8px 16px 12px;
+  padding:8px;font-size:10px;font-weight:700;color:var(--ink-4);
+  border-radius:var(--r-sm);border:.5px dashed var(--line);background:transparent;
+  text-transform:uppercase;letter-spacing:.08em;transition:all .12s;text-align:center}
 .ev-add:hover{background:var(--bg-sunken);color:var(--ink-2);border-color:var(--ink-4)}
+.d-notes-lbl{font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--ink-4);padding:0 16px;margin-top:6px;display:block}
+.d-notes{display:block;width:calc(100% - 32px);margin:4px 16px 14px;
+  padding:8px 10px;min-height:36px;resize:vertical;border-radius:var(--r-sm);
+  background:var(--bg-sunken);border:.5px solid var(--line-soft);
+  font-size:12px;color:var(--ink-2);transition:border-color .15s}
+.d-notes:focus{border-color:var(--c-tr)}
+.d-notes::placeholder{color:var(--ink-4)}
 
-/* Editable inline */
-[contenteditable="plaintext-only"]{outline:none;border-radius:3px;transition:background .12s,box-shadow .12s}
-[contenteditable="plaintext-only"]:focus{background:color-mix(in oklab,var(--transport) 8%,transparent);box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--transport) 25%,transparent)}
+/* ── BAGAGEM ── */
+.bag-progress{height:4px;background:var(--line-soft);border-radius:2px;
+  margin-bottom:14px;overflow:hidden}
+.bag-bar{height:100%;background:var(--green);border-radius:2px;transition:width .3s}
+.bag-group-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.bag-count{font-size:10px;color:var(--ink-4);margin-left:auto;font-family:var(--mono)}
+.bag-row{display:flex;align-items:center;gap:10px;padding:11px 14px 11px 16px;
+  border-bottom:.5px solid var(--line-soft)}
+.bag-row:last-child{border-bottom:0}
+.bag-checks{display:flex;gap:6px;flex-shrink:0}
+.bag-check{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer}
+.bag-dot{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--line);
+  display:grid;place-items:center;transition:all .15s}
+.bag-dot.tenho{background:var(--c-tr);border-color:var(--c-tr)}
+.bag-dot.mala{background:var(--green);border-color:var(--green)}
+.bag-dot.tenho::after,.bag-dot.mala::after{content:"";width:9px;height:5px;
+  border:2px solid #fff;border-top:0;border-right:0;
+  transform:rotate(-45deg) translate(1px,-1px)}
+.bag-dot-lbl{font-size:8px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.04em;color:var(--ink-4)}
+.bag-text{flex:1;font-size:13px;font-weight:500;letter-spacing:-.008em;
+  outline:none;border-radius:3px}
+.bag-text:focus{background:color-mix(in oklab,var(--c-tr) 6%,transparent);padding:0 3px}
+.bag-text.packed{color:var(--ink-4);text-decoration:line-through}
+.bag-del{width:24px;height:24px;border-radius:50%;font-size:10px;
+  color:var(--ink-4);opacity:0;transition:all .12s;display:grid;place-items:center}
+.bag-row:hover .bag-del{opacity:1}
+.bag-del:hover{color:var(--red);background:var(--c-al-bg)}
+.bag-add{display:block;width:calc(100% - 32px);margin:6px 16px 12px;
+  padding:8px;font-size:10px;font-weight:700;color:var(--ink-4);
+  border-radius:var(--r-sm);border:.5px dashed var(--line);background:transparent;
+  text-transform:uppercase;letter-spacing:.08em;transition:all .12s;text-align:center}
+.bag-add:hover{background:var(--bg-sunken);color:var(--ink-2);border-color:var(--ink-4)}
+.bag-legend{display:flex;gap:12px;margin-bottom:10px;padding:0 2px}
+.bag-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-3)}
+.bag-legend-dot{width:12px;height:12px;border-radius:50%}
 
-/* ─── RESERVAS ─── */
-.res-group{padding:14px 16px}
+/* ── MAPA ── */
+.map-wrap{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-md)}
+.map-frame{width:100%;height:420px;border:0;display:block}
+.weather-strip{background:var(--bg-card);border-radius:var(--r);box-shadow:var(--sh);margin-top:10px}
+.city-weather{display:flex;align-items:center;gap:10px;padding:11px 16px;
+  border-bottom:.5px solid var(--line-soft)}
+.city-weather:last-child{border-bottom:0}
+.cw-city{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;flex:0 0 120px}
+.cw-days{font-size:11px;color:var(--ink-4);flex:1}
+.cw-data{display:flex;align-items:center;gap:6px}
+.cw-icon{font-size:18px}
+.cw-temp{font-size:14px;font-weight:600;font-family:var(--mono)}
+.cw-skel{width:50px;height:14px;background:var(--line);border-radius:4px;animation:pulse 1.5s ease-in-out infinite}
+.nav-btn{display:flex;align-items:center;gap:8px;padding:11px 14px;
+  border-top:.5px solid var(--line-soft);cursor:pointer;transition:background .12s;
+  text-decoration:none;color:var(--ink)}
+.nav-btn:hover{background:var(--bg-sunken);text-decoration:none}
+.nav-btn-icon{font-size:18px}
+.nav-btn-text{font-size:13px;font-weight:500;flex:1}
+.nav-btn-arr{color:var(--ink-4);font-size:16px}
+
+/* ── RESERVAS ── */
+.res-group{padding:12px 16px}
 .res-group+.res-group{border-top:.5px solid var(--line-soft)}
-.res-city{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-4);margin-bottom:8px}
-.res-row{display:grid;grid-template-columns:88px 1fr auto;gap:10px;padding:8px 0;align-items:baseline}
+.res-city{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-4);margin-bottom:8px}
+.res-row{display:grid;grid-template-columns:90px 1fr auto;gap:10px;padding:7px 0;align-items:start}
 .res-row+.res-row{border-top:.5px solid var(--line-soft)}
-.res-k{font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em;font-weight:500}
-.res-v{font-size:13px}.res-v .sub{display:block;color:var(--ink-3);font-size:11px;margin-top:2px}
-.res-s{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.res-k{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3);padding-top:2px}
+.res-v{font-size:13px;line-height:1.3}
+.res-v .sub{display:block;color:var(--ink-3);font-size:11px;margin-top:2px}
+.res-s{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding-top:2px}
 .s-ok{color:var(--green)}.s-pen{color:var(--orange)}.s-no{color:var(--red)}
-@media(prefers-color-scheme:dark){.s-ok{color:#4ade80}.s-pen{color:#fb923c}.s-no{color:#f87171}}
-.res-link{display:inline-flex;align-items:center;gap:4px;margin-top:4px;font-size:11px;color:var(--transport);text-decoration:none;font-weight:500}
-.res-link:hover{text-decoration:underline}
 
-/* ─── MAP ─── */
-.map-wrap{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--bg-card)}
-.map-frame{width:100%;height:420px;border:0}
-.map-legend{padding:12px 16px;display:flex;flex-wrap:wrap;gap:10px}
-.map-leg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-2);font-weight:500}
-.map-leg-dot{width:8px;height:8px;border-radius:50%}
+/* ── HABLANDO ── */
+.hab-section{margin-bottom:6px}
+.hab-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.07em;padding:3px 9px;border-radius:999px;margin-bottom:8px}
+.htag-tr{background:var(--c-tr-bg);color:var(--c-tr)}
+.htag-fd{background:var(--c-fd-bg);color:var(--c-fd)}
+.htag-ac{background:var(--c-ac-bg);color:var(--c-ac)}
+.htag-lo{background:var(--c-lo-bg);color:var(--c-lo)}
+.htag-al{background:var(--c-al-bg);color:var(--c-al)}
+.htag-in{background:var(--c-in-bg);color:var(--c-in)}
+.ph-row{display:flex;gap:10px;padding:12px 14px;border-bottom:.5px solid var(--line-soft);align-items:flex-start}
+.ph-row:last-child{border-bottom:0}
+.ph-row:active{background:var(--bg-sunken)}
+.ph-body{flex:1}
+.ph-es{font-size:15px;font-weight:500;letter-spacing:-.01em;color:var(--ink)}
+.ph-pt{font-size:12px;color:var(--ink-3);margin-top:3px}
+.ph-pron{font-size:11px;color:var(--ink-4);margin-top:2px;font-style:italic}
+.ph-hear{font-size:11px;color:var(--c-ac);margin-top:3px;font-style:italic}
+.ph-copy{font-size:11px;color:var(--ink-4);padding:5px 8px;border-radius:var(--r-xs);
+  flex-shrink:0;transition:all .12s;font-weight:600;background:var(--bg-sunken)}
+.ph-copy:hover{background:var(--c-tr-bg);color:var(--c-tr)}
+.ph-copy.copied{color:var(--green);background:var(--c-ac-bg)}
+.pegadinha{background:var(--c-fd-bg);border:.5px solid var(--c-fd-bd);
+  border-radius:var(--r-sm);padding:11px 14px;margin-bottom:8px;line-height:1.5}
+.pegadinha strong{font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.05em;color:var(--c-fd);display:block;margin-bottom:3px}
+.pegadinha p{font-size:12px;color:var(--ink-2)}
 
-/* ─── INFO ─── */
-.info-row{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:.5px solid var(--line-soft)}
-.info-row:last-child{border-bottom:0}
+/* ── GUIA ── */
+.guia-city{background:var(--bg-card);border-radius:var(--r);box-shadow:var(--sh);
+  overflow:hidden;margin-bottom:10px}
+.guia-header{padding:16px;background:var(--ink);color:var(--bg)}
+.guia-city-name{font-size:20px;font-weight:700;letter-spacing:-.015em}
+.guia-tagline{font-size:12px;opacity:.65;margin-top:3px;font-style:italic}
+.guia-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;
+  background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);
+  text-transform:uppercase;letter-spacing:.05em;font-family:var(--mono)}
+.guia-body{padding:0}
+.guia-section{padding:13px 16px;border-bottom:.5px solid var(--line-soft)}
+.guia-section:last-child{border-bottom:0}
+.guia-section-title{font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--ink-4);margin-bottom:7px}
+.guia-text{font-size:13px;color:var(--ink-2);line-height:1.65;letter-spacing:-.005em}
+.guia-text strong{color:var(--ink);font-weight:600}
+.guia-tips{display:flex;flex-direction:column;gap:6px}
+.guia-tip{display:flex;gap:8px;align-items:flex-start;font-size:12px;
+  color:var(--ink-2);line-height:1.5}
+.guia-tip-icon{font-size:14px;flex-shrink:0;margin-top:1px}
 
-/* Mobile */
+/* ── HOJE ── */
+.hoje-hero{background:var(--bg-card);border-radius:var(--r);box-shadow:var(--sh-md);overflow:hidden;margin-bottom:12px}
+.hoje-top{padding:20px;background:var(--ink);color:var(--bg)}
+.hoje-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;opacity:.6;margin-bottom:6px}
+.hoje-date{font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1.1;font-family:var(--mono)}
+.hoje-city{font-size:12px;opacity:.6;margin-top:5px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.hoje-ev{display:flex;gap:10px;padding:10px 0;border-bottom:.5px solid var(--line-soft)}
+.hoje-ev:last-child{border-bottom:0}
+.hoje-ev-time{font-family:var(--mono);font-size:12px;color:var(--ink-3);min-width:44px;flex-shrink:0}
+.hoje-ev-stripe{width:3px;border-radius:2px;flex-shrink:0;align-self:stretch}
+.hoje-ev-name{font-size:14px;font-weight:500;letter-spacing:-.008em}
+.hoje-ev-desc{font-size:12px;color:var(--ink-3);margin-top:2px;line-height:1.4}
+.pre-trip{text-align:center;padding:40px 20px}
+.pre-trip .big{font-size:64px;font-weight:700;color:var(--ink);
+  letter-spacing:-.04em;line-height:1;font-family:var(--mono)}
+.pre-trip .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;
+  font-weight:700;margin-top:4px;color:var(--ink-3)}
+.pre-trip .sub{font-size:13px;margin-top:12px;line-height:1.6;color:var(--ink-3)}
+
+/* ── INFO ── */
+.info-note{font-size:12px;color:var(--ink-2);line-height:1.7;padding:12px 16px}
+.info-note code{background:var(--bg-sunken);padding:1px 5px;border-radius:4px;font-family:var(--mono);font-size:11px}
+
+/* mobile */
 @media(max-width:600px){
   .hdr-in,.kpi,nav.tabs,main{padding-left:14px;padding-right:14px}
-  .res-row{grid-template-columns:72px 1fr;}.res-s{grid-column:2}
-  .map-frame{height:320px}
+  .kpi{grid-template-columns:1fr 1fr}
+  .res-row{grid-template-columns:76px 1fr}.res-s{grid-column:2}
+  .map-frame{height:300px}
+  .cw-city{flex:0 0 90px}
 }
 </style>
 </head>
 <body>
 
 <header class="hdr"><div class="hdr-in">
-  <h1><span class="flag">🇵🇪</span> PERU</h1>
-  <div class="sub" id="countdown-label"></div>
+  <span class="hdr-flag">🇵🇪</span>
+  <span class="hdr-title">Peru</span>
+  <div class="hdr-weather" id="hdr-weather" title="Toca pra atualizar">
+    <span id="hdr-icon"><span class="hdr-skeleton" style="width:20px;height:20px;border-radius:50%;display:inline-block"></span></span>
+    <span class="hdr-temp" id="hdr-temp"><span class="hdr-skeleton"></span></span>
+    <span class="hdr-loc" id="hdr-loc"></span>
+  </div>
 </div></header>
 
 <div class="kpi" id="kpi"></div>
 
 <nav class="tabs" id="tabs">
-  <button class="tab on" data-p="checklist">Checklist</button>
+  <button class="tab on" data-p="hoje">Hoje</button>
+  <button class="tab" data-p="checklist">Checklist</button>
   <button class="tab" data-p="agenda">Agenda</button>
   <button class="tab" data-p="reservas">Reservas</button>
   <button class="tab" data-p="mapa">Mapa</button>
+  <button class="tab" data-p="guia">Guia</button>
+  <button class="tab" data-p="hablando">Hablando</button>
+  <button class="tab" data-p="bagagem">Bagagem</button>
   <button class="tab" data-p="info">Info</button>
 </nav>
 
 <main>
-  <section id="checklist" class="p on"></section>
+  <section id="hoje" class="p on"></section>
+  <section id="checklist" class="p"></section>
   <section id="agenda" class="p"></section>
   <section id="reservas" class="p"></section>
   <section id="mapa" class="p"></section>
+  <section id="guia" class="p"></section>
+  <section id="hablando" class="p"></section>
+  <section id="bagagem" class="p"></section>
   <section id="info" class="p"></section>
 </main>
 
@@ -210,531 +395,1172 @@ main{max-width:760px;margin:0 auto;padding:16px 20px 100px}
 /* ================================================================
    CONFIG
 ================================================================ */
-const TRIP = new Date("2026-06-28T00:00:00-03:00");
-const DRIVE = ""; // paste your Google Drive folder link here
-
-/* CATEGORIES */
-const C = {
-  transport: { icon: "✈️", stripe: "transport" },
-  bus:       { icon: "🚌", stripe: "transport" },
-  train:     { icon: "🚂", stripe: "transport" },
-  walk:      { icon: "🚶", stripe: "transport" },
-  activity:  { icon: "🏛️", stripe: "activity" },
-  hike:      { icon: "🥾", stripe: "activity" },
-  nature:    { icon: "🌿", stripe: "activity" },
-  food:      { icon: "🍽️", stripe: "food" },
-  cafe:      { icon: "☕", stripe: "food" },
-  lodge:     { icon: "🏨", stripe: "lodge" },
-  alert:     { icon: "⚠️", stripe: "alert" },
-  bday:      { icon: "🎂", stripe: "food" },
-  boat:      { icon: "⛵", stripe: "activity" },
-  photo:     { icon: "📸", stripe: "activity" },
-  info:      { icon: "ℹ️", stripe: "info" },
-  free:      { icon: "✨", stripe: "info" },
+const CFG={
+  TRIP_START:new Date("2026-06-28T00:00:00-03:00"),
+  TRIP_END:  new Date("2026-07-12T23:59:00-03:00"),
+  DRIVE_LINK:"",
+  MY_MAP_SRC:"https://www.google.com/maps/d/u/1/embed?mid=1q69LOEQfzmLXkD_i4ZpzG8TJKMp3RQE&ehbc=2E312F&noprof=1",
 };
 
 /* ================================================================
-   CHECKLIST DATA
+   CATEGORIAS
 ================================================================ */
-const CHECKLIST = [
-  { group: "COMPRAR COM URGÊNCIA", items: [
-    { id:"c-t1", t:"Trem Ollantaytambo → Aguas Calientes", m:"The Voyager · 19:27→21:09 · 05/jul · Inca Rail · USD 66/pax", tags:[["URGENTE","urgent"],["incarail.com","neutral"]]},
-    { id:"c-t2", t:"Trem Machu Picchu → Cusco (volta)", m:"The Voyager · 14:30→18:20 · 06/jul · Inca Rail · USD 119/pax", tags:[["URGENTE","urgent"],["incarail.com","neutral"]]},
-    { id:"c-ie", t:"Inca Express Cusco → Puno", m:"07/jul · pickup 06:20 · USD 35–55/pax · esgota em alta temporada", tags:[["URGENTE","urgent"],["inkaexpress.com","neutral"]]},
-    { id:"c-ht", t:"Hampton by Hilton Arequipa", m:"09–12/jul · 3 noites · cancelamento flexível", tags:[["RESERVAR","warn"]]},
-    { id:"c-ob", t:"Ônibus Puno → Arequipa", m:"09/jul · Cruz del Sur ou Tepsa · ~5–6h", tags:[["PENDENTE","warn"]]},
+const CAT={
+  transport:{i:"✈️",s:"s-tr"},bus:{i:"🚌",s:"s-tr"},train:{i:"🚂",s:"s-tr"},
+  walk:{i:"🚶",s:"s-in"},activity:{i:"🏛️",s:"s-ac"},hike:{i:"🥾",s:"s-ac"},
+  nature:{i:"🌿",s:"s-ac"},boat:{i:"⛵",s:"s-ac"},photo:{i:"📸",s:"s-ac"},
+  food:{i:"🍽️",s:"s-fd"},cafe:{i:"☕",s:"s-fd"},bday:{i:"🎂",s:"s-fd"},
+  lodge:{i:"🏨",s:"s-lo"},alert:{i:"⚠️",s:"s-al"},info:{i:"ℹ️",s:"s-in"},
+  free:{i:"✨",s:"s-in"},
+};
+const CATS=Object.keys(CAT);
+
+/* ================================================================
+   CHECKLIST
+================================================================ */
+const CHECKLIST=[
+  {g:"COMPRAR COM URGÊNCIA",items:[
+    {id:"c-t1",t:"Trem Ollantaytambo → Aguas Calientes",m:"The Voyager · 19:27→21:09 · 05/jul · Inca Rail · USD 66/pax",tags:[["URGENTE","u"],["incarail.com","n"]],deadline:"2026-06-01"},
+    {id:"c-t2",t:"Trem Machu Picchu → Cusco (volta)",m:"The Voyager · 14:30→18:20 · 06/jul · Inca Rail · USD 119/pax",tags:[["URGENTE","u"],["incarail.com","n"]],deadline:"2026-06-01"},
+    {id:"c-ie",t:"Inca Express Cusco → Puno",m:"07/jul · pickup 06:20 · USD 35–55/pax · esgota em alta temporada",tags:[["URGENTE","u"],["inkaexpress.com","n"]],deadline:"2026-06-10"},
+    {id:"c-ht",t:"Hampton by Hilton Arequipa",m:"09–12/jul · 3 noites · cancelamento flexível",tags:[["RESERVAR","w"]],deadline:"2026-06-15"},
+    {id:"c-ob",t:"Ônibus Puno → Arequipa",m:"09/jul · Cruz del Sur ou Tepsa · ~5–6h",tags:[["PENDENTE","w"]]},
   ]},
-  { group: "COMPRAR NA CHEGADA", items: [
-    { id:"c-tf", t:"Transfer aeroporto Lima → Airbnb", m:"28/jun · Uber/InDriver ou táxi oficial Airport Express", tags:[["LIMA","neutral"]]},
-    { id:"c-co", t:"Colectivo Cusco → Ollantaytambo", m:"02/jul · Av. Grau/Pavitos · S/ 10–15/pax · sai quando enche", tags:[["NA RODOVIÁRIA","neutral"]]},
-    { id:"c-bt", t:"Boleto Turístico de Cusco (integral, 10 dias)", m:"S/ 130 · Sacsayhuamán, Qenko, Tambomachay, Pisac, Ollantaytambo, Chinchero, Moray e mais", tags:[["CUSCO","neutral"]]},
-    { id:"c-cb", t:"Ônibus Consettur AC ↔ Machu Picchu (opcional)", m:"USD 24 ida e volta · comprar na véspera em AC · ou subir a pé (1h30)", tags:[["AGUAS CALIENTES","neutral"]]},
-    { id:"c-ur", t:"Barco Uros + Taquile", m:"08/jul · no Porto de Puno sem agência · S/ 40–80/pax", tags:[["PUNO","neutral"]]},
-    { id:"c-sa", t:"Tour Salinas y Aguada Blanca", m:"11/jul madrugada · S/ 60–80 + S/ 6 entrada", tags:[["AREQUIPA","neutral"]]},
+  {g:"COMPRAR NA CHEGADA",items:[
+    {id:"c-tf",t:"Transfer aeroporto Lima → Airbnb",m:"28/jun · Uber/InDriver ou táxi Airport Express",tags:[["LIMA","n"]]},
+    {id:"c-co",t:"Colectivo Cusco → Ollantaytambo",m:"02/jul · Av. Grau/Pavitos · S/ 10–15/pax",tags:[["NA RODOVIÁRIA","n"]]},
+    {id:"c-bt",t:"Boleto Turístico de Cusco (10 dias)",m:"S/ 130 · Sacsayhuamán, Pisac, Ollantaytambo, Chinchero, Moray e mais",tags:[["CUSCO","n"]]},
+    {id:"c-cb",t:"Ônibus Consettur AC ↔ Machu Picchu",m:"USD 24 ida+volta · comprar na véspera · ou subir a pé (1h30)",tags:[["AC","n"]]},
+    {id:"c-ur",t:"Barco Uros + Taquile",m:"08/jul · Porto de Puno · S/ 40–80/pax",tags:[["PUNO","n"]]},
+    {id:"c-sa",t:"Tour Salinas y Aguada Blanca",m:"11/jul madrugada · S/ 60–80 + S/ 6 entrada",tags:[["AREQUIPA","n"]]},
   ]},
-  { group: "JÁ RESOLVIDO", done:true, items: [
-    { id:"d-v", t:"Voos comprados", m:"LA8202 · LA2238 · LA2394 · LA2110"},
-    { id:"d-mp", t:"Entrada Machu Picchu", m:"Circuito 3A · 07:00 · 06/jul · 2 pax"},
-    { id:"d-se", t:"Seguro viagem contratado"},
-    { id:"d-ch", t:"Chips internacionais Pedro + Marina"},
-    { id:"d-ab", t:"Airbnbs reservados", m:"Lima, Cusco, Ollantaytambo, AC, Cusco pós-MP"},
-    { id:"d-pu", t:"Puno no Booking (pagar no local)"},
+  {g:"JÁ RESOLVIDO",done:true,items:[
+    {id:"d-v",t:"Voos comprados",m:"LA8202 · LA2238 · LA2394 · LA2110"},
+    {id:"d-mp",t:"Entrada Machu Picchu",m:"Circuito 3A · 07:00 · 06/jul · 2 pax"},
+    {id:"d-se",t:"Seguro viagem contratado"},
+    {id:"d-ch",t:"Chips internacionais Pedro + Marina"},
+    {id:"d-ab",t:"Airbnbs reservados",m:"Lima, Cusco, Ollanta, AC, Cusco pós-MP"},
+    {id:"d-pu",t:"Puno no Booking (pagar no local)"},
+    {id:"d-mk",t:"Mauka Cusco",m:"01/jul · 20:00 · reserva confirmada"},
   ]},
 ];
 
 /* ================================================================
-   AGENDA DATA — com categorias + periods (manha/tarde/noite)
+   AGENDA
 ================================================================ */
-function ev(time, name, desc, cat) { return { t: time, n: name, d: desc, c: cat || "info" }; }
-
-const AGENDA = [
-  { d:1, date:"DOM 28/JUN", city:"LIMA", title:"Chegada a Lima", periods:[
-    { p:"MANHÃ / TARDE", evs:[
-      ev("10:45","Pouso em Lima — LA8202","Aeroporto Jorge Chávez. Trocar um pouco de USD→S/ no aeroporto (só pra táxi). Miraflores tem taxa melhor pra trocar o resto.","transport"),
-      ev("~12:00","Transfer ao Airbnb","Uber/InDriver funciona bem. Táxis pretos do aeroporto são oficiais. Evitar cambistas de rua dentro do aeroporto.","bus"),
+function ev(t,n,d,c){return{t,n,d,c:c||"info"}}
+const AGENDA_DEFAULT=[
+  {d:1,date:"DOM 28/JUN",city:"LIMA",title:"Chegada a Lima",periods:[
+    {p:"MANHÃ / TARDE",evs:[
+      ev("10:45","Pouso em Lima — LA8202","Aeroporto Jorge Chávez. Trocar um pouco de USD→S/ no aeroporto só pra táxi. Miraflores tem taxa melhor.","transport"),
+      ev("~12:00","Transfer ao Airbnb","Uber/InDriver ou táxi preto oficial. Evitar cambistas de rua dentro do aeroporto.","bus"),
     ]},
-    { p:"TARDE / NOITE", evs:[
-      ev("~15:00","Passeio leve — Miraflores","Parque Kennedy + Larcomar à beira do penhasco. Sentir a cidade, energia leve.","walk"),
-      ev("Noite","Jantar leve, dormir cedo","Ajustar fuso. Amanhã é dia cheio em Lima.","food"),
-    ]},
-  ]},
-  { d:2, date:"SEG 29/JUN", city:"LIMA", title:"Lima · dia inteiro", periods:[
-    { p:"MANHÃ", evs:[
-      ev("09:00","Barranco","Puente de los Suspiros, MATE (museu Mario Testino, ~S/ 25), grafites. Café: La Panetteria ou Bisetti.","activity"),
-    ]},
-    { p:"ALMOÇO", evs:[
-      ev("12:30","Cevicharia","Canta Rana (Barranco, bom e barato), La Mar (splurge), ou Isolina (comida criolla, almoço pesado).","food"),
-    ]},
-    { p:"TARDE", evs:[
-      ev("14:30","Centro Histórico","Plaza Mayor, Catedral, Convento de San Francisco + catacumbas (S/ 20). MALI se sobrar tempo.","activity"),
-    ]},
-    { p:"NOITE", evs:[
-      ev("~19:00","Voltar a Miraflores + arrumar mala","Voo 10:10 amanhã — deitar cedo.","info"),
+    {p:"TARDE / NOITE",evs:[
+      ev("~15:00","Passeio leve — Miraflores","Parque Kennedy + Larcomar à beira do penhasco. Sentir a cidade.","walk"),
+      ev("Noite","Jantar leve, dormir cedo","Ajustar fuso. Amanhã é dia cheio.","food"),
     ]},
   ]},
-  { d:3, date:"TER 30/JUN", city:"LIMA → CUSCO", title:"Voo + chegada a Cusco", periods:[
-    { p:"MANHÃ", evs:[
+  {d:2,date:"SEG 29/JUN",city:"LIMA",title:"Lima · dia inteiro",periods:[
+    {p:"MANHÃ",evs:[
+      ev("09:00","Barranco","Puente de los Suspiros, MATE (~S/ 25), grafites. Café: La Panetteria ou Bisetti.","activity"),
+    ]},
+    {p:"ALMOÇO",evs:[
+      ev("12:30","Cevicharia","Canta Rana (Barranco), La Mar (splurge) ou Isolina (criolla).","food"),
+    ]},
+    {p:"TARDE",evs:[
+      ev("14:30","Centro Histórico","Plaza Mayor, Catedral, Convento de San Francisco + catacumbas (S/ 20).","activity"),
+    ]},
+    {p:"NOITE",evs:[
+      ev("~19:00","Volta a Miraflores + arrumar mala","Voo 10:10 amanhã — deitar cedo.","info"),
+    ]},
+  ]},
+  {d:3,date:"TER 30/JUN",city:"LIMA → CUSCO",title:"Voo + chegada a Cusco",periods:[
+    {p:"MANHÃ",evs:[
       ev("08:00","Aeroporto Jorge Chávez","Check-in voo LA2238.","transport"),
-      ev("10:10","Decolagem Lima → Cusco","1h25. Pousa 11:35 — Alejandro Velasco Astete.","transport"),
+      ev("10:10","Decolagem Lima → Cusco","1h25. Pousa 11:35.","transport"),
     ]},
-    { p:"TARDE", evs:[
+    {p:"TARDE",evs:[
       ev("~12:30","Táxi → Airbnb Callacalle 322","~S/ 15–20 · táxi oficial no saguão.","bus"),
-      ev("Tarde","Aclimatação — não fazer nada","Regra de ouro: andar devagar, chá de coca, comida leve (sopa, quinoa), muita água. Plaza de Armas se der, Mercado San Pedro se sobrar energia. Sem esforço físico.","alert"),
+      ev("Tarde","Aclimatação — não fazer nada","Chá de coca, comida leve, muita água. Sem esforço físico — 3.400m de altitude.","alert"),
     ]},
   ]},
-  { d:4, date:"QUA 01/JUL", city:"CUSCO", title:"Ruínas de Cusco — Boleto Turístico", periods:[
-    { p:"MANHÃ", evs:[
-      ev("08:00","Comprar Boleto Turístico","Posto da Calle Mantas ou Casa Garcilaso · S/ 130 · vale 10 dias.","info"),
-      ev("08:30","Sacsayhuamán","15min a pé desde Plaza de Armas, ou táxi S/ 10. Pedras gigantes. Impressionante.","activity"),
-      ev("~10:30","Qenko → Puca Pucara → Tambomachay","Os três ficam em linha acima de Sacsayhuamán. Coletivo ou táxi de volta. Total ~4h calmas.","activity"),
+  {d:4,date:"QUA 01/JUL",city:"CUSCO",title:"Ruínas de Cusco — Boleto Turístico",periods:[
+    {p:"MANHÃ",evs:[
+      ev("08:00","Comprar Boleto Turístico","Calle Mantas ou Casa Garcilaso · S/ 130 · 10 dias.","info"),
+      ev("08:30","Sacsayhuamán","15min a pé da Plaza de Armas. Pedras gigantes.","activity"),
+      ev("~10:30","Qenko → Puca Pucara → Tambomachay","Em linha acima de Sacsayhuamán. ~4h calmas no total.","activity"),
     ]},
-    { p:"TARDE", evs:[
-      ev("~14:00","San Blas","Bairro bohemio, ateliês, cafés. Subida puxada mas vale. Recolher com tempo pro jantar.","walk"),
+    {p:"TARDE",evs:[
+      ev("~14:00","San Blas","Bairro bohemio, ateliês, cafés. Recolher com tempo pro jantar.","walk"),
     ]},
-    { p:"NOITE", evs:[
-      ev("20:00","Jantar no Mauka ✓","Reserva confirmada. Cozinha contemporânea andina, um dos melhores de Cusco. Prelúdio pro niver da Marina amanhã.","food"),
+    {p:"NOITE",evs:[
+      ev("20:00","Jantar no Mauka ✓","Reserva confirmada. Cozinha contemporânea andina.","food"),
     ]},
   ]},
-  { d:5, date:"QUI 02/JUL", city:"CUSCO → OLLANTA", title:"Aniversário da Marina 🎂", bday:true, periods:[
-    { p:"MANHÃ", evs:[
-      ev("Cedo","🎂 Feliz aniversário, Marina!","Momento especial antes do check-out — café mais calmo, presentinho, foto na Plaza de Armas ainda vazia.","bday"),
-      ev("~08:00","Check-out Airbnb Callacalle","Colectivo em Pavitos (Av. Grau) → Urubamba (~S/ 15) → Ollantaytambo (~S/ 3). ~1h30–2h.","bus"),
+  {d:5,date:"QUI 02/JUL",city:"CUSCO → OLLANTA",title:"Aniversário da Marina 🎂",bday:true,periods:[
+    {p:"MANHÃ",evs:[
+      ev("Cedo","🎂 Feliz aniversário, Marina!","Momento especial antes do check-out. Foto na Plaza de Armas ainda vazia.","bday"),
+      ev("~08:00","Check-out + colectivo","Pavitos → Urubamba (~S/ 15) → Ollanta (~S/ 3). ~1h30–2h.","bus"),
     ]},
-    { p:"TARDE", evs:[
-      ev("~11:30","Check-in Airbnb Ollantaytambo","Cidade pequena, tudo a pé. Fortaleza fica pro dia 05 pela manhã.","lodge"),
+    {p:"TARDE",evs:[
+      ev("~11:30","Check-in Airbnb Ollantaytambo","Cidade pequena, tudo a pé.","lodge"),
       ev("Tarde","Reconhecimento","Plaza de Armas, ruas de pedra, Rio Patacancha.","walk"),
     ]},
-    { p:"NOITE", evs:[
-      ev("Jantar","🎂 Jantar de aniversário","Chuncho (chef Virgilio Martínez, sazonal andino, opção mais memorável) ou Hearts Café (intimista, ONG). Reservar antecipado — Chuncho lota.","bday"),
+    {p:"NOITE",evs:[
+      ev("Jantar","🎂 Jantar de aniversário","Chuncho (chef Virgilio Martínez) ou Hearts Café. Reservar antecipado — Chuncho lota.","bday"),
     ]},
   ]},
-  { d:6, date:"SEX 03/JUL", city:"OLLANTAYTAMBO", title:"Vale Sagrado — Pisac + Chinchero", periods:[
-    { p:"MANHÃ", evs:[
-      ev("07:30","Colectivo Ollanta → Urubamba → Pisac","~1h15 · ~S/ 10.","bus"),
-      ev("~09:00","Ruínas de Pisac","Boleto Turístico. Terraços espetaculares, menos gente que Machu Picchu. ~2h.","activity"),
+  {d:6,date:"SEX 03/JUL",city:"OLLANTAYTAMBO",title:"Vale Sagrado — Pisac + Chinchero",periods:[
+    {p:"MANHÃ",evs:[
+      ev("07:30","Colectivo Ollanta → Pisac","Via Urubamba · ~1h15 · ~S/ 10.","bus"),
+      ev("~09:00","Ruínas de Pisac","Boleto Turístico. Terraços espetaculares. ~2h.","activity"),
     ]},
-    { p:"ALMOÇO", evs:[
-      ev("~12:00","Mercado de Pisac","Pechincha tranquilo, comida boa no 2º andar. Melhor pra tecido andino.","food"),
+    {p:"ALMOÇO",evs:[
+      ev("~12:00","Mercado de Pisac","Comida boa no 2º andar. Melhor mercado de tecido andino.","food"),
     ]},
-    { p:"TARDE", evs:[
-      ev("~14:00","Chinchero","Colectivo via Urubamba. Sítio arqueológico + igreja colonial sobre templo inca + oficinas de tecelagem.","activity"),
+    {p:"TARDE",evs:[
+      ev("~14:00","Chinchero","Sítio arqueológico + igreja colonial + oficinas de tecelagem.","activity"),
       ev("~17:00","Volta a Ollanta","Colectivo Chinchero → Urubamba → Ollanta.","bus"),
     ]},
   ]},
-  { d:7, date:"SÁB 04/JUL", city:"OLLANTAYTAMBO", title:"Maras + Moray", periods:[
-    { p:"MANHÃ", evs:[
-      ev("~08:00","Moray","Táxi compartilhado Ollanta → Moray (~S/ 80 o carro) ou motorista pro dia (~S/ 150–180). Terraços circulares — laboratório agrícola inca.","activity"),
-      ev("~10:30","Salineras de Maras","~7km de Moray. Milhares de piscinas de sal na encosta. Render insano. Entrada S/ 10 (não cobre pelo Boleto).","nature"),
+  {d:7,date:"SÁB 04/JUL",city:"OLLANTAYTAMBO",title:"Maras + Moray",periods:[
+    {p:"MANHÃ",evs:[
+      ev("~08:00","Moray","Táxi compartilhado ~S/ 80 ou motorista o dia (~S/ 150–180). Terraços circulares.","activity"),
+      ev("~10:30","Salineras de Maras","~7km de Moray. Milhares de piscinas de sal. Entrada S/ 10.","nature"),
     ]},
-    { p:"TARDE / NOITE", evs:[
-      ev("~14:00","Volta a Ollanta","Descansar bem — amanhã é dia de trem.","info"),
+    {p:"TARDE / NOITE",evs:[
+      ev("~14:00","Volta e descanso","Amanhã é dia de trem à noite.","info"),
     ]},
   ]},
-  { d:8, date:"DOM 05/JUL", city:"OLLANTA → AG. CALIENTES", title:"Fortaleza + trem noturno", periods:[
-    { p:"MANHÃ", evs:[
+  {d:8,date:"DOM 05/JUL",city:"OLLANTA → AG. CALIENTES",title:"Fortaleza + trem noturno",periods:[
+    {p:"MANHÃ",evs:[
       ev("09:00","Fortaleza de Ollantaytambo","Boleto Turístico. Subida puxada, vista magnífica. ~2–3h.","activity"),
     ]},
-    { p:"TARDE", evs:[
-      ev("~13:00","Almoço + bagagem","Levar só o essencial pra AC. Malas grandes no Airbnb ou guarda-volumes em AC.","info"),
+    {p:"TARDE",evs:[
+      ev("~13:00","Almoço + preparar bagagem","Levar mochila pequena pra AC. Malas maiores ficam no Airbnb.","info"),
     ]},
-    { p:"NOITE", evs:[
+    {p:"NOITE",evs:[
       ev("19:27","Trem Inca Rail The Voyager","Estação Ollantaytambo. USD 66/pax. Chegada AC 21:09.","train"),
-      ev("~21:30","Check-in hostel AC","Jantar rápido (cidade cara, opções simples perto da praça). Dormir cedo — despertador 04:30.","lodge"),
+      ev("~21:30","Check-in + dormir cedo","Despertador 04:30.","lodge"),
     ]},
   ]},
-  { d:9, date:"SEG 06/JUL", city:"MACHU PICCHU → CUSCO", title:"⭐ Machu Picchu — Circuito 3A", periods:[
-    { p:"MADRUGADA", evs:[
-      ev("04:30","Acordar","Café rápido. Mochila: água, snacks, protetor, capa de chuva, ingressos impressos, passaporte.","alert"),
+  {d:9,date:"SEG 06/JUL",city:"MACHU PICCHU → CUSCO",title:"⭐ Machu Picchu — Circuito 3A",periods:[
+    {p:"MADRUGADA",evs:[
+      ev("04:30","Acordar","Mochila: água, snacks, protetor, chuva, ingressos, passaporte.","alert"),
       ev("05:00","Subida a pé (opção A)","1h30 de trilha íngreme. Grátis. Chega ~06:30.","hike"),
-      ev("05:30","Ônibus Consettur (opção B)","USD 24 ida+volta. Fila começa 05:00. Sobe em ~25min.","bus"),
+      ev("05:30","Ônibus Consettur (opção B)","USD 24 ida+volta. Fila começa 05:00.","bus"),
     ]},
-    { p:"MANHÃ", evs:[
-      ev("07:00","Entrada Machu Picchu — Circuito 3A ✓","Parte baixa: Templo do Sol, Casa do Inca, espelhos d'água. Menos íngreme. ~2h30 pelo circuito.","activity"),
-      ev("~10:00","Descida","A pé (40min) ou ônibus. Almoço em AC.","walk"),
+    {p:"MANHÃ",evs:[
+      ev("07:00","Entrada Machu Picchu — Circuito 3A ✓","Templo do Sol, Casa do Inca, espelhos d'água. ~2h30.","activity"),
+      ev("~10:00","Descida + almoço em AC","A pé (40min) ou ônibus.","walk"),
     ]},
-    { p:"TARDE / NOITE", evs:[
-      ev("14:30","Trem Inca Rail The Voyager MP → Cusco","USD 119/pax. Chega Cusco (Av. El Sol 843) 18:20.","train"),
-      ev("~19:00","Check-in Airbnb Cusco (pós-MP)","Próx. terminal Inca Express. Dormir cedo — amanhã sai 06:20.","lodge"),
+    {p:"TARDE / NOITE",evs:[
+      ev("14:30","Trem Inca Rail The Voyager MP → Cusco","USD 119/pax. Chega 18:20 na Av. El Sol 843.","train"),
+      ev("~19:00","Check-in Airbnb Cusco (pós-MP)","Próx. terminal Inca Express. Dormir cedo — saída 06:20.","lodge"),
     ]},
   ]},
-  { d:10, date:"TER 07/JUL", city:"CUSCO → PUNO", title:"Inca Express — Ruta del Sol", periods:[
-    { p:"MANHÃ", evs:[
-      ev("06:20","Pickup Inca Express","Conferir endereço na reserva — pickup em raio específico do centro.","bus"),
-      ev("~09:00","Igreja de Andahuaylillas","'Capela Sistina das Américas'. ~1h de parada.","activity"),
+  {d:10,date:"TER 07/JUL",city:"CUSCO → PUNO",title:"Inca Express — Ruta del Sol",periods:[
+    {p:"MANHÃ",evs:[
+      ev("06:20","Pickup Inca Express","Confirmar endereço na reserva.","bus"),
+      ev("~09:00","Andahuaylillas + Raqchi","'Capela Sistina das Américas' + Templo de Wiracocha.","activity"),
     ]},
-    { p:"ALMOÇO", evs:[
-      ev("~11:00","Raqchi","Ruínas do Templo de Wiracocha.","activity"),
+    {p:"ALMOÇO",evs:[
       ev("~12:30","Buffet em Sicuani","Incluído no tour. Música andina ao vivo.","food"),
     ]},
-    { p:"TARDE", evs:[
-      ev("~15:00","Mirante La Raya (4.338m)","Ponto mais alto. Parada curta, foto, voltar pro ônibus (altitude pesa).","nature"),
-      ev("~17:30","Chegada Puno","Check-in Booking. Jantar leve — altitude 3.800m.","lodge"),
+    {p:"TARDE",evs:[
+      ev("~15:00","Mirante La Raya (4.338m)","Parada curta — altitude pesa.","nature"),
+      ev("~17:30","Chegada Puno","Check-in Booking. Jantar leve.","lodge"),
     ]},
   ]},
-  { d:11, date:"QUA 08/JUL", city:"PUNO", title:"Lago Titicaca — Uros + Taquile", periods:[
-    { p:"MANHÃ", evs:[
-      ev("07:00","Porto de Puno","Contratar barco direto, sem agência. S/ 40–80 combo Uros + Taquile.","boat"),
-      ev("~08:30","Ilhas Uros","Ilhas flutuantes de totora. Turístico mas vale. ~1h30.","activity"),
+  {d:11,date:"QUA 08/JUL",city:"PUNO",title:"Lago Titicaca — Uros + Taquile",periods:[
+    {p:"MANHÃ",evs:[
+      ev("07:00","Porto de Puno","Barco direto sem agência. S/ 40–80 combo.","boat"),
+      ev("~08:30","Ilhas Uros","Flutuantes de totora. ~1h30.","activity"),
     ]},
-    { p:"ALMOÇO / TARDE", evs:[
-      ev("~11:00","Taquile","Comunidade inca viva. Almoço típico (trucha, quinoa). Trilha íngreme até o topo — vista espetacular.","hike"),
-      ev("~17:00","Volta a Puno","Calle Lima concentra restaurantes.","boat"),
-    ]},
-  ]},
-  { d:12, date:"QUI 09/JUL", city:"PUNO → AREQUIPA", title:"Ônibus + tarde em Arequipa", periods:[
-    { p:"MANHÃ", evs:[
-      ev("07:00","Ônibus Puno → Arequipa","Cruz del Sur ou Tepsa. ~5–6h via Juliaca. S/ 30–60.","bus"),
-    ]},
-    { p:"TARDE", evs:[
-      ev("~13:30","Chegada Arequipa","Terminal Terrestre. Táxi ao Hampton by Hilton (~S/ 20).","bus"),
-      ev("~15:00","Plaza de Armas","Uma das praças mais bonitas do continente. Sillar branco, Catedral, arcadas.","activity"),
-      ev("Fim de tarde","Yanahuara","Mirante dos vulcões (El Misti, Chachani, Pichu Pichu). Táxi S/ 10.","photo"),
-    ]},
-    { p:"NOITE", evs:[
-      ev("Jantar","Chicha ou ZigZag","Gastronomia forte: rocoto relleno, adobo, chupe de camarones.","food"),
+    {p:"TARDE",evs:[
+      ev("~11:00","Taquile","Almoço típico + trilha. Vista do lago.","hike"),
+      ev("~17:00","Volta a Puno","Calle Lima: restaurantes.","boat"),
     ]},
   ]},
-  { d:13, date:"SEX 10/JUL", city:"AREQUIPA", title:"Santa Catalina + centro", periods:[
-    { p:"MANHÃ", evs:[
-      ev("09:00","Monasterio de Santa Catalina","S/ 45. Cidade dentro da cidade, ruas coloridas, luz incrível — excelente pra foto. 3–4h.","activity"),
+  {d:12,date:"QUI 09/JUL",city:"PUNO → AREQUIPA",title:"Ônibus + tarde em Arequipa",periods:[
+    {p:"MANHÃ",evs:[
+      ev("07:00","Ônibus Puno → Arequipa","Cruz del Sur ou Tepsa · ~5–6h · S/ 30–60.","bus"),
     ]},
-    { p:"ALMOÇO", evs:[
-      ev("~13:00","Picantería tradicional","La Nueva Palomino ou Sol de Mayo. Porções gigantes.","food"),
+    {p:"TARDE",evs:[
+      ev("~13:30","Chegada + check-in Hampton","Táxi do terminal ~S/ 20.","lodge"),
+      ev("~15:00","Plaza de Armas + Yanahuara","Sillar branco. Mirante dos vulcões.","activity"),
     ]},
-    { p:"TARDE", evs:[
-      ev("~15:00","Museo Santuarios Andinos (Juanita)","Múmia inca preservada no gelo. Visita guiada ~1h, S/ 30.","activity"),
-      ev("Fim de tarde","Claustros de la Compañía / Mirador de Sachaca","Conforme ritmo.","walk"),
-    ]},
-  ]},
-  { d:14, date:"SÁB 11/JUL", city:"AREQUIPA", title:"Reserva Salinas y Aguada Blanca", periods:[
-    { p:"MADRUGADA / MANHÃ", evs:[
-      ev("05:30","Tour Salinas y Aguada Blanca","Reservar na véspera em agência local. S/ 60–80 + S/ 6 entrada. 4.300m — vicunhas, flamingos, lagoas salinas, vulcões.","nature"),
-    ]},
-    { p:"TARDE / NOITE", evs:[
-      ev("~14:00","Volta a Arequipa","Tarde livre. Compras finais (alpaca, prata), última refeição, arrumar malas.","free"),
+    {p:"NOITE",evs:[
+      ev("Jantar","Chicha ou ZigZag","Rocoto relleno, adobo, chupe de camarones.","food"),
     ]},
   ]},
-  { d:15, date:"DOM 12/JUL", city:"AREQUIPA → LIMA → BRASIL", title:"Volta pra casa", periods:[
-    { p:"MANHÃ", evs:[
+  {d:13,date:"SEX 10/JUL",city:"AREQUIPA",title:"Santa Catalina + centro",periods:[
+    {p:"MANHÃ",evs:[
+      ev("09:00","Monasterio de Santa Catalina","S/ 45. Cidade dentro da cidade. 3–4h.","activity"),
+    ]},
+    {p:"ALMOÇO",evs:[
+      ev("~13:00","Picantería tradicional","La Nueva Palomino ou Sol de Mayo.","food"),
+    ]},
+    {p:"TARDE",evs:[
+      ev("~15:00","Museo Santuarios Andinos (Juanita)","Múmia inca no gelo. ~1h, S/ 30.","activity"),
+    ]},
+  ]},
+  {d:14,date:"SÁB 11/JUL",city:"AREQUIPA",title:"Reserva Salinas y Aguada Blanca",periods:[
+    {p:"MADRUGADA / MANHÃ",evs:[
+      ev("05:30","Tour Salinas y Aguada Blanca","S/ 60–80 + S/ 6 entrada. 4.300m — vicunhas, flamingos, lagoas salinas.","nature"),
+    ]},
+    {p:"TARDE / NOITE",evs:[
+      ev("~14:00","Tarde livre + compras finais","Alpaca, prata, última refeição, arrumar malas.","free"),
+    ]},
+  ]},
+  {d:15,date:"DOM 12/JUL",city:"AREQUIPA → LIMA → BRASIL",title:"Volta pra casa",periods:[
+    {p:"MANHÃ",evs:[
       ev("~11:30","Check-out + transfer aeroporto","AQP pequeno, ~30min do centro.","bus"),
     ]},
-    { p:"TARDE / NOITE", evs:[
+    {p:"TARDE / NOITE",evs:[
       ev("14:00","Voo LA2394 Arequipa → Lima","Chega 15:40.","transport"),
-      ev("15:40","Conexão em Lima","SEM sair do aeroporto. ~3h50 — tempo confortável.","info"),
-      ev("19:30","Voo LA2110 Lima → Brasil","Boa viagem de volta. ✈️","transport"),
+      ev("15:40","Conexão em Lima","SEM sair do aeroporto. ~3h50.","info"),
+      ev("19:30","Voo LA2110 Lima → Brasil","Boa viagem. ✈️","transport"),
     ]},
   ]},
 ];
 
 /* ================================================================
-   RESERVAS DATA
+   RESERVAS
 ================================================================ */
-const RESERVAS = [
-  { city:"LIMA", items:[
-    { k:"HOSPEDAGEM", v:"Airbnb", sub:"28–30/jun · 2 noites", s:"ok" },
+const RESERVAS=[
+  {city:"LIMA",items:[{k:"HOSPEDAGEM",v:"Airbnb",sub:"28–30/jun · 2 noites",s:"ok"}]},
+  {city:"CUSCO",items:[
+    {k:"HOSPEDAGEM",v:"Airbnb Callacalle 322",sub:"30/jun–02/jul · 2 noites",s:"ok"},
+    {k:"HOSPEDAGEM",v:"Airbnb Cusco pós-MP",sub:"06/jul · 1 noite",s:"ok"},
+    {k:"RESTAURANTE",v:"Mauka",sub:"01/jul · 20:00 · reserva confirmada",s:"ok"},
   ]},
-  { city:"CUSCO", items:[
-    { k:"HOSPEDAGEM", v:"Airbnb Callacalle 322", sub:"30/jun–02/jul · 2 noites", s:"ok" },
-    { k:"HOSPEDAGEM", v:"Airbnb Cusco (pós-MP)", sub:"06/jul · 1 noite", s:"ok" },
-    { k:"RESTAURANTE", v:"Mauka", sub:"01/jul · 20:00 · reserva confirmada", s:"ok" },
+  {city:"OLLANTAYTAMBO",items:[{k:"HOSPEDAGEM",v:"Airbnb próx. Plaza de Armas",sub:"02–05/jul · 3 noites",s:"ok"}]},
+  {city:"AGUAS CALIENTES",items:[{k:"HOSPEDAGEM",v:"Airbnb",sub:"05/jul · 1 noite",s:"ok"}]},
+  {city:"PUNO",items:[{k:"HOSPEDAGEM",v:"Booking — pagar no local",sub:"07–09/jul · 2 noites",s:"ok"}]},
+  {city:"AREQUIPA",items:[{k:"HOSPEDAGEM",v:"Hampton by Hilton",sub:"09–12/jul · 3 noites",s:"pen"}]},
+  {city:"TREM + MACHU PICCHU",items:[
+    {k:"TREM IDA",v:"Inca Rail The Voyager",sub:"05/jul · 19:27→21:09 · USD 66/pax",s:"pen"},
+    {k:"TREM VOLTA",v:"Inca Rail The Voyager",sub:"06/jul · 14:30→18:20 · USD 119/pax",s:"pen"},
+    {k:"ENTRADA MP",v:"Circuito 3A · 07:00",sub:"06/jul · 2 pax",s:"ok"},
+    {k:"BUS CONSETTUR",v:"AC ↔ Machu Picchu",sub:"opcional · comprar em AC",s:"no"},
   ]},
-  { city:"OLLANTAYTAMBO", items:[
-    { k:"HOSPEDAGEM", v:"Airbnb próx. Plaza de Armas", sub:"02–05/jul · 3 noites", s:"ok" },
-  ]},
-  { city:"AGUAS CALIENTES", items:[
-    { k:"HOSPEDAGEM", v:"Airbnb", sub:"05/jul · 1 noite", s:"ok" },
-  ]},
-  { city:"PUNO", items:[
-    { k:"HOSPEDAGEM", v:"Booking — pagar no local", sub:"07–09/jul · 2 noites", s:"ok" },
-  ]},
-  { city:"AREQUIPA", items:[
-    { k:"HOSPEDAGEM", v:"Hampton by Hilton", sub:"09–12/jul · 3 noites", s:"pen" },
-  ]},
-  { city:"TREM + MACHU PICCHU", items:[
-    { k:"TREM IDA", v:"Inca Rail The Voyager", sub:"05/jul · 19:27→21:09 · USD 66/pax", s:"pen" },
-    { k:"TREM VOLTA", v:"Inca Rail The Voyager", sub:"06/jul · 14:30→18:20 · USD 119/pax", s:"pen" },
-    { k:"ENTRADA MP", v:"Circuito 3A · 07:00", sub:"06/jul · 2 pax", s:"ok" },
-    { k:"BUS CONSETTUR", v:"AC ↔ Machu Picchu", sub:"opcional · USD 24 ida+volta", s:"no" },
-  ]},
-  { city:"TRANSPORTES", items:[
-    { k:"CUSCO→OLLANTA", v:"Colectivo", sub:"02/jul · S/ 10–15/pax", s:"no" },
-    { k:"CUSCO→PUNO", v:"Inca Express Ruta del Sol", sub:"07/jul · 06:20 pickup · USD 35–55/pax", s:"pen" },
-    { k:"PUNO→AREQUIPA", v:"Cruz del Sur / Tepsa", sub:"09/jul · ~5–6h", s:"pen" },
+  {city:"TRANSPORTES",items:[
+    {k:"CUSCO→OLLANTA",v:"Colectivo",sub:"02/jul · S/ 10–15/pax",s:"no"},
+    {k:"CUSCO→PUNO",v:"Inca Express Ruta del Sol",sub:"07/jul · 06:20 pickup · USD 35–55/pax",s:"pen"},
+    {k:"PUNO→AREQUIPA",v:"Cruz del Sur / Tepsa",sub:"09/jul · ~5–6h",s:"pen"},
   ]},
 ];
 
 /* ================================================================
-   MAP PINS
+   CLIMA
 ================================================================ */
-const PINS = [
-  { lat:-12.0464, lng:-77.0428, label:"Lima", emoji:"🛬", d:1 },
-  { lat:-13.5170, lng:-71.9785, label:"Cusco", emoji:"🏔️", d:3 },
-  { lat:-13.2588, lng:-72.2635, label:"Ollantaytambo", emoji:"🏯", d:5 },
-  { lat:-13.1631, lng:-72.5460, label:"Aguas Calientes", emoji:"♨️", d:8 },
-  { lat:-13.1631, lng:-72.5449, label:"Machu Picchu", emoji:"⭐", d:9 },
-  { lat:-15.5000, lng:-70.0167, label:"Puno", emoji:"⛵", d:10 },
-  { lat:-16.4090, lng:-71.5375, label:"Arequipa", emoji:"🌋", d:12 },
+const CITY_WEATHER=[
+  {city:"Lima",lat:-12.05,lon:-77.04,days:"28–29/jun",maps:"https://maps.google.com/?q=Lima,Peru"},
+  {city:"Cusco",lat:-13.52,lon:-71.97,days:"30/jun–02/jul",maps:"https://maps.google.com/?q=Cusco,Peru"},
+  {city:"Ollantaytambo",lat:-13.26,lon:-72.26,days:"02–05/jul",maps:"https://maps.google.com/?q=Ollantaytambo,Peru"},
+  {city:"Aguas Calientes",lat:-13.16,lon:-72.54,days:"05–06/jul",maps:"https://maps.google.com/?q=Aguas+Calientes,Peru"},
+  {city:"Puno",lat:-15.50,lon:-70.01,days:"07–09/jul",maps:"https://maps.google.com/?q=Puno,Peru"},
+  {city:"Arequipa",lat:-16.41,lon:-71.54,days:"09–12/jul",maps:"https://maps.google.com/?q=Arequipa,Peru"},
 ];
-
-/* ================================================================
-   STATE
-================================================================ */
-const state = { checks:{}, notes:{}, edits:{} };
-async function sGet(k,f){try{const r=localStorage.getItem(k);return r?JSON.parse(r):f}catch{return f}}
-async function sSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
-async function load(){state.checks=await sGet("ck",{});state.notes=await sGet("nt",{});state.edits=await sGet("ed",{})}
-
-/* ================================================================
-   RENDER: KPI
-================================================================ */
-function renderKpi(){
-  const now=new Date(), diff=TRIP-now, days=Math.max(0,Math.floor(diff/(864e5)));
-  document.getElementById("countdown-label").textContent = days > 0 ? `EM ${days} DIAS` : days === 0 ? "HOJE!" : `DIA ${-days+1}`;
-  let pend=0; CHECKLIST.forEach(g=>{if(!g.done) g.items.forEach(i=>{if(!state.checks[i.id]) pend++})});
-  document.getElementById("kpi").innerHTML=`
-    <div class="kpi-card"><div class="l">FALTAM</div><div class="v">${days}<small>dias</small></div></div>
-    <div class="kpi-card"><div class="l">PENDENTES</div><div class="v">${pend}<small>itens</small></div></div>`;
+let wCache={};
+async function fetchW(lat,lon){
+  const k=`${lat},${lon}`;if(wCache[k]) return wCache[k];
+  try{
+    const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&forecast_days=1&timezone=auto`);
+    const j=await r.json();
+    const res={temp:Math.round(j.current.temperature_2m),icon:wIcon(j.current.weather_code)};
+    wCache[k]=res;return res;
+  }catch{return null}
+}
+function wIcon(c){
+  if(c===0)return"☀️";if(c<=2)return"🌤️";if(c<=3)return"☁️";
+  if(c<=48)return"🌫️";if(c<=67)return"🌧️";if(c<=77)return"🌨️";
+  if(c<=82)return"🌧️";if(c<=99)return"⛈️";return"🌡️";
+}
+async function updateHeaderWeather(){
+  const now=new Date();
+  let city=CITY_WEATHER[0];
+  if(now>=CFG.TRIP_START){
+    const day=Math.floor((now-CFG.TRIP_START)/864e5)+1;
+    const ag=AGENDA_DEFAULT.find(d=>d.d===day);
+    if(ag){
+      const nm=ag.city.split("→")[0].trim().toUpperCase();
+      const m=CITY_WEATHER.find(c=>nm.includes(c.city.toUpperCase()));
+      if(m) city=m;
+    }
+  }
+  const w=await fetchW(city.lat,city.lon);
+  const ti=document.getElementById("hdr-icon");
+  const tt=document.getElementById("hdr-temp");
+  const tl=document.getElementById("hdr-loc");
+  if(w){ti.textContent=w.icon;tt.textContent=w.temp+"°C";tl.textContent=city.city.toUpperCase();}
+  else{ti.textContent="";tt.textContent="—";tl.textContent="";}
 }
 
 /* ================================================================
-   RENDER: CHECKLIST
+   HABLANDO
 ================================================================ */
+const HABLANDO=[
+  {tag:"CUMPRIMENTOS",tagk:"in",phrases:[
+    {es:"Hola, ¿cómo estás?",pt:"Oi, como vai?",pron:"O-la, KO-mo es-TAS"},
+    {es:"Buenos días / Buenas tardes / Buenas noches",pt:"Bom dia / Boa tarde / Boa noite",pron:"BWE-nos DI-as / BWE-nas TAR-des / BWE-nas NO-ches"},
+    {es:"Mucho gusto.",pt:"Prazer em conhecer.",pron:"MU-cho GUS-to"},
+    {es:"¿De dónde eres?",pt:"De onde você é?",pron:"de DON-de E-res"},
+    {es:"Soy de Brasil.",pt:"Sou do Brasil.",pron:"soi de bra-SIL"},
+    {es:"¿Hablas inglés / portugués?",pt:"Você fala inglês / português?",pron:"A-blas in-GLES / por-tu-GES"},
+    {es:"No hablo español bien.",pt:"Não falo espanhol bem.",pron:"no A-blo es-pa-NYOL bien"},
+    {es:"¿Puede hablar más despacio?",pt:"Pode falar mais devagar?",pron:"PUE-de a-BLAR mas des-PA-sio"},
+    {es:"No entiendo.",pt:"Não entendo.",pron:"no en-TIEN-do"},
+    {es:"¿Puede repetir?",pt:"Pode repetir?",pron:"PUE-de re-pe-TIR"},
+  ]},
+  {tag:"DIA A DIA",tagk:"in",phrases:[
+    {es:"Por favor.",pt:"Por favor.",pron:"por fa-VOR"},
+    {es:"Gracias.",pt:"Obrigado/a.",pron:"GRA-sias"},
+    {es:"De nada.",pt:"De nada.",pron:"de NA-da"},
+    {es:"Disculpe.",pt:"Com licença / Desculpe.",pron:"dis-KUL-pe"},
+    {es:"¿Cuánto cuesta?",pt:"Quanto custa?",pron:"KUAN-to KWES-ta"},
+    {es:"¿Tiene cambio?",pt:"Tem troco?",pron:"TIE-ne KAM-bio"},
+    {es:"¿Acepta tarjeta?",pt:"Aceita cartão?",pron:"a-SEP-ta tar-HE-ta"},
+    {es:"¿Dónde está el baño?",pt:"Onde fica o banheiro?",pron:"DON-de es-TA el BA-nyo"},
+    {es:"¿A qué hora abre?",pt:"A que horas abre?",pron:"a ke O-ra A-bre"},
+    {es:"Está cerrado.",pt:"Está fechado.",pron:"es-TA se-RRA-do"},
+    {es:"¿Tiene Wi-Fi?",pt:"Tem Wi-Fi?",pron:"TIE-ne WI-fi"},
+    {es:"¿Cuál es la contraseña?",pt:"Qual é a senha?",pron:"kwal es la kon-tra-SE-nya"},
+  ]},
+  {tag:"TRANSPORTE",tagk:"tr",phrases:[
+    {es:"¿Va a Ollantaytambo?",pt:"Vai para Ollantaytambo?",pron:"va a o-yan-tai-TAM-bo"},
+    {es:"¿Hay combi para...?",pt:"Tem van / kombi para...?",pron:"ai KOM-bi PA-ra"},
+    {es:"¿Cuánto cuesta hasta...?",pt:"Quanto custa até...?",pron:"KUAN-to KWES-ta AS-ta"},
+    {es:"¿A qué hora sale?",pt:"A que horas sai?",pron:"a ke O-ra SA-le"},
+    {es:"¿Cuánto tiempo tarda?",pt:"Quanto tempo demora?",pron:"KUAN-to TIEM-po TAR-da"},
+    {es:"¿Dónde está la parada?",pt:"Onde fica a parada?",pron:"DON-de es-TA la pa-RA-da"},
+    {es:"Por favor, bájeme aquí.",pt:"Por favor, me deixa aqui.",pron:"por fa-VOR, BA-he-me a-KI"},
+    {es:"¿Puede llamar un taxi?",pt:"Pode chamar um táxi?",pron:"PUE-de ya-MAR un TAK-si"},
+    {es:"Voy al aeropuerto.",pt:"Vou ao aeroporto.",pron:"voi al ae-ro-PWER-to"},
+    {es:"¿Está lejos?",pt:"É longe?",pron:"es-TA LE-hos"},
+  ]},
+  {tag:"COMIDA",tagk:"fd",phrases:[
+    {es:"¿Qué recomienda?",pt:"O que você recomenda?",pron:"ke re-ko-MIEN-da"},
+    {es:"Sin picante, por favor.",pt:"Sem picante, por favor.",pron:"sin pi-KAN-te, por fa-VOR"},
+    {es:"¿Tiene menú del día?",pt:"Tem prato do dia?",pron:"TIE-ne me-NU del DI-a"},
+    {es:"La cuenta, por favor.",pt:"A conta, por favor.",pron:"la KUEN-ta, por fa-VOR"},
+    {es:"¿Está incluido el servicio?",pt:"Está incluído o serviço?",pron:"es-TA in-klwi-DO el ser-VI-sio"},
+    {es:"¡Está delicioso!",pt:"Está delicioso!",pron:"es-TA de-li-SIO-so"},
+    {es:"Sin cebolla / sin ají.",pt:"Sem cebola / sem pimenta.",pron:"sin se-BO-ya / sin a-HI"},
+    {es:"¿Es fresco?",pt:"É fresco?",pron:"es FRES-ko"},
+    {es:"¿Tiene agua sin gas?",pt:"Tem água sem gás?",pron:"TIE-ne A-gwa sin GAS"},
+    {es:"Un café, por favor.",pt:"Um café, por favor.",pron:"un ka-FE, por fa-VOR"},
+  ]},
+  {tag:"PASSEIO",tagk:"ac",phrases:[
+    {es:"¿Está incluido en el Boleto Turístico?",pt:"Está incluído no Boleto Turístico?",pron:"es-TA in-klwi-DO en el bo-LE-to tu-RIS-ti-ko"},
+    {es:"¿Dónde está la entrada?",pt:"Onde fica a entrada?",pron:"DON-de es-TA la en-TRA-da"},
+    {es:"¿Puedo tomar fotos?",pt:"Posso tirar fotos?",pron:"PWE-do to-MAR FO-tos"},
+    {es:"¿Cuánto tiempo lleva?",pt:"Quanto tempo leva?",pron:"KUAN-to TIEM-po YE-va"},
+    {es:"¿A qué altura estamos?",pt:"A que altitude estamos?",pron:"a ke al-TU-ra es-TA-mos"},
+    {es:"¿Hay guía en portugués?",pt:"Tem guia em português?",pron:"ai GI-a en por-tu-GES"},
+    {es:"¿Está abierto los domingos?",pt:"Abre aos domingos?",pron:"es-TA a-BIER-to los do-MIN-gos"},
+  ]},
+  {tag:"HOSPEDAGEM",tagk:"lo",phrases:[
+    {es:"Tengo una reserva.",pt:"Tenho uma reserva.",pron:"TEN-go U-na re-SER-va"},
+    {es:"¿A qué hora es el check-out?",pt:"A que horas é o check-out?",pron:"a ke O-ra es el CHEK-aut"},
+    {es:"¿Puede guardar mi equipaje?",pt:"Pode guardar minha bagagem?",pron:"PWE-de gwar-DAR mi e-ki-PA-he"},
+    {es:"No hay agua caliente.",pt:"Não tem água quente.",pron:"no ai A-gwa ka-LIEN-te"},
+    {es:"¿Puede cambiarme de habitación?",pt:"Pode me trocar de quarto?",pron:"PWE-de kam-BIAR-me de a-bi-ta-SION"},
+    {es:"¿Hay toallas extras?",pt:"Tem toalhas extras?",pron:"ai toa-YAS EKS-tras"},
+  ]},
+  {tag:"EMERGÊNCIA",tagk:"al",phrases:[
+    {es:"Necesito ayuda.",pt:"Preciso de ajuda.",pron:"ne-se-SI-to a-YU-da"},
+    {es:"Llame a la policía.",pt:"Chame a polícia.",pron:"YA-me a la po-li-SI-a"},
+    {es:"Necesito un médico.",pt:"Preciso de um médico.",pron:"ne-se-SI-to un ME-di-ko"},
+    {es:"Me siento mal de altura.",pt:"Estou com mal de altitude (soroche).",pron:"me SIEN-to mal de al-TU-ra"},
+    {es:"Me robaron.",pt:"Fui roubado/a.",pron:"me ro-BA-ron"},
+    {es:"¿Dónde está el hospital?",pt:"Onde fica o hospital?",pron:"DON-de es-TA el os-pi-TAL"},
+    {es:"Soy alérgico/a a...",pt:"Sou alérgico/a a...",pron:"soi a-LER-hi-ko/a a"},
+    {es:"Necesito una farmacia.",pt:"Preciso de uma farmácia.",pron:"ne-se-SI-to U-na far-MA-sia"},
+  ]},
+  {tag:"VOCÊ PODE OUVIR",tagk:"ac",phrases:[
+    {es:"¡Bienvenido/a!",pt:"Bem-vindo/a!",hear:"Quando entrar em lojas e restaurantes."},
+    {es:"¿En qué le puedo ayudar?",pt:"Em que posso te ajudar?",hear:"Atendente perguntando o que você quer."},
+    {es:"¿Para llevar o para aquí?",pt:"Pra levar ou pra comer aqui?",hear:"Em lanchonetes e cafés."},
+    {es:"No hay.",pt:"Não tem.",hear:"Resposta quando pedir algo que acabou."},
+    {es:"Ahorita.",pt:"Agora / já já / talvez nunca.",hear:"Pode significar qualquer coisa. Tenha paciência."},
+    {es:"¿Cuántos somos?",pt:"Quantos somos? (na mesa)",hear:"Garçom perguntando quantas pessoas."},
+    {es:"El vuelto.",pt:"O troco.",hear:"Quando te devolvem o troco."},
+    {es:"¡Ojo!",pt:"Cuidado! / Atenção!",hear:"Aviso de perigo ou atenção."},
+    {es:"¿Está ocupado?",pt:"Está ocupado? (cadeira, mesa)",hear:"Alguém perguntando se pode sentar."},
+    {es:"¡Qué rico!",pt:"Que gostoso!",hear:"Elogio a comida — use você também!"},
+  ]},
+  {tag:"NÚMEROS",tagk:"in",phrases:[
+    {es:"0 cero · 1 uno · 2 dos · 3 tres · 4 cuatro · 5 cinco",pt:"0–5",pron:"SE-ro · U-no · dos · tres · KWA-tro · SIN-ko"},
+    {es:"6 seis · 7 siete · 8 ocho · 9 nueve · 10 diez",pt:"6–10",pron:"seis · SIE-te · O-cho · NWE-ve · dies"},
+    {es:"20 veinte · 30 treinta · 50 cincuenta · 100 cien",pt:"20, 30, 50, 100",pron:"VEIN-te · TREIN-ta · sin-KWEN-ta · sien"},
+    {es:"¿Cuánto? — Diez soles.",pt:"Quanto? — Dez soles.",pron:"KUAN-to — dies SO-les"},
+  ]},
+];
+const PEGADINHAS=[
+  {t:"'Propina'",p:"Em espanhol significa gorjeta, não suborno. Se oferecer propina numa loja, eles vão agradecer!"},
+  {t:"'Embarazada'",p:"NÃO é embaraçada — significa grávida. Muito cuidado com 'estoy embarazada'."},
+  {t:"'Borracha'",p:"Em Peru pode significar bêbada. Pra material de borracha diga 'goma' ou 'caucho'."},
+  {t:"'Ahorita'",p:"Pode significar agora, em pouco tempo, ou nunca. Contexto é tudo — não conte muito."},
+  {t:"'Coger'",p:"No Peru significa pegar/apanhar (coger el bus = pegar o ônibus). Sem problema usar."},
+  {t:"'Qué bonito' no artesanato",p:"Elogiar antes de perguntar o preço geralmente sobe o valor. Pergunte antes de elogiar."},
+  {t:"'Tomar' vs 'beber'",p:"Ambos existem pra beber, mas 'tomar' é mais comum no Peru. 'Quiero tomar agua' = quero beber água."},
+];
+
+/* ================================================================
+   GUIA
+================================================================ */
+const GUIA=[
+  {
+    city:"Peru",emoji:"🇵🇪",tagline:"O país que resume 5000 anos de civilização em 3 zonas climáticas",
+    badges:["32 mi. hab.","1.285.216 km²","Capital: Lima","Sol (PEN)","+51"],
+    sections:[
+      {t:"CONTEXTO",c:"O Peru é um dos países mais biodiversos do planeta — tem costa, selva e altitude em menos de 700km de distância. Foi centro do maior império pré-colombiano das Américas, o Tawantinsuyu (Império Inca), que chegou a dominar mais de 12 milhões de pessoas do século XIII até 1532. A conquista espanhola deixou Lima como capital vice-reinal por 300 anos, moldando a arquitetura colonial que você vai ver. Hoje o Peru tem uma das economias de crescimento mais consistente da América do Sul, movida por mineração, exportação agrícola (café, aspargos, quinoa) e turismo."},
+      {t:"GASTRONOMIA",c:"A cozinha peruana é reconhecida internacionalmente como uma das mais complexas do mundo — mistura de influências indígenas, espanholas, africanas, japonesas e chinesas (a cozinha Nikkei e Chifa são únicas no mundo). <strong>Ceviche</strong> é o prato nacional. <strong>Lomo saltado</strong>, <strong>ají de gallina</strong>, <strong>causa limeña</strong> e <strong>rocoto relleno</strong> são imperdíveis. A papa andina tem mais de 3.000 variedades."},
+      {t:"DICAS GERAIS",c:[
+        {i:"💰",t:"Moeda: sol (PEN). Troque USD em casas de câmbio em Miraflores (Lima) — taxa melhor que no aeroporto. Saques em ATM funcionam bem."},
+        {i:"🩺",t:"Altitude: a partir de Cusco (3.400m) tome soroche pills, beba muito chá de coca e evite esforço físico no primeiro dia."},
+        {i:"🚰",t:"Água: nunca beba direto da torneira. Só água mineral ou fervida."},
+        {i:"🌤️",t:"Clima jun/jul: seca na Serra (frio de noite, sol de dia). Lima cinzenta e úmida. Selva: evitar nessa época."},
+        {i:"🔌",t:"Tomadas: tipo A e B (igual Brasil) — sem adaptador na maioria dos lugares."},
+      ]},
+    ],
+  },
+  {
+    city:"Lima",emoji:"🏙️",tagline:"A cidade que nunca vê o sol — e mesmo assim tem a melhor gastronomia das Américas",
+    badges:["11 mi. hab.","Capital","0m altitude","Fuso: BRT−2h"],
+    sections:[
+      {t:"O QUE SABER",c:"Lima é uma megalópole costeira que fica permanentemente coberta por neblina entre junho e novembro — o chamado <strong>garúa</strong>. Não espere praias ensolaradas. Em compensação, a temperatura é amena (18–22°C em julho) e a cidade tem uma energia única. Os bairros de Miraflores e Barranco concentram os melhores restaurantes, museus e vida noturna. O Centro Histórico é Patrimônio da Humanidade."},
+      {t:"IMPERDÍVEL",c:[
+        {i:"🍽️",t:"Comer ceviche num restaurante de bairro em Barranco — é outra coisa comparado com o que se encontra fora do Peru."},
+        {i:"🏛️",t:"Convento de San Francisco e suas catacumbas com ossos de mais de 25 mil pessoas — perturbador e fascinante."},
+        {i:"🎨",t:"MATE (Museo Mario Testino) em Barranco — pequeno, bem curado, preço acessível."},
+        {i:"🌅",t:"Pôr do sol no Parque del Amor, Miraflores — com o mar abaixo e os paragliders sobrevoando."},
+      ]},
+      {t:"DICAS PRÁTICAS",c:[
+        {i:"🚕",t:"Use sempre Uber ou InDriver dentro de Lima — nunca aceite táxi de rua, especialmente no aeroporto."},
+        {i:"💱",t:"Casas de câmbio na Av. Larco (Miraflores) dão a melhor taxa de câmbio do país."},
+        {i:"⚠️",t:"O Centro Histórico é bonito mas mantenha atenção aos pertences, especialmente à noite."},
+      ]},
+    ],
+  },
+  {
+    city:"Cusco",emoji:"🏔️",tagline:"A capital do mundo — assim os incas a chamavam. E faz sentido.",
+    badges:["450 mil hab.","3.400m altitude","Ex-capital Inca","Patrimônio UNESCO"],
+    sections:[
+      {t:"O QUE SABER",c:"Cusco foi a capital do Império Inca e ainda carrega essa grandiosidade. A cidade colonial foi construída literalmente sobre as fundações incas — você vê paredes de pedra inca suportando igrejas barrocas. O centro histórico é um labirinto de ruelas de pedra, plazas e mercados. A altitude de 3.400m exige respeito: o primeiro dia deve ser de descanso obrigatório, independente de como você se sentir."},
+      {t:"IMPERDÍVEL",c:[
+        {i:"🏛️",t:"Sacsayhuamán — fortaleza com pedras de até 125 toneladas encaixadas sem argamassa. Engenharia inexplicável."},
+        {i:"🛍️",t:"Mercado San Pedro — o mercado local de verdade. Frutas andinas, comida de rua, tecidos, remédios naturais."},
+        {i:"🎨",t:"Bairro de San Blas — galeria a céu aberto com ateliês de artesanato e vistas privilegiadas da cidade."},
+        {i:"🍸",t:"Pisco Sour no bar do Hotel Monasterio ou na Plaza Regocijo — um ritual obrigatório."},
+      ]},
+      {t:"ALTITUDE — PROTOCOLO",c:[
+        {i:"☕",t:"Chá de coca: gratuito em todo hotel e oferecido em restaurantes. Beba sem moderação — é legal e funciona."},
+        {i:"💊",t:"Soroche pills: compre na primeira farmácia que ver ao sair do aeroporto. Tome preventivamente."},
+        {i:"🚶",t:"Primeiro dia: andar devagar, sem subidas, sem álcool, sem esforço. Deitado quando possível."},
+        {i:"💧",t:"Beber 3–4 litros de água por dia. O ar seco em altitude desidrata muito mais que o normal."},
+      ]},
+    ],
+  },
+  {
+    city:"Ollantaytambo",emoji:"🏯",tagline:"Uma cidade inca viva — as pessoas ainda moram nas mesmas casas de 600 anos atrás",
+    badges:["5 mil hab.","2.792m altitude","Valle Sagrado","Inca vivo"],
+    sections:[
+      {t:"O QUE SABER",c:"Ollantaytambo é única: é uma das últimas cidades incas habitadas continuamente desde antes da conquista. As 'canchas' (blocos residenciais) e os canais de irrigação inca ainda funcionam. A cidade é pequena — você atravessa ela a pé em 10 minutos — mas densa em história. A fortaleza no morro é impressionante e oferece uma batalha inca que os espanhóis perderam (uma das poucas)."},
+      {t:"IMPERDÍVEL",c:[
+        {i:"🏛️",t:"Fortaleza de Ollantaytambo — suba até o topo para ver os terraços e os 'celeiros' do outro lado do vale."},
+        {i:"🌾",t:"Caminhar pelas ruelas da cidade velha ao amanhecer — quase nenhum turista, moradores locais na rotina."},
+        {i:"🍽️",t:"Chuncho Restaurant (chef Virgilio Martínez) — cozinha andina sazonal de altíssimo nível, preço surpreendentemente acessível para a qualidade."},
+        {i:"🚂",t:"A estação de trem é um espetáculo à noite — ponto de partida para Machu Picchu desde 1930."},
+      ]},
+      {t:"DICAS PRÁTICAS",c:[
+        {i:"📡",t:"Wi-Fi fraco e sinal instável — baixe mapas offline (Google Maps ou Maps.me) antes de sair de Cusco."},
+        {i:"🛒",t:"Abasteça em Cusco. Ollanta tem o básico mas escolha limitada."},
+        {i:"🎒",t:"Base ideal para Vale Sagrado — Pisac, Chinchero, Maras e Moray ficam a menos de 1h de colectivo."},
+      ]},
+    ],
+  },
+  {
+    city:"Aguas Calientes",emoji:"♨️",tagline:"A cidade-portal: você está aqui só por causa da montanha acima",
+    badges:["~8 mil hab.","2.040m altitude","Porta do MP","Trem: única saída"],
+    sections:[
+      {t:"O QUE SABER",c:"Aguas Calientes (oficialmente Machu Picchu Pueblo) existe exclusivamente porque fica no vale abaixo de Machu Picchu. Sem o trem, não há como entrar ou sair. A cidade é cara, turística e desnecessária além da função logística — mas tem charme próprio com o Rio Urubamba, as termas e o mercado de artesanato. Durma aqui a noite anterior ao MP para garantir a entrada cedo."},
+      {t:"PROTOCOLO — MACHU PICCHU",c:[
+        {i:"⏰",t:"Acorde às 04:30. A entrada é às 07:00 e a fila começa às 05:00 na base da subida."},
+        {i:"🎫",t:"Leve o ingresso impresso ou no celular com Wi-Fi (offline) — o sinal lá em cima é péssimo."},
+        {i:"🥾",t:"Subir a pé (1h30, íngreme mas factível) ou ônibus Consettur (USD 24 ida+volta, ~25min)."},
+        {i:"🎒",t:"Não há guarda-volumes em Machu Picchu. Leve só o essencial: água, snacks, protetor solar, documento."},
+        {i:"🚫",t:"Proibido entrar com tripé, bastão de selfie, alimentos embalados e drones."},
+      ]},
+      {t:"DICAS PRÁTICAS",c:[
+        {i:"💰",t:"A cidade mais cara da rota. Jantar simples custa 3x mais que em Cusco. Coma na chegada e leve snacks pro MP."},
+        {i:"♨️",t:"Termas municipais (Av. Pachacutec): bom para relaxar após o MP. S/ 20. Leve toalha."},
+      ]},
+    ],
+  },
+  {
+    city:"Puno",emoji:"⛵",tagline:"A capital espiritual dos Andes, banhada pelo lago navegável mais alto do mundo",
+    badges:["150 mil hab.","3.827m altitude","Lago Titicaca","Fronteira Bolívia"],
+    sections:[
+      {t:"O QUE SABER",c:"Puno fica a 3.827m de altitude — mais alto que Cusco. É a porta de entrada para o Lago Titicaca, o lago navegável mais alto do mundo (8.372 km² na altitude de 3.812m). A cidade em si é simples, mas o lago é extraordinário. A cultura aymara (diferente da quéchua de Cusco) é forte aqui — outra língua, outros ritmos, outra estética. Novembro é época de Festivales, junho/julho é frio mas seco."},
+      {t:"IMPERDÍVEL",c:[
+        {i:"⛵",t:"Ilhas Uros — ilhas flutuantes construídas e reconstruídas manualmente com totora (junco). As famílias vivem lá há séculos."},
+        {i:"🏔️",t:"Taquile — ilha habitada por tecelões aymara cujo trabalho é Patrimônio Imaterial da UNESCO. A subida ao topo vale a vista."},
+        {i:"🍽️",t:"Trucha (truta) do lago Titicaca — o peixe mais fresco possível. Peça grelhada ou a la plancha."},
+      ]},
+      {t:"DICAS PRÁTICAS",c:[
+        {i:"⚠️",t:"A altitude é mais alta que Cusco. Se já adaptado, não deve ser problema, mas durma bem e evite excessos."},
+        {i:"🚢",t:"Contrate barco diretamente no porto sem agência — economiza 40–60% e o serviço é o mesmo."},
+        {i:"🧤",t:"Faz frio de noite (perto de 0°C em julho). Leve o casaco mais pesado que você tem."},
+      ]},
+    ],
+  },
+  {
+    city:"Arequipa",emoji:"🌋",tagline:"A Cidade Branca: construída de pedra vulcânica e com vulcões ativos como vizinhos",
+    badges:["1 mi. hab.","2.335m altitude","Sillar branco","2ª maior cidade"],
+    sections:[
+      {t:"O QUE SABER",c:"Arequipa é construída com <strong>sillar</strong>, uma pedra vulcânica branca extraída das encostas do vulcão Misti que domina o horizonte. O centro histórico é Patrimônio da Humanidade e tem uma arquitetura barroca-andina única no mundo. A cidade tem uma identidade forte — os arequipeños se consideram quase um país separado e chamam Lima de 'a outra cidade'. A gastronomia local é considerada por muitos a melhor do Peru fora de Lima."},
+      {t:"IMPERDÍVEL",c:[
+        {i:"🏛️",t:"Monasterio de Santa Catalina — uma cidade-convento dentro da cidade, com 20 mil m² de ruas, praças e capelas coloridas. Reserve 3–4h."},
+        {i:"🌋",t:"Mirante de Yanahuara — vista panorâmica com os três vulcões (Misti, Chachani e Pichu Pichu) de fundo. Foto obrigatória."},
+        {i:"🦙",t:"Reserva Salinas y Aguada Blanca — vicunhas selvagens a metros de você, flamingos andinos, lagoas de sal. 4.300m."},
+        {i:"🍽️",t:"Rocoto relleno (pimentão andino recheado com carne) e chupe de camarones (bisque de camarão andino) — pratos únicos da culinária arequipeña."},
+      ]},
+      {t:"DICAS PRÁTICAS",c:[
+        {i:"🌡️",t:"Altitude mais baixa (2.335m) — você vai se sentir humano de novo depois de Cusco e Puno."},
+        {i:"🌞",t:"Sol forte apesar do frio aparente. Protetor solar obrigatório, especialmente na reserva."},
+        {i:"🛍️",t:"Melhor lugar do roteiro pra comprar alpaca de qualidade — prefira lojas com etiqueta MINCETUR ao invés de vendedores na rua."},
+      ]},
+    ],
+  },
+];
+
+/* ================================================================
+   BAGAGEM
+================================================================ */
+const BAG_DEFAULT=[
+  {g:"MALA DE BORDO — 10KG (CADA UM)",ico:"🧳",items:[
+    "Casaco pesado (puffer ou lã) — Cusco chega a 0°C de noite",
+    "Camada térmica (base layer top + calça)",
+    "Capa de chuva impermeável compacta",
+    "3× camisetas (sintético ou merino, secagem rápida)",
+    "2× calças / 1 jeans",
+    "Fleece ou moletom médio",
+    "Roupa íntima × 5",
+    "Meias × 5 (inclua 2 pares de lã)",
+    "1 roupa de banho",
+    "Pijama leve",
+    "Tênis de trekking com solado grip",
+    "Chinelo de quarto",
+    "Nécessaire completa",
+    "Protetor solar FPS 50+ (altitude = sol agressivo)",
+    "Hidratante labial com proteção",
+    "Repelente",
+    "Kit remédios: dipirona, ibuprofeno, antiácido, immodium, antialérgico",
+    "Soroche pills (mal de altitude — comprar também no Peru)",
+    "Carregador iPhone + cabo",
+    "Adaptador universal (Peru = padrão BR, mas leve)",
+    "Powerbank",
+  ]},
+  {g:"MOCHILA (CADA UM)",ico:"🎒",items:[
+    "Garrafa reutilizável (água em MP é cara e proibido entrar com embalada)",
+    "Snacks para trilhas (barra de cereal, castanhas)",
+    "Carteira de viagem ou pochete anti-furto",
+    "Óculos escuros (altitude + neve = UV intenso)",
+    "Câmera ou usar iPhone — cartão de memória extra se câmera",
+    "Fones de ouvido",
+    "Livro / kindle para os deslocamentos longos",
+    "Sacola reutilizável para compras",
+    "Câmera descartável (opcional, para memória analógica)",
+  ]},
+  {g:"POCHETE / SLING BAG (CADA UM)",ico:"👜",items:[
+    "Passaporte ou RG (sempre no corpo em passeios)",
+    "Cartão de crédito/débito sem IOF (Wise, C6 ou Nomad)",
+    "Dinheiro em espécie: ~150 USD + soles para o dia",
+    "Celular",
+    "Fone de ouvido AirPods",
+    "Ingressos (Machu Picchu, Boleto Turístico) — digital ou impresso",
+    "Lenço umedecido",
+    "Protetor labial",
+    "Analgésico rápido (dipirona ou ibu) — 2 comprimidos avulsos",
+  ]},
+  {g:"DOCUMENTOS — ANTES DE FECHAR A MALA",ico:"📋",items:[
+    "RG válido (menos de 10 anos) ou passaporte",
+    "Apólice seguro viagem — salva offline no celular",
+    "Cartões de embarque (4 voos) — offline",
+    "Vouchers Airbnb + confirmação Booking (Puno) — offline",
+    "Ingressos Machu Picchu — impressos + digital offline",
+    "Número da apólice seguro anotado em papel",
+  ]},
+];
+
+/* ================================================================
+   ESTADO + STORAGE
+================================================================ */
+const S={checks:{},agenda:{},bag:{},bagItems:null,notes:{}};
+const ls={
+  g:(k,f)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):f}catch{return f}},
+  s:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}},
+};
+async function load(){
+  S.checks=ls.g("ck",{});S.agenda=ls.g("ag",{});
+  S.bag=ls.g("bg",{});S.bagItems=ls.g("bagitems",null);S.notes=ls.g("nt",{});
+}
+
+/* ================================================================
+   AGENDA HELPERS
+================================================================ */
+function getDay(d){
+  const base=AGENDA_DEFAULT.find(x=>x.d===d);if(!base) return null;
+  const ov=S.agenda[d]||{};
+  const out={d:base.d,date:ov.date??base.date,city:ov.city??base.city,
+    title:ov.title??base.title,bday:base.bday,periods:[]};
+  const bps=base.periods,ops=ov.periods||[];
+  const len=Math.max(bps.length,ops.length);
+  for(let pi=0;pi<len;pi++){
+    const bp=bps[pi]||{p:"",evs:[]},op=ops[pi]||{};
+    const period={p:op.p??bp.p,evs:[]};
+    const bes=bp.evs||[],oes=op.evs||[];
+    for(let ei=0;ei<Math.max(bes.length,oes.length);ei++){
+      const be=bes[ei]||{t:"",n:"",d:"",c:"info"},oe=oes[ei]||{};
+      period.evs.push({t:oe.t??be.t,n:oe.n??be.n,d:oe.d??be.d,c:oe.c??be.c});
+    }
+    out.periods.push(period);
+  }
+  return out;
+}
+function saveAgenda(d,patch){S.agenda[d]={...(S.agenda[d]||{}),...patch};ls.s("ag",S.agenda)}
+function savePeriods(d,periods){S.agenda[d]={...(S.agenda[d]||{}),periods};ls.s("ag",S.agenda)}
+
+function parseTime(t){
+  const s=String(t||"").trim();
+  const m=s.match(/(\d{1,2})[:\.](\d{2})/);
+  if(m) return parseInt(m[1])*60+parseInt(m[2]);
+  return 9999; // no parseable time → end
+}
+function sortEvsByTime(evs){
+  return [...evs].sort((a,b)=>parseTime(a.t)-parseTime(b.t));
+}
+
+function serializeDay(dayEl){
+  const periods=[];
+  dayEl.querySelectorAll(".period").forEach(p=>{
+    const ph=p.querySelector(".period-h");
+    const evs=[];
+    p.querySelectorAll(".ev").forEach(e=>{
+      evs.push({
+        t:e.querySelector(".ev-time").textContent.trim(),
+        n:e.querySelector(".ev-name").textContent.trim(),
+        d:e.querySelector(".ev-desc")?.textContent.trim()||"",
+        c:e.dataset.cat||"info",
+      });
+    });
+    periods.push({p:ph?ph.textContent.trim():"",evs});
+  });
+  return periods;
+}
+
+/* ================================================================
+   DRAG AND DROP
+================================================================ */
+let dragSrc=null;
+function initDrag(evEl,dayEl,dayNum){
+  evEl.setAttribute("draggable","true");
+  evEl.querySelector(".ev-handle").style.display="flex";
+
+  evEl.addEventListener("dragstart",e=>{
+    dragSrc=evEl;evEl.classList.add("dragging");
+    e.dataTransfer.effectAllowed="move";
+  });
+  evEl.addEventListener("dragend",()=>{
+    evEl.classList.remove("dragging");
+    dayEl.querySelectorAll(".ev").forEach(el=>el.classList.remove("drag-over"));
+    // auto-sort after drop
+    const periods=serializeDay(dayEl);
+    periods.forEach(p=>{p.evs=sortEvsByTime(p.evs)});
+    savePeriods(dayNum,periods);
+    renderAgendaDay(dayEl,dayNum);
+  });
+  evEl.addEventListener("dragover",e=>{
+    e.preventDefault();e.dataTransfer.dropEffect="move";
+    if(dragSrc&&dragSrc!==evEl){
+      dayEl.querySelectorAll(".ev").forEach(el=>el.classList.remove("drag-over"));
+      evEl.classList.add("drag-over");
+    }
+  });
+  evEl.addEventListener("drop",e=>{
+    e.preventDefault();
+    if(dragSrc&&dragSrc!==evEl){
+      const parent=evEl.parentNode;
+      parent.insertBefore(dragSrc,evEl);
+      evEl.classList.remove("drag-over");
+    }
+  });
+}
+
+/* ================================================================
+   RENDER AGENDA DAY (reusable)
+================================================================ */
+const CATS_OPTS=CATS.map(k=>`<option value="${k}">${CAT[k].i} ${k}</option>`).join("");
+
+function makeEvEl(ev,dayNum){
+  const cat=CAT[ev.c]||CAT.info;
+  const div=document.createElement("div");
+  div.className="ev";div.dataset.cat=ev.c;
+  div.innerHTML=`
+    <span class="ev-handle" style="display:none;align-items:center">⠿</span>
+    <div class="ev-stripe ${cat.s}"></div>
+    <div class="ev-body">
+      <div class="ev-top">
+        <span class="ev-time" contenteditable="plaintext-only">${ev.t}</span>
+        <span class="ev-icon">${cat.i}</span>
+        <span class="ev-name" contenteditable="plaintext-only">${ev.n}</span>
+      </div>
+      <div class="ev-desc${ev.d?" open":""}" contenteditable="plaintext-only">${ev.d||""}</div>
+    </div>
+    <div class="ev-actions">
+      <select class="ev-cat-sel">${CATS_OPTS}</select>
+      <button class="ev-del" title="Remover">✕</button>
+    </div>
+    <span class="ev-chev${ev.d?" open":""}">›</span>`;
+  div.querySelector(".ev-cat-sel").value=ev.c;
+  return div;
+}
+
+function renderAgendaDay(dayEl,dayNum){
+  const day=getDay(dayNum);if(!day) return;
+  const periodsContainer=dayEl.querySelector(".periods-wrap");
+  if(!periodsContainer) return;
+  periodsContainer.innerHTML="";
+  day.periods.forEach((per,pi)=>{
+    const pDiv=document.createElement("div");
+    pDiv.className="period";pDiv.dataset.pi=pi;
+    pDiv.innerHTML=`<div class="period-h" contenteditable="plaintext-only">${per.p}</div>`;
+    per.evs.forEach(e=>{
+      const evEl=makeEvEl(e,dayNum);
+      pDiv.appendChild(evEl);
+      initDrag(evEl,dayEl,dayNum);
+    });
+    // Sort button
+    const sb=document.createElement("button");
+    sb.className="sort-btn";sb.textContent="↑↓ Ordenar por horário";sb.dataset.pi=pi;
+    // Add button
+    const ab=document.createElement("button");
+    ab.className="ev-add";ab.textContent="+ ADICIONAR ITEM";ab.dataset.pi=pi;
+    periodsContainer.appendChild(pDiv);
+    periodsContainer.appendChild(sb);
+    periodsContainer.appendChild(ab);
+  });
+  bindDayEl(dayEl,dayNum);
+}
+
+function bindDayEl(dayEl,dayNum){
+  const autoSave=()=>{
+    const periods=serializeDay(dayEl);savePeriods(dayNum,periods);
+  };
+  dayEl.querySelectorAll("[contenteditable]").forEach(el=>{
+    el.addEventListener("blur",autoSave);
+  });
+  dayEl.querySelector(".d-title")?.addEventListener("blur",e=>{
+    saveAgenda(dayNum,{title:e.target.textContent.trim()});
+  });
+  dayEl.querySelector(".d-date")?.addEventListener("blur",e=>{
+    saveAgenda(dayNum,{date:e.target.textContent.trim()});
+  });
+  dayEl.querySelector(".d-city")?.addEventListener("blur",e=>{
+    saveAgenda(dayNum,{city:e.target.textContent.trim()});
+  });
+
+  dayEl.querySelectorAll(".ev").forEach(evEl=>{
+    // chev + tap to expand
+    const chev=evEl.querySelector(".ev-chev");
+    const desc=evEl.querySelector(".ev-desc");
+    chev.addEventListener("click",e=>{
+      e.stopPropagation();
+      desc.classList.toggle("open");chev.classList.toggle("open");
+    });
+    evEl.addEventListener("click",e=>{
+      if(e.target.closest("[contenteditable]")||e.target.closest("select")||
+         e.target.closest(".ev-del")||e.target.closest(".ev-chev")||
+         e.target.closest(".ev-handle")) return;
+      desc.classList.toggle("open");chev.classList.toggle("open");
+    });
+    // cat select
+    const sel=evEl.querySelector(".ev-cat-sel");
+    sel.addEventListener("change",()=>{
+      const c=sel.value;evEl.dataset.cat=c;const cat=CAT[c]||CAT.info;
+      evEl.querySelector(".ev-stripe").className=`ev-stripe ${cat.s}`;
+      evEl.querySelector(".ev-icon").textContent=cat.i;
+      autoSave();
+    });
+    // delete
+    evEl.querySelector(".ev-del").addEventListener("click",e=>{
+      e.stopPropagation();evEl.remove();autoSave();
+    });
+    // drag
+    initDrag(evEl,dayEl,dayNum);
+  });
+
+  // Sort buttons
+  dayEl.querySelectorAll(".sort-btn").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const pi=parseInt(btn.dataset.pi);
+      const periods=serializeDay(dayEl);
+      if(periods[pi]) periods[pi].evs=sortEvsByTime(periods[pi].evs);
+      savePeriods(dayNum,periods);
+      renderAgendaDay(dayEl,dayNum);
+    });
+  });
+
+  // Add buttons
+  dayEl.querySelectorAll(".ev-add").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const pi=parseInt(btn.dataset.pi);
+      const periods=serializeDay(dayEl);
+      if(!periods[pi]) return;
+      periods[pi].evs.push({t:"Horário",n:"Novo item",d:"Descrição",c:"info"});
+      savePeriods(dayNum,periods);
+      renderAgendaDay(dayEl,dayNum);
+    });
+  });
+
+  // Notes
+  const ta=dayEl.querySelector(".d-notes");
+  if(ta){let t;ta.addEventListener("input",()=>{
+    clearTimeout(t);t=setTimeout(()=>{S.notes[dayNum]=ta.value;ls.s("nt",S.notes)},400);
+  });}
+}
+
+/* ================================================================
+   RENDER FUNCTIONS
+================================================================ */
+function renderKpi(){
+  const now=new Date(),diff=CFG.TRIP_START-now;
+  const days=Math.max(0,Math.floor(diff/864e5));
+  let pend=0,urg=0;
+  CHECKLIST.forEach(g=>{if(!g.done) g.items.forEach(i=>{
+    if(!S.checks[i.id]){pend++;if(i.tags&&i.tags[0][1]==="u") urg++;}
+  })});
+  document.getElementById("kpi").innerHTML=`
+    <div class="kc"><div class="kc-l">FALTAM</div><div class="kc-v">${days}<small>dias</small></div></div>
+    <div class="kc kc-u"><div class="kc-l">URGENTE</div><div class="kc-v">${urg}<small>itens</small></div></div>
+    <div class="kc"><div class="kc-l">PENDENTES</div><div class="kc-v">${pend}<small>itens</small></div></div>`;
+}
+
+function renderHoje(){
+  const el=document.getElementById("hoje");
+  const now=new Date();
+  const inTrip=now>=CFG.TRIP_START&&now<=CFG.TRIP_END;
+  const dayNum=Math.floor((now-CFG.TRIP_START)/864e5)+1;
+  if(!inTrip){
+    const days=Math.ceil((CFG.TRIP_START-now)/864e5);
+    const urgentes=CHECKLIST[0].items.filter(i=>!S.checks[i.id]);
+    el.innerHTML=`
+      <div class="hoje-hero"><div class="hoje-top">
+        <div class="hoje-label">CONTAGEM REGRESSIVA</div>
+        <div class="hoje-date">${days}</div>
+        <div class="hoje-city">DIAS PARA EMBARCAR · 28 DE JUNHO</div>
+      </div></div>
+      <div class="sh">PRÓXIMAS URGÊNCIAS</div>
+      <div class="card">${urgentes.slice(0,3).map(i=>{
+        let dead="";
+        if(i.deadline){const d=new Date(i.deadline),dif=Math.ceil((d-now)/864e5);
+          dead=`<div class="ck-dead">${dif>0?`⏰ COMPRAR EM ATÉ ${dif} DIAS`:"⚠️ PRAZO VENCIDO"}</div>`;}
+        return `<div class="ck-row"><div class="ck-dot"></div>
+          <div class="ck-body"><div class="ck-t">${i.t}</div>
+          <div class="ck-m">${i.m||""}</div>${dead}</div></div>`;
+      }).join("")}</div>
+      <div class="sh">ANOTAÇÕES</div>
+      <div class="card"><textarea class="d-notes" data-note="0"
+        placeholder="Notas pré-viagem…">${S.notes[0]||""}</textarea></div>`;
+  } else {
+    const day=getDay(dayNum);
+    if(!day){el.innerHTML=`<div class="pre-trip"><div class="big">🎉</div><div class="lbl">Viagem concluída!</div></div>`;return;}
+    const allEvs=day.periods.flatMap(p=>p.evs.map(e=>({...e,period:p.p})));
+    el.innerHTML=`
+      <div class="hoje-hero"><div class="hoje-top">
+        <div class="hoje-label">HOJE · DIA ${day.d} DE 15</div>
+        <div class="hoje-date">${day.date}</div>
+        <div class="hoje-city">${day.city}</div>
+      </div>
+      <div style="padding:14px 16px 4px">
+        ${allEvs.map(e=>{const cat=CAT[e.c]||CAT.info;return`
+          <div class="hoje-ev">
+            <div class="hoje-ev-time">${e.t}</div>
+            <div class="hoje-ev-stripe ${cat.s}"></div>
+            <div><div class="hoje-ev-name">${cat.i} ${e.n}</div>
+            ${e.d?`<div class="hoje-ev-desc">${e.d}</div>`:""}</div>
+          </div>`;}).join("")}
+      </div></div>
+      <div class="sh">ANOTAÇÕES DE HOJE</div>
+      <div class="card"><textarea class="d-notes" data-note="${dayNum}"
+        placeholder="Anote aqui…">${S.notes[dayNum]||""}</textarea></div>`;
+  }
+  el.querySelectorAll("[data-note]").forEach(ta=>{let t;ta.addEventListener("input",()=>{
+    clearTimeout(t);t=setTimeout(()=>{S.notes[ta.dataset.note]=ta.value;ls.s("nt",S.notes)},400);
+  })});
+}
+
 function renderChecklist(){
-  const el=document.getElementById("checklist");
+  const el=document.getElementById("checklist");const now=new Date();
   el.innerHTML=CHECKLIST.map(g=>`
-    <div class="sh">${g.group}</div><div class="card">${g.items.map(i=>{
-      const on=g.done||state.checks[i.id];
-      return `<div class="ck-row" data-ck="${i.id}" data-grp="${g.done?1:0}">
+    <div class="sh">${g.g}</div><div class="card">
+    ${g.items.map(i=>{const on=g.done||S.checks[i.id];
+      let dead="";
+      if(i.deadline&&!on){const d=new Date(i.deadline),dif=Math.ceil((d-now)/864e5);
+        dead=`<div class="ck-dead">${dif>0?`⏰ COMPRAR EM ATÉ ${dif} DIAS`:"⚠️ PRAZO VENCIDO"}</div>`;}
+      return`<div class="ck-row" data-ck="${i.id}" data-done="${g.done?1:0}">
         <div class="ck-dot${on?" on":""}"></div>
         <div class="ck-body">
           <div class="ck-t${on?" on":""}">${i.t}</div>
           ${i.m?`<div class="ck-m">${i.m}</div>`:""}
-          ${i.tags?`<div class="ck-tags">${i.tags.map(([t,k])=>`<span class="pill pill-${k}">${t}</span>`).join("")}</div>`:""}
-        </div>
-      </div>`;
+          ${i.tags?`<div class="ck-tags">${i.tags.map(([t,k])=>`<span class="pill p${k}">${t}</span>`).join("")}</div>`:""}
+          ${dead}
+        </div></div>`;
     }).join("")}</div>`).join("");
-  el.querySelectorAll("[data-ck]").forEach(r=>r.addEventListener("click",async()=>{
-    if(r.dataset.grp==="1") return;
-    const id=r.dataset.ck; state.checks[id]=!state.checks[id];
-    await sSet("ck",state.checks); renderChecklist(); renderKpi();
+  el.querySelectorAll("[data-ck]").forEach(r=>r.addEventListener("click",()=>{
+    if(r.dataset.done==="1") return;
+    const id=r.dataset.ck;S.checks[id]=!S.checks[id];
+    ls.s("ck",S.checks);renderChecklist();renderKpi();renderHoje();
   }));
-}
-
-/* ================================================================
-   RENDER: AGENDA
-================================================================ */
-function getMerged(day){
-  const e=state.edits[day.d]||{};
-  const b={...day, periods:day.periods.map(p=>({...p, evs:p.evs.map(v=>({...v}))}))};
-  if(e.title!==undefined) b.title=e.title;
-  if(e.periods) b.periods=e.periods;
-  return b;
 }
 
 function renderAgenda(){
   const el=document.getElementById("agenda");
-  el.innerHTML=AGENDA.map(raw=>{
-    const day=getMerged(raw);
-    return `
-    <div class="day" data-day="${day.d}">
+  el.innerHTML=AGENDA_DEFAULT.map(raw=>`
+    <div class="day" data-day="${raw.d}">
       <div class="day-top">
-        <span class="day-num">DIA ${day.d}</span>
-        <span class="day-date">${day.date}</span>
-        <span class="day-city">${day.city}</span>
+        <span class="d-num">DIA ${raw.d}</span>
+        <span class="d-date" contenteditable="plaintext-only">${getDay(raw.d).date}</span>
+        <span class="d-city" contenteditable="plaintext-only">${getDay(raw.d).city}</span>
       </div>
-      <div class="day-title" contenteditable="plaintext-only" data-field="title">${day.title}${day.bday?'<span class="day-bday">ANIVERSÁRIO</span>':''}</div>
-      ${day.periods.map((per,pi)=>`
-        <div class="period" data-period="${pi}">
-          <div class="period-head">${per.p}</div>
-          ${per.evs.map((e,ei)=>{
-            const cat=C[e.c]||C.info;
-            return `
-            <div class="ev" data-ev="${pi}-${ei}">
-              <div class="ev-stripe ${cat.stripe}"></div>
-              <div class="ev-body">
-                <div class="ev-head">
-                  <span class="ev-time">${e.t}</span>
-                  <span class="ev-cat-icon">${cat.icon}</span>
-                  <span class="ev-name">${e.n}</span>
-                </div>
-                <div class="ev-desc">${e.d||""}</div>
-              </div>
-              <span class="ev-chevron">›</span>
-            </div>`;
-          }).join("")}
-        </div>
-      `).join("")}
-      <button class="ev-add" data-add="${day.d}">+ ADICIONAR ITEM</button>
-      <textarea class="day-notes" data-note="${day.d}" placeholder="Anotações do dia…">${state.notes[day.d]||""}</textarea>
-    </div>`;
-  }).join("");
-
-  // Collapse toggle
-  el.querySelectorAll(".ev").forEach(e=>e.addEventListener("click",()=>{
-    const desc=e.querySelector(".ev-desc"), chev=e.querySelector(".ev-chevron");
-    desc.classList.toggle("open"); chev.classList.toggle("open");
-  }));
-  // Notes save
-  el.querySelectorAll("[data-note]").forEach(ta=>{let t;ta.addEventListener("input",()=>{
-    clearTimeout(t);t=setTimeout(async()=>{state.notes[ta.dataset.note]=ta.value;await sSet("nt",state.notes)},400);
-  })});
-  // Title edit
-  el.querySelectorAll("[data-field='title']").forEach(t=>{let d;t.addEventListener("input",()=>{
-    clearTimeout(d);d=setTimeout(async()=>{
-      const dn=parseInt(t.closest(".day").dataset.day);
-      state.edits[dn]={...(state.edits[dn]||{}),title:t.textContent};await sSet("ed",state.edits);
-    },400);
-  })});
+      <div class="d-title" contenteditable="plaintext-only">${getDay(raw.d).title}${raw.bday?'<span class="d-bday">ANIVERSÁRIO</span>':''}</div>
+      <div class="periods-wrap"></div>
+      <span class="d-notes-lbl">ANOTAÇÕES</span>
+      <textarea class="d-notes" data-note="${raw.d}" placeholder="Anote aqui…">${S.notes[raw.d]||""}</textarea>
+    </div>`).join("");
+  el.querySelectorAll(".day").forEach(dayEl=>{
+    const dayNum=parseInt(dayEl.dataset.day);
+    renderAgendaDay(dayEl,dayNum);
+  });
 }
 
-/* ================================================================
-   RENDER: RESERVAS
-================================================================ */
 function renderReservas(){
   const sl={ok:"✓ CONFIRMADO",pen:"○ PENDENTE",no:"· A COMPRAR"};
   const sc={ok:"s-ok",pen:"s-pen",no:"s-no"};
-  const driveLink = DRIVE || null;
-  const el=document.getElementById("reservas");
-  el.innerHTML=`
-    ${driveLink?`<div class="sh">DOCUMENTOS</div><div class="card"><div class="res-group">
-      <a class="res-link" href="${driveLink}" target="_blank" rel="noopener">📁 Abrir pasta do Google Drive com vouchers e comprovantes →</a>
-      <div style="font-size:11px;color:var(--ink-4);margin-top:6px">Pasta compartilhada entre Pedro e Marina. Todos os vouchers, confirmações e ingressos ficam aqui — offline basta baixar o app do Drive.</div>
-    </div></div>`:`<div class="sh">DOCUMENTOS</div><div class="card"><div class="res-group">
-      <div style="font-size:12px;color:var(--ink-3)">Pra linkar os comprovantes: crie uma pasta no Google Drive, compartilhe com a Marina, e cole o link no código (variável <code>DRIVE</code> no topo do script). Tudo fica privado entre vocês — o repo público só mostra o link, não abre sem permissão.</div>
-    </div></div>`}
-    <div class="sh">ESTADO DAS RESERVAS</div><div class="card">
-    ${RESERVAS.map(g=>`<div class="res-group"><div class="res-city">${g.city}</div>
-      ${g.items.map(i=>`<div class="res-row">
-        <div class="res-k">${i.k}</div>
-        <div class="res-v">${i.v}${i.sub?`<span class="sub">${i.sub}</span>`:""}</div>
-        <div class="res-s ${sc[i.s]}">${sl[i.s]}</div>
-      </div>`).join("")}
-    </div>`).join("")}
-    </div>`;
+  document.getElementById("reservas").innerHTML=`
+    <div class="sh">DOCUMENTOS</div>
+    <div class="card">${CFG.DRIVE_LINK
+      ?`<a href="${CFG.DRIVE_LINK}" target="_blank" class="nav-btn">
+          <span class="nav-btn-icon">📁</span>
+          <span class="nav-btn-text">Pasta Google Drive<br><span style="font-size:11px;color:var(--ink-3);font-weight:400">Vouchers, comprovantes e ingressos</span></span>
+          <span class="nav-btn-arr">›</span></a>`
+      :`<div class="info-note">Cole o link do Google Drive na variável <code>DRIVE_LINK</code> no topo do script. A pasta fica privada — só quem tiver o link e permissão acessa.</div>`}
+    </div>
+    <div class="sh">ESTADO DAS RESERVAS</div>
+    <div class="card">${RESERVAS.map(g=>`
+      <div class="res-group"><div class="res-city">${g.city}</div>
+        ${g.items.map(i=>`<div class="res-row">
+          <div class="res-k">${i.k}</div>
+          <div class="res-v">${i.v}${i.sub?`<span class="sub">${i.sub}</span>`:""}</div>
+          <div class="res-s ${sc[i.s]}">${sl[i.s]}</div>
+        </div>`).join("")}
+      </div>`).join("")}</div>`;
 }
 
-/* ================================================================
-   RENDER: MAP (Leaflet embed via iframe with OpenStreetMap)
-================================================================ */
-function renderMap(){
+async function renderMapa(){
   const el=document.getElementById("mapa");
-  // Build a simple Leaflet map in an iframe blob
-  const markers = PINS.map(p=>`
-    L.marker([${p.lat},${p.lng}],{icon:L.divIcon({html:'<div style="font-size:24px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3))">${p.emoji}</div>',className:'',iconSize:[30,30],iconAnchor:[15,15]})})
-      .addTo(map).bindPopup('<b>${p.label}</b><br>Dia ${p.d}');
-  `).join("\n");
-  
-  const route = PINS.map(p=>`[${p.lat},${p.lng}]`).join(",");
-  
-  const mapHtml = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"><\/script>
-    <style>html,body,#map{margin:0;height:100%;width:100%;background:#f0efed}</style>
-  </head><body><div id="map"></div><script>
-    const map=L.map('map',{zoomControl:false}).setView([-14.5,-72],6);
-    L.control.zoom({position:'bottomright'}).addTo(map);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
-      attribution:'© OpenStreetMap © CARTO',maxZoom:18
-    }).addTo(map);
-    ${markers}
-    L.polyline([${route}],{color:'#2563eb',weight:2,opacity:.5,dashArray:'6 4'}).addTo(map);
-    map.fitBounds([${route}],{padding:[30,30]});
-  <\/script></body></html>`;
-
-  const blob = new Blob([mapHtml], {type:'text/html'});
-  const url = URL.createObjectURL(blob);
-
   el.innerHTML=`
-    <div class="sh">ROTA DA VIAGEM</div>
+    <div class="sh">SEU MAPA — PERU</div>
     <div class="map-wrap">
-      <iframe class="map-frame" src="${url}" title="Mapa do Peru" sandbox="allow-scripts" loading="lazy"></iframe>
-      <div class="map-legend">
-        ${PINS.map(p=>`<span class="map-leg">${p.emoji} ${p.label}</span>`).join("")}
-      </div>
+      <iframe class="map-frame" src="${CFG.MY_MAP_SRC}"
+        allowfullscreen loading="lazy" title="Mapa Peru"></iframe>
     </div>
-    <div style="font-size:11px;color:var(--ink-4);margin-top:8px;padding:0 2px">Rota aproximada. Toque nos pins pra ver o dia correspondente.</div>
-  `;
+    <p class="hint" style="margin-top:8px">Adicione pins no <a href="https://mymaps.google.com" target="_blank">My Maps</a> — aparecem aqui automaticamente.</p>
+    <div class="sh">CLIMA POR CIDADE</div>
+    <div class="weather-strip" id="weather-cities">
+      ${CITY_WEATHER.map(c=>`
+        <div class="city-weather">
+          <div class="cw-city">${c.city}</div>
+          <div class="cw-days">${c.days}</div>
+          <div class="cw-data" id="cw-${c.city}">
+            <span class="cw-skel"></span>
+          </div>
+          <a href="${c.maps}" target="_blank" rel="noopener"
+            style="font-size:11px;color:var(--c-tr);font-weight:600;white-space:nowrap;margin-left:8px">Navegar ›</a>
+        </div>`).join("")}
+    </div>`;
+  CITY_WEATHER.forEach(c=>{
+    fetchW(c.lat,c.lon).then(w=>{
+      const el=document.getElementById(`cw-${c.city}`);
+      if(!el) return;
+      el.innerHTML=w?`<span class="cw-icon">${w.icon}</span><span class="cw-temp">${w.temp}°C</span>`:`<span style="font-size:12px;color:var(--ink-4)">—</span>`;
+    });
+  });
 }
 
-/* ================================================================
-   RENDER: INFO
-================================================================ */
-function renderInfo(){
-  const el=document.getElementById("info");
+function renderGuia(){
+  const el=document.getElementById("guia");
+  el.innerHTML=GUIA.map(g=>`
+    <div class="guia-city">
+      <div class="guia-header">
+        <div style="font-size:28px;margin-bottom:6px">${g.emoji}</div>
+        <div class="guia-city-name">${g.city}</div>
+        <div class="guia-tagline">${g.tagline}</div>
+        <div class="guia-badges">${g.badges.map(b=>`<span class="badge">${b}</span>`).join("")}</div>
+      </div>
+      <div class="guia-body">
+        ${g.sections.map(s=>`
+          <div class="guia-section">
+            <div class="guia-section-title">${s.t}</div>
+            ${typeof s.c==="string"
+              ?`<div class="guia-text">${s.c}</div>`
+              :`<div class="guia-tips">${s.c.map(tip=>`
+                <div class="guia-tip">
+                  <span class="guia-tip-icon">${tip.i}</span>
+                  <span>${tip.t}</span>
+                </div>`).join("")}</div>`}
+          </div>`).join("")}
+      </div>
+    </div>`).join("");
+}
+
+function renderHablando(){
+  const el=document.getElementById("hablando");
   el.innerHTML=`
+    ${HABLANDO.map(sec=>`
+      <div class="sh"><span class="hab-tag htag-${sec.tagk}">${sec.tag}</span></div>
+      <div class="card hab-section">
+        ${sec.phrases.map(ph=>`
+          <div class="ph-row">
+            <div class="ph-body">
+              <div class="ph-es">${ph.es}</div>
+              <div class="ph-pt">${ph.pt}</div>
+              ${ph.pron?`<div class="ph-pron">${ph.pron}</div>`:""}
+              ${ph.hear?`<div class="ph-hear">👂 ${ph.hear}</div>`:""}
+            </div>
+            <button class="ph-copy" data-text="${ph.es.replace(/"/g,"&quot;")}">Copiar</button>
+          </div>`).join("")}
+      </div>`).join("")}
+    <div class="sh">PEGADINHAS E CULTURA</div>
+    ${PEGADINHAS.map(p=>`
+      <div class="pegadinha">
+        <strong>⚠️ ${p.t}</strong>
+        <p>${p.p}</p>
+      </div>`).join("")}`;
+  el.querySelectorAll(".ph-copy").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      navigator.clipboard?.writeText(btn.dataset.text).catch(()=>{});
+      btn.textContent="✓";btn.classList.add("copied");
+      setTimeout(()=>{btn.textContent="Copiar";btn.classList.remove("copied")},1500);
+    });
+  });
+}
+
+function renderBagagem(){
+  const el=document.getElementById("bagagem");
+  const items=S.bagItems||BAG_DEFAULT.map(g=>({...g,items:[...g.items]}));
+  S.bagItems=items;
+  const total=items.reduce((s,g)=>s+g.items.length,0);
+  const temTotal=items.reduce((s,g,gi)=>s+g.items.filter((_,ii)=>S.bag[`${gi}-${ii}-t`]).length,0);
+  const malaTotal=items.reduce((s,g,gi)=>s+g.items.filter((_,ii)=>S.bag[`${gi}-${ii}-m`]).length,0);
+
+  el.innerHTML=`
+    <div class="bag-legend">
+      <div class="bag-legend-item"><div class="bag-legend-dot" style="background:var(--c-tr)"></div>TENHO</div>
+      <div class="bag-legend-item"><div class="bag-legend-dot" style="background:var(--green)"></div>NA MALA</div>
+    </div>
+    <div class="bag-progress"><div class="bag-bar" style="width:${total?Math.round(malaTotal/total*100):0}%"></div></div>
+    <div style="font-size:11px;color:var(--ink-4);margin-bottom:14px;font-family:var(--mono)">
+      ${temTotal}/${total} tenho · ${malaTotal}/${total} na mala
+    </div>
+    ${items.map((g,gi)=>`
+      <div class="sh"><span style="margin-right:6px">${g.ico}</span>${g.g}</div>
+      <div class="card">
+        ${g.items.map((item,ii)=>{
+          const kt=`${gi}-${ii}-t`,km=`${gi}-${ii}-m`;
+          const t=!!S.bag[kt],m=!!S.bag[km];
+          return`<div class="bag-row" data-gi="${gi}" data-ii="${ii}">
+            <div class="bag-checks">
+              <div class="bag-check" data-bag="${kt}" title="Tenho este item">
+                <div class="bag-dot${t?" tenho":""}"></div>
+                <span class="bag-dot-lbl">TENHO</span>
+              </div>
+              <div class="bag-check" data-bag="${km}" title="Já na mala">
+                <div class="bag-dot${m?" mala":""}"></div>
+                <span class="bag-dot-lbl">MALA</span>
+              </div>
+            </div>
+            <div class="bag-text${m?" packed":""}" contenteditable="plaintext-only"
+              data-gi="${gi}" data-ii="${ii}">${item}</div>
+            <button class="bag-del" data-gi="${gi}" data-ii="${ii}">✕</button>
+          </div>`;
+        }).join("")}
+        <button class="bag-add" data-gi="${gi}">+ ADICIONAR ITEM</button>
+      </div>`).join("")}`;
+
+  el.querySelectorAll("[data-bag]").forEach(dot=>{
+    dot.addEventListener("click",()=>{
+      const k=dot.dataset.bag;S.bag[k]=!S.bag[k];
+      ls.s("bg",S.bag);renderBagagem();
+    });
+  });
+  el.querySelectorAll(".bag-text").forEach(t=>{
+    let tm;t.addEventListener("input",()=>{clearTimeout(tm);tm=setTimeout(()=>{
+      S.bagItems[parseInt(t.dataset.gi)].items[parseInt(t.dataset.ii)]=t.textContent;
+      ls.s("bagitems",S.bagItems);
+    },400)});
+  });
+  el.querySelectorAll(".bag-del").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      S.bagItems[parseInt(btn.dataset.gi)].items.splice(parseInt(btn.dataset.ii),1);
+      ls.s("bagitems",S.bagItems);renderBagagem();
+    });
+  });
+  el.querySelectorAll(".bag-add").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      S.bagItems[parseInt(btn.dataset.gi)].items.push("Novo item");
+      ls.s("bagitems",S.bagItems);renderBagagem();
+    });
+  });
+}
+
+function renderInfo(){
+  document.getElementById("info").innerHTML=`
     <div class="sh">VOOS COMPRADOS</div>
-    <div class="card">
-      <div class="res-group">
-        <div class="res-row"><div class="res-k">LA8202</div><div class="res-v">Brasil → Lima<span class="sub">28/jun · chegada 10:45</span></div><div class="res-s s-ok">✓</div></div>
-        <div class="res-row"><div class="res-k">LA2238</div><div class="res-v">Lima → Cusco<span class="sub">30/jun · 10:10→11:35</span></div><div class="res-s s-ok">✓</div></div>
-        <div class="res-row"><div class="res-k">LA2394</div><div class="res-v">Arequipa → Lima<span class="sub">12/jul · 14:00→15:40</span></div><div class="res-s s-ok">✓</div></div>
-        <div class="res-row"><div class="res-k">LA2110</div><div class="res-v">Lima → Brasil<span class="sub">12/jul · 19:30</span></div><div class="res-s s-ok">✓</div></div>
-      </div>
-    </div>
-    <div class="sh">DOCUMENTOS PESSOAIS</div>
-    <div class="card">
-      ${[
-        ["doc-rg","RG ou passaporte (Pedro)","Menos de 10 anos ou passaporte válido"],
-        ["doc-rgm","RG ou passaporte (Marina)","Menos de 10 anos ou passaporte válido"],
-        ["doc-seg","Seguro viagem — apólice salva offline","Já contratado"],
-        ["doc-chip","Chips internacionais testados","Testar antes de embarcar"],
-        ["doc-mp","Ingressos Machu Picchu impressos","Circuito 3A · 07:00 · 06/jul"],
-        ["doc-voo","Cartões de embarque (4 voos) offline",""],
-        ["doc-air","Vouchers Airbnb + Booking offline","Lima, Cusco, Ollanta, AC, Cusco, Puno"],
-      ].map(([id,t,m])=>`<div class="ck-row" data-ck="${id}" data-grp="0">
-        <div class="ck-dot${state.checks[id]?" on":""}"></div>
-        <div class="ck-body"><div class="ck-t${state.checks[id]?" on":""}">${t}</div>${m?`<div class="ck-m">${m}</div>`:""}</div>
+    <div class="card"><div class="res-group">
+      ${[["LA8202","Brasil → Lima","28/jun · chegada 10:45"],
+         ["LA2238","Lima → Cusco","30/jun · 10:10→11:35"],
+         ["LA2394","Arequipa → Lima","12/jul · 14:00→15:40"],
+         ["LA2110","Lima → Brasil","12/jul · 19:30"],
+      ].map(([k,v,s])=>`<div class="res-row">
+        <div class="res-k">${k}</div>
+        <div class="res-v">${v}<span class="sub">${s}</span></div>
+        <div class="res-s s-ok">✓</div>
       </div>`).join("")}
-    </div>
-    <div class="sh">BAGAGEM — ESSENCIAIS</div>
-    <div class="card">
-      ${[
-        ["bag-1","Casaco pesado + térmica","Cusco/Titicaca: −3°C de madrugada"],
-        ["bag-2","Tênis/bota de trekking","MP, Vale Sagrado, Colca opcional"],
-        ["bag-3","Protetor solar FPS 50+ e óculos","Altitude = sol agressivo"],
-        ["bag-4","Garrafa reutilizável","Não se compra água fácil em MP"],
-        ["bag-5","Adaptador universal de tomada","Peru geralmente = padrão BR, mas leve"],
-        ["bag-6","Kit remédios","Dipirona, ibuprofeno, antiácido, soroche pills"],
-        ["bag-7","Dinheiro: ~300 USD + cartão sem IOF","Wise, C6 Global ou Nomad"],
-      ].map(([id,t,m])=>`<div class="ck-row" data-ck="${id}" data-grp="0">
-        <div class="ck-dot${state.checks[id]?" on":""}"></div>
-        <div class="ck-body"><div class="ck-t${state.checks[id]?" on":""}">${t}</div>${m?`<div class="ck-m">${m}</div>`:""}</div>
-      </div>`).join("")}
-    </div>
+    </div></div>
     <div class="sh">CONTATOS ÚTEIS</div>
-    <div class="card">
-      <div class="res-group">
-        <div class="res-row"><div class="res-k">EMERGÊNCIA</div><div class="res-v">105 (polícia) · 116 (bombeiros)<span class="sub">Funciona em todo o Peru</span></div></div>
-        <div class="res-row"><div class="res-k">CONSULADO BR</div><div class="res-v">Lima: +51 1 512-0830<span class="sub">Av. José Pardo 850, Miraflores</span></div></div>
-        <div class="res-row"><div class="res-k">INCA RAIL</div><div class="res-v">+51 84 233030<span class="sub">incarail.com</span></div></div>
-      </div>
-    </div>
-  `;
-  // bind checks in info
-  el.querySelectorAll("[data-ck]").forEach(r=>r.addEventListener("click",async()=>{
-    const id=r.dataset.ck;state.checks[id]=!state.checks[id];
-    await sSet("ck",state.checks);renderInfo();renderKpi();
-  }));
+    <div class="card"><div class="res-group">
+      ${[["EMERGÊNCIA","105 (polícia) · 116 (bombeiros)","Todo o Peru"],
+         ["CONSULADO BR","Lima: +51 1 512-0830","Av. José Pardo 850, Miraflores"],
+         ["INCA RAIL","+51 84 233030","incarail.com"],
+         ["INCA EXPRESS","+51 84 247887","inkaexpress.com"],
+      ].map(([k,v,s])=>`<div class="res-row">
+        <div class="res-k">${k}</div>
+        <div class="res-v">${v}<span class="sub">${s}</span></div>
+        <div></div>
+      </div>`).join("")}
+    </div></div>
+    <div class="sh">NOTAS COMPARTILHADAS — SETUP</div>
+    <div class="card"><div class="info-note">
+      Para notas sincronizarem em tempo real entre os dois iPhones:<br>
+      <strong>1.</strong> Crie uma planilha em <a href="https://sheets.google.com" target="_blank">Google Sheets</a><br>
+      <strong>2.</strong> Compartilhe com a Marina (acesso de edição)<br>
+      <strong>3.</strong> Cole o ID da planilha em <code>SHEETS_ID</code> no topo do script<br>
+      Me avise quando quiser implementar — te guio no passo a passo.
+    </div></div>`;
 }
 
 /* ================================================================
@@ -752,8 +1578,13 @@ document.getElementById("tabs").addEventListener("click",e=>{
 ================================================================ */
 (async()=>{
   await load();
-  renderKpi();renderChecklist();renderAgenda();renderReservas();renderMap();renderInfo();
+  renderKpi();renderHoje();renderChecklist();
+  renderAgenda();renderReservas();renderGuia();
+  renderHablando();renderBagagem();renderInfo();
+  await renderMapa();
+  await updateHeaderWeather();
   setInterval(renderKpi,60000);
+  document.getElementById("hdr-weather").addEventListener("click",updateHeaderWeather);
 })();
 </script>
 </body>
