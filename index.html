@@ -395,6 +395,11 @@ main{max-width:760px;margin:0 auto;padding:14px 20px 100px}
 /* ================================================================
    CONFIG
 ================================================================ */
+const DOCS=[
+  {id:"doc-perurail",name:"PeruRail EXPEDITION (Bimodal)",sub:"Trem MP → Ollanta + Ônibus → Cusco · 06/jul · WEB2876847",icon:"🚂",url:"https://drive.google.com/file/d/1dlnBVoyK6mUfvXIDHneZ_CPv_0wwbIfo/view?usp=share_link"},
+  {id:"doc-incarail",name:"Inca Rail The Voyager Light",sub:"Trem Ollantaytambo → Aguas Calientes · 05/jul · #651755",icon:"🚂",url:"https://drive.google.com/file/d/1-QpV6qBeCk2XVrw4JAp910L88YnJdfBM/view?usp=share_link"},
+];
+
 const CFG={
   TRIP_START:new Date("2026-06-28T00:00:00-03:00"),
   TRIP_END:  new Date("2026-07-12T23:59:00-03:00"),
@@ -420,8 +425,6 @@ const CATS=Object.keys(CAT);
 ================================================================ */
 const CHECKLIST=[
   {g:"COMPRAR COM URGÊNCIA",items:[
-    {id:"c-t1",t:"Trem Ollantaytambo → Aguas Calientes",m:"The Voyager · 19:27→21:09 · 05/jul · Inca Rail · USD 66/pax",tags:[["URGENTE","u"],["incarail.com","n"]],deadline:"2026-06-01"},
-    {id:"c-t2",t:"Trem Machu Picchu → Cusco (volta)",m:"The Voyager · 14:30→18:20 · 06/jul · Inca Rail · USD 119/pax",tags:[["URGENTE","u"],["incarail.com","n"]],deadline:"2026-06-01"},
     {id:"c-ie",t:"Inca Express Cusco → Puno",m:"07/jul · pickup 06:20 · USD 35–55/pax · esgota em alta temporada",tags:[["URGENTE","u"],["inkaexpress.com","n"]],deadline:"2026-06-10"},
     {id:"c-ht",t:"Hampton by Hilton Arequipa",m:"09–12/jul · 3 noites · cancelamento flexível",tags:[["RESERVAR","w"]],deadline:"2026-06-15"},
     {id:"c-ob",t:"Ônibus Puno → Arequipa",m:"09/jul · Cruz del Sur ou Tepsa · ~5–6h",tags:[["PENDENTE","w"]]},
@@ -435,6 +438,8 @@ const CHECKLIST=[
     {id:"c-sa",t:"Tour Salinas y Aguada Blanca",m:"11/jul madrugada · S/ 60–80 + S/ 6 entrada",tags:[["AREQUIPA","n"]]},
   ]},
   {g:"JÁ RESOLVIDO",done:true,items:[
+    {id:"d-t1",t:"Trem Ollantaytambo → Aguas Calientes",m:"Inca Rail The Voyager Light · 19:27→21:09 · 05/jul · USD 132 total · Reserva #651755 · Pedro BB50-00509587 · Marina BB50-00509588"},
+    {id:"d-t2",t:"Trem Machu Picchu → Cusco — Bimodal",m:"PeruRail EXPEDITION 204 · saída 13:37 · coche E, asiento 39/40 · ônibus 15:15→17:30 Wanchaq · WEB2876847 · USD 119/pax"},
     {id:"d-v",t:"Voos comprados",m:"LA8202 · LA2238 · LA2394 · LA2110"},
     {id:"d-mp",t:"Entrada Machu Picchu",m:"Circuito 3A · 07:00 · 06/jul · 2 pax"},
     {id:"d-se",t:"Seguro viagem contratado"},
@@ -540,7 +545,7 @@ const AGENDA_DEFAULT=[
       ev("~13:00","Almoço + preparar bagagem","Levar mochila pequena pra AC. Malas maiores ficam no Airbnb.","info"),
     ]},
     {p:"NOITE",evs:[
-      ev("19:27","Trem Inca Rail The Voyager","Estação Ollantaytambo. USD 66/pax. Chegada AC 21:09.","train"),
+      ev("19:27","Trem Inca Rail The Voyager Light","Estação Ollantaytambo. USD 66/pax. Chegada AC 21:09. Reserva #651755.","train"),
       ev("~21:30","Check-in + dormir cedo","Despertador 04:30.","lodge"),
     ]},
   ]},
@@ -555,7 +560,9 @@ const AGENDA_DEFAULT=[
       ev("~10:00","Descida + almoço em AC","A pé (40min) ou ônibus.","walk"),
     ]},
     {p:"TARDE / NOITE",evs:[
-      ev("14:30","Trem Inca Rail The Voyager MP → Cusco","USD 119/pax. Chega 18:20 na Av. El Sol 843.","train"),
+      ev("13:07","Check-in estação Machu Picchu","PeruRail — estar na estação às 13:07. Frequência 204, coche E, asientos 39 (Pedro) e 40 (Marina).","train"),
+      ev("13:37","PeruRail EXPEDITION 204 — MP → Ollantaytambo","Bimodal (trem + ônibus). USD 119/pax. Reserva WEB2876847.","train"),
+      ev("15:15","Ônibus PeruRail — Ollantaytambo → Wanchaq (Cusco)","Check-in 14:45 na estação. Chegada prevista 17:30.","bus"),
       ev("~19:00","Check-in Airbnb Cusco (pós-MP)","Próx. terminal Inca Express. Dormir cedo — saída 06:20.","lodge"),
     ]},
   ]},
@@ -640,8 +647,8 @@ const RESERVAS=[
   {city:"PUNO",items:[{k:"HOSPEDAGEM",v:"Booking — pagar no local",sub:"07–09/jul · 2 noites",s:"ok"}]},
   {city:"AREQUIPA",items:[{k:"HOSPEDAGEM",v:"Hampton by Hilton",sub:"09–12/jul · 3 noites",s:"pen"}]},
   {city:"TREM + MACHU PICCHU",items:[
-    {k:"TREM IDA",v:"Inca Rail The Voyager",sub:"05/jul · 19:27→21:09 · USD 66/pax",s:"pen"},
-    {k:"TREM VOLTA",v:"Inca Rail The Voyager",sub:"06/jul · 14:30→18:20 · USD 119/pax",s:"pen"},
+    {k:"TREM IDA",v:"Inca Rail The Voyager Light",sub:"05/jul · 19:27→21:09 · USD 132 total · #651755",s:"ok"},
+    {k:"TREM VOLTA",v:"PeruRail EXPEDITION 204 (Bimodal)",sub:"06/jul · 13:37 MP→Ollanta + ônibus 15:15→17:30 Cusco · USD 119/pax · WEB2876847",s:"ok"},
     {k:"ENTRADA MP",v:"Circuito 3A · 07:00",sub:"06/jul · 2 pax",s:"ok"},
     {k:"BUS CONSETTUR",v:"AC ↔ Machu Picchu",sub:"opcional · comprar em AC",s:"no"},
   ]},
@@ -1347,17 +1354,22 @@ function renderAgenda(){
   });
 }
 
+function openDoc(id){
+  const doc=DOCS.find(d=>d.id===id);
+  if(doc) window.open(doc.url,"_blank");
+}
+
 function renderReservas(){
   const sl={ok:"✓ CONFIRMADO",pen:"○ PENDENTE",no:"· A COMPRAR"};
   const sc={ok:"s-ok",pen:"s-pen",no:"s-no"};
   document.getElementById("reservas").innerHTML=`
     <div class="sh">DOCUMENTOS</div>
-    <div class="card">${CFG.DRIVE_LINK
-      ?`<a href="${CFG.DRIVE_LINK}" target="_blank" class="nav-btn">
-          <span class="nav-btn-icon">📁</span>
-          <span class="nav-btn-text">Pasta Google Drive<br><span style="font-size:11px;color:var(--ink-3);font-weight:400">Vouchers, comprovantes e ingressos</span></span>
-          <span class="nav-btn-arr">›</span></a>`
-      :`<div class="info-note">Cole o link do Google Drive na variável <code>DRIVE_LINK</code> no topo do script. A pasta fica privada — só quem tiver o link e permissão acessa.</div>`}
+    <div class="card">${DOCS.map(d=>`
+      <button class="nav-btn" onclick="openDoc('${d.id}')">
+        <span class="nav-btn-icon">${d.icon}</span>
+        <span class="nav-btn-text">${d.name}<br><span style="font-size:11px;color:var(--ink-3);font-weight:400">${d.sub}</span></span>
+        <span class="nav-btn-arr">›</span>
+      </button>`).join("")}
     </div>
     <div class="sh">ESTADO DAS RESERVAS</div>
     <div class="card">${RESERVAS.map(g=>`
