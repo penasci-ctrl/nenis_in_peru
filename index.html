@@ -396,8 +396,15 @@ main{max-width:760px;margin:0 auto;padding:14px 20px 100px}
    CONFIG
 ================================================================ */
 const DOCS=[
-  {id:"doc-perurail",name:"PeruRail EXPEDITION (Bimodal)",sub:"Trem MP → Ollanta + Ônibus → Cusco · 06/jul · WEB2876847",icon:"🚂",url:"https://drive.google.com/file/d/1dlnBVoyK6mUfvXIDHneZ_CPv_0wwbIfo/view?usp=share_link"},
+  {id:"doc-lima",name:"Airbnb Lima — Mini Depto Central Chic",sub:"28–30/jun · Miraflores, Av. Benavides 245 · HMWS3MEX8N",icon:"🏠",url:"https://drive.google.com/file/d/1971aGnLnK8H47ur2w4qAtsekdeRCWrDE/view?usp=share_link"},
+  {id:"doc-cusco1",name:"Airbnb Cusco — Double Room w/ Breakfast",sub:"30/jun–02/jul · Collacalle 322 · HM4PSMQ4ZZ",icon:"🏠",url:"https://drive.google.com/file/d/1m5B5Gv6uOThdek2_qV0FrFa36bmRDaEL/view?usp=share_link"},
+  {id:"doc-ollanta",name:"Airbnb Ollantaytambo — Double, Plaza de Armas",sub:"02–05/jul · Plaza de Armas s/n · HMXSS5EBAB",icon:"🏠",url:"https://drive.google.com/file/d/1yOwHJtISzvlkKT3JMBSrArkRR8YmMf_y/view?usp=share_link"},
+  {id:"doc-ac",name:"Airbnb Aguas Calientes",sub:"05/jul · 1 noite",icon:"🏠",url:"https://drive.google.com/file/d/1SHkk4pj3SFXsL3lrIPMlVLF9dH6LQ6U-/view?usp=share_link"},
+  {id:"doc-cusco2",name:"Airbnb Cusco — Loft Retama",sub:"06/jul · Av. del Ejército 1655-E · HMDCEKED8B",icon:"🏠",url:"https://drive.google.com/file/d/15iTwKqhzqC2v0FBfaJ_NwBOef8uJKMuH/view?usp=share_link"},
+  {id:"doc-puno",name:"Booking — Sumaq Puno",sub:"07–09/jul · #5612.684.830 · PIN 7239",icon:"🏨",url:"https://drive.google.com/file/d/1rFro3gSHZbbtO3ecs83Ax5_p6M_hCds5/view?usp=share_link"},
   {id:"doc-incarail",name:"Inca Rail The Voyager Light",sub:"Trem Ollantaytambo → Aguas Calientes · 05/jul · #651755",icon:"🚂",url:"https://drive.google.com/file/d/1-QpV6qBeCk2XVrw4JAp910L88YnJdfBM/view?usp=share_link"},
+  {id:"doc-inkaexpress",name:"Inka Express — Ruta del Sol",sub:"Cusco → Puno · 07/jul · #1395123673",icon:"🚌",url:"https://drive.google.com/file/d/1rGEEJ-caFMvMPJHSMU9IFaoSb14OIWpe/view?usp=sharing"},
+  {id:"doc-perurail",name:"PeruRail EXPEDITION (Bimodal)",sub:"Trem MP → Ollanta + Ônibus → Cusco · 06/jul · WEB2876847",icon:"🚂",url:"https://drive.google.com/file/d/1dlnBVoyK6mUfvXIDHneZ_CPv_0wwbIfo/view?usp=share_link"},
 ];
 
 const CFG={
@@ -425,7 +432,6 @@ const CATS=Object.keys(CAT);
 ================================================================ */
 const CHECKLIST=[
   {g:"COMPRAR COM URGÊNCIA",items:[
-    {id:"c-ie",t:"Inca Express Cusco → Puno",m:"07/jul · pickup 06:20 · USD 35–55/pax · esgota em alta temporada",tags:[["URGENTE","u"],["inkaexpress.com","n"]],deadline:"2026-06-10"},
     {id:"c-ht",t:"Hampton by Hilton Arequipa",m:"09–12/jul · 3 noites · cancelamento flexível",tags:[["RESERVAR","w"]],deadline:"2026-06-15"},
     {id:"c-ob",t:"Ônibus Puno → Arequipa",m:"09/jul · Cruz del Sur ou Tepsa · ~5–6h",tags:[["PENDENTE","w"]]},
   ]},
@@ -440,12 +446,13 @@ const CHECKLIST=[
   {g:"JÁ RESOLVIDO",done:true,items:[
     {id:"d-t1",t:"Trem Ollantaytambo → Aguas Calientes",m:"Inca Rail The Voyager Light · 19:27→21:09 · 05/jul · USD 132 total · Reserva #651755 · Pedro BB50-00509587 · Marina BB50-00509588"},
     {id:"d-t2",t:"Trem Machu Picchu → Cusco — Bimodal",m:"PeruRail EXPEDITION 204 · saída 13:37 · coche E, asiento 39/40 · ônibus 15:15→17:30 Wanchaq · WEB2876847 · USD 119/pax"},
+    {id:"d-ie",t:"Inka Express — Ruta del Sol",m:"07/jul · estar na estação 06:10 · ônibus sai 06:40 · Alameda Pachacuteq 499b · Ref. #1395123673 · inclui almoço + entradas exceto Andahuaylillas/Raqchi/Pucará (S/ 53 em dinheiro)"},
     {id:"d-v",t:"Voos comprados",m:"LA8202 · LA2238 · LA2394 · LA2110"},
     {id:"d-mp",t:"Entrada Machu Picchu",m:"Circuito 3A · 07:00 · 06/jul · 2 pax"},
     {id:"d-se",t:"Seguro viagem contratado"},
     {id:"d-ch",t:"Chips internacionais Pedro + Marina"},
-    {id:"d-ab",t:"Airbnbs reservados",m:"Lima, Cusco, Ollanta, AC, Cusco pós-MP"},
-    {id:"d-pu",t:"Puno no Booking (pagar no local)"},
+    {id:"d-ab",t:"Airbnbs reservados",m:"Lima (HMWS3MEX8N) · Cusco (HM4PSMQ4ZZ) · Ollanta (HMXSS5EBAB) · AC · Cusco pós-MP (HMDCEKED8B)"},
+    {id:"d-pu",t:"Sumaq Puno — Booking #5612.684.830",m:"07–09/jul · PIN 7239 · pagar no local · café incluído"},
     {id:"d-mk",t:"Mauka Cusco",m:"01/jul · 20:00 · reserva confirmada"},
   ]},
 ];
@@ -563,12 +570,12 @@ const AGENDA_DEFAULT=[
       ev("13:07","Check-in estação Machu Picchu","PeruRail — estar na estação às 13:07. Frequência 204, coche E, asientos 39 (Pedro) e 40 (Marina).","train"),
       ev("13:37","PeruRail EXPEDITION 204 — MP → Ollantaytambo","Bimodal (trem + ônibus). USD 119/pax. Reserva WEB2876847.","train"),
       ev("15:15","Ônibus PeruRail — Ollantaytambo → Wanchaq (Cusco)","Check-in 14:45 na estação. Chegada prevista 17:30.","bus"),
-      ev("~19:00","Check-in Airbnb Cusco (pós-MP)","Próx. terminal Inca Express. Dormir cedo — saída 06:20.","lodge"),
+      ev("~19:00","Check-in Loft Retama — Cusco","Av. del Ejército 1655-E · HMDCEKED8B · Muña +51 918 882 049. Dormir cedo — sair 06:10.","lodge"),
     ]},
   ]},
   {d:10,date:"TER 07/JUL",city:"CUSCO → PUNO",title:"Inca Express — Ruta del Sol",periods:[
     {p:"MANHÃ",evs:[
-      ev("06:20","Pickup Inca Express","Confirmar endereço na reserva.","bus"),
+      ev("06:10","Estar na estação Inka Express","Alameda Pachacuteq 499b. Ônibus sai 06:40. Procurar placa INKA EXPRESS. Ref. #1395123673.","bus"),
       ev("~09:00","Andahuaylillas + Raqchi","'Capela Sistina das Américas' + Templo de Wiracocha.","activity"),
     ]},
     {p:"ALMOÇO",evs:[
@@ -636,15 +643,15 @@ const AGENDA_DEFAULT=[
    RESERVAS
 ================================================================ */
 const RESERVAS=[
-  {city:"LIMA",items:[{k:"HOSPEDAGEM",v:"Airbnb",sub:"28–30/jun · 2 noites",s:"ok"}]},
+  {city:"LIMA",items:[{k:"HOSPEDAGEM",v:"Airbnb — Mini Depto Central Chic",sub:"28–30/jun · Miraflores, Av. Benavides 245 · HMWS3MEX8N · Rosa Elvira +51 972 090 574",s:"ok"}]},
   {city:"CUSCO",items:[
-    {k:"HOSPEDAGEM",v:"Airbnb Callacalle 322",sub:"30/jun–02/jul · 2 noites",s:"ok"},
-    {k:"HOSPEDAGEM",v:"Airbnb Cusco pós-MP",sub:"06/jul · 1 noite",s:"ok"},
+    {k:"HOSPEDAGEM",v:"Airbnb — Double Room c/ Café",sub:"30/jun–02/jul · Collacalle 322 · HM4PSMQ4ZZ · Diego +51 950 559 952",s:"ok"},
+    {k:"HOSPEDAGEM",v:"Airbnb — Loft Retama",sub:"06/jul · Av. del Ejército 1655-E · HMDCEKED8B · Muña +51 918 882 049",s:"ok"},
     {k:"RESTAURANTE",v:"Mauka",sub:"01/jul · 20:00 · reserva confirmada",s:"ok"},
   ]},
-  {city:"OLLANTAYTAMBO",items:[{k:"HOSPEDAGEM",v:"Airbnb próx. Plaza de Armas",sub:"02–05/jul · 3 noites",s:"ok"}]},
+  {city:"OLLANTAYTAMBO",items:[{k:"HOSPEDAGEM",v:"Airbnb — Double, Plaza de Armas",sub:"02–05/jul · Plaza de Armas s/n · HMXSS5EBAB · Katia +51 979 520 055",s:"ok"}]},
   {city:"AGUAS CALIENTES",items:[{k:"HOSPEDAGEM",v:"Airbnb",sub:"05/jul · 1 noite",s:"ok"}]},
-  {city:"PUNO",items:[{k:"HOSPEDAGEM",v:"Booking — pagar no local",sub:"07–09/jul · 2 noites",s:"ok"}]},
+  {city:"PUNO",items:[{k:"HOSPEDAGEM",v:"Sumaq Puno — pagar no local",sub:"07–09/jul · Jiron Cajamarca 554 · #5612.684.830 · PIN 7239 · café incluído",s:"ok"}]},
   {city:"AREQUIPA",items:[{k:"HOSPEDAGEM",v:"Hampton by Hilton",sub:"09–12/jul · 3 noites",s:"pen"}]},
   {city:"TREM + MACHU PICCHU",items:[
     {k:"TREM IDA",v:"Inca Rail The Voyager Light",sub:"05/jul · 19:27→21:09 · USD 132 total · #651755",s:"ok"},
@@ -654,7 +661,7 @@ const RESERVAS=[
   ]},
   {city:"TRANSPORTES",items:[
     {k:"CUSCO→OLLANTA",v:"Colectivo",sub:"02/jul · S/ 10–15/pax",s:"no"},
-    {k:"CUSCO→PUNO",v:"Inca Express Ruta del Sol",sub:"07/jul · 06:20 pickup · USD 35–55/pax",s:"pen"},
+    {k:"CUSCO→PUNO",v:"Inka Express Ruta del Sol",sub:"07/jul · estar 06:10 · sai 06:40 · Alameda Pachacuteq 499b · #1395123673",s:"ok"},
     {k:"PUNO→AREQUIPA",v:"Cruz del Sur / Tepsa",sub:"09/jul · ~5–6h",s:"pen"},
   ]},
 ];
