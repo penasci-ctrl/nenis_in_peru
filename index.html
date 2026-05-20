@@ -464,46 +464,57 @@ function ev(t,n,d,c){return{t,n,d,c:c||"info"}}
 const AGENDA_DEFAULT=[
   {d:1,date:"DOM 28/JUN",city:"LIMA",title:"Chegada a Lima",periods:[
     {p:"MANHÃ / TARDE",evs:[
-      ev("10:45","Pouso em Lima — LA8202","Aeroporto Jorge Chávez. Trocar um pouco de USD→S/ no aeroporto só pra táxi. Miraflores tem taxa melhor.","transport"),
-      ev("~12:00","Transfer ao Airbnb","Uber/InDriver ou táxi preto oficial. Evitar cambistas de rua dentro do aeroporto.","bus"),
+      ev("10:45","Pouso em Lima — LA8202","Aeroporto Jorge Chávez. Trocar USD→S/ no aeroporto só pra táxi.","transport"),
+      ev("~12:30","Check-in Airbnb — Miraflores","Deixar a mala, organizar.","lodge"),
+      ev("13:00","Almoço — a definir","","food"),
+      ev("14:30","Huaca Pucllana","Ruínas pré-incas em pleno Miraflores. Entrada ~S/15.","activity"),
     ]},
     {p:"TARDE / NOITE",evs:[
-      ev("~15:00","Passeio leve — Miraflores","Parque Kennedy + Larcomar à beira do penhasco. Sentir a cidade.","walk"),
-      ev("Noite","Jantar leve, dormir cedo","Ajustar fuso. Amanhã é dia cheio.","food"),
+      ev("16:00","Barranco","Pedro de Osma → Puente de los Suspiros → Bajada de Baños.","walk"),
+      ev("19:00","Jantar — a definir","","food"),
+      ev("21:00","Drinks — coctelaria","Bar a definir.","info"),
     ]},
   ]},
   {d:2,date:"SEG 29/JUN",city:"LIMA",title:"Lima · dia inteiro",periods:[
     {p:"MANHÃ",evs:[
-      ev("09:00","Barranco","Puente de los Suspiros, MATE (~S/ 25), grafites. Café: La Panetteria ou Bisetti.","activity"),
+      ev("08:30","Café da manhã no Demo","Barranco.","food"),
+      ev("10:00","Uber pro Centro","","bus"),
+      ev("10:30","Centro Histórico — 3h30","Plaza Mayor, Catedral, San Francisco, Santo Domingo, Casa de Aliaga.","activity"),
     ]},
     {p:"ALMOÇO",evs:[
-      ev("12:30","Cevicharia","Canta Rana (Barranco), La Mar (splurge) ou Isolina (criolla).","food"),
+      ev("14:00","Almoço no Barrio Chino","","food"),
     ]},
-    {p:"TARDE",evs:[
-      ev("14:30","Centro Histórico","Plaza Mayor, Catedral, Convento de San Francisco + catacumbas (S/ 20).","activity"),
-    ]},
-    {p:"NOITE",evs:[
-      ev("~19:00","Volta a Miraflores + arrumar mala","Voo 10:10 amanhã — deitar cedo.","info"),
+    {p:"TARDE / NOITE",evs:[
+      ev("16:00","Uber pro Museo Larco","","bus"),
+      ev("17:00","Museo Larco","2h · arte pré-colombiana + depósito aberto. Entrada ~S/30.","activity"),
+      ev("19:30","Jantar — a definir","Arrumar mala. Voo 10:10 amanhã — deitar cedo.","food"),
     ]},
   ]},
   {d:3,date:"TER 30/JUN",city:"LIMA → CUSCO",title:"Voo + chegada a Cusco",periods:[
     {p:"MANHÃ",evs:[
-      ev("08:00","Aeroporto Jorge Chávez","Check-in voo LA2238.","transport"),
+      ev("08:00","Aeroporto Jorge Chávez — check-in LA2238","","transport"),
       ev("10:10","Decolagem Lima → Cusco","1h25. Pousa 11:35.","transport"),
+      ev("11:35","Pouso em Cusco","","transport"),
     ]},
     {p:"TARDE",evs:[
-      ev("~12:30","Táxi → Airbnb Callacalle 322","~S/ 15–20 · táxi oficial no saguão.","bus"),
-      ev("Tarde","Aclimatação — não fazer nada","Chá de coca, comida leve, muita água. Sem esforço físico — 3.400m de altitude.","alert"),
+      ev("~12:30","Táxi → Airbnb Callacalle 322","Táxi oficial no saguão. ~S/15–20.","bus"),
+      ev("Tarde","Regra de ouro: não fazer nada","Chá de coca, comida leve, muita água. Plaza de Armas se rolar — sem esforço físico. 3.400m de altitude.","alert"),
     ]},
   ]},
-  {d:4,date:"QUA 01/JUL",city:"CUSCO",title:"Ruínas de Cusco — Boleto Turístico",periods:[
+  {d:4,date:"QUA 01/JUL",city:"CUSCO",title:"Ruínas + Centro Histórico",periods:[
     {p:"MANHÃ",evs:[
-      ev("08:00","Comprar Boleto Turístico","Calle Mantas ou Casa Garcilaso · S/ 130 · 10 dias.","info"),
-      ev("08:30","Sacsayhuamán","15min a pé da Plaza de Armas. Pedras gigantes.","activity"),
-      ev("~10:30","Qenko → Puca Pucara → Tambomachay","Em linha acima de Sacsayhuamán. ~4h calmas no total.","activity"),
+      ev("08:00","Comprar Boleto Turístico Integral","S/130 · Casa Garcilaso ou Calle Mantas.","info"),
+      ev("08:30","Táxi pra Tambomachay","S/20–25 · ponto mais alto da rota, 3.800m.","bus"),
+      ev("09:00","Descer a pé: Tambomachay → Puca Pucara → Qenko","Rota vazia, aclimatação no ritmo. ~3h.","hike"),
+    ]},
+    {p:"ALMOÇO",evs:[
+      ev("12:30","Almoço perto da Plaza de Armas","Sugestões: Morena, Cicciolina, Limo.","food"),
     ]},
     {p:"TARDE",evs:[
-      ev("~14:00","San Blas","Bairro bohemio, ateliês, cafés. Recolher com tempo pro jantar.","walk"),
+      ev("14:00","Catedral de Cusco","S/40 à parte.","activity"),
+      ev("15:00","Iglesia de la Compañía de Jesús","S/15 · fachada barroca na Plaza de Armas.","activity"),
+      ev("16:00","Qorikancha","S/15 · 10min a pé.","activity"),
+      ev("17:00","Sacsayhuamán — pôr do sol","Táxi S/10 · pedras ciclópicas com luz dourada, horário vazio.","activity"),
     ]},
     {p:"NOITE",evs:[
       ev("20:00","Jantar no Mauka ✓","Reserva confirmada. Cozinha contemporânea andina.","food"),
@@ -511,71 +522,84 @@ const AGENDA_DEFAULT=[
   ]},
   {d:5,date:"QUI 02/JUL",city:"CUSCO → OLLANTA",title:"Aniversário da Marina 🎂",bday:true,periods:[
     {p:"MANHÃ",evs:[
-      ev("Cedo","🎂 Feliz aniversário, Marina!","Momento especial antes do check-out. Foto na Plaza de Armas ainda vazia.","bday"),
-      ev("~08:00","Check-out + colectivo","Pavitos → Urubamba (~S/ 15) → Ollanta (~S/ 3). ~1h30–2h.","bus"),
-    ]},
-    {p:"TARDE",evs:[
-      ev("~11:30","Check-in Airbnb Ollantaytambo","Cidade pequena, tudo a pé.","lodge"),
-      ev("Tarde","Reconhecimento","Plaza de Armas, ruas de pedra, Rio Patacancha.","walk"),
-    ]},
-    {p:"NOITE",evs:[
-      ev("Jantar","🎂 Jantar de aniversário","Chuncho (chef Virgilio Martínez) ou Hearts Café. Reservar antecipado — Chuncho lota.","bday"),
-    ]},
-  ]},
-  {d:6,date:"SEX 03/JUL",city:"OLLANTAYTAMBO",title:"Vale Sagrado — Pisac + Chinchero",periods:[
-    {p:"MANHÃ",evs:[
-      ev("07:30","Colectivo Ollanta → Pisac","Via Urubamba · ~1h15 · ~S/ 10.","bus"),
-      ev("~09:00","Ruínas de Pisac","Boleto Turístico. Terraços espetaculares. ~2h.","activity"),
+      ev("Manhã","🎂 Café da manhã no Airbnb, sem pressa","","bday"),
+      ev("09:00","MAP — Museo de Arte Precolombino","Plazoleta Nazarenas · S/20 · coleção pré-inca em casarão colonial. ~2h30.","activity"),
     ]},
     {p:"ALMOÇO",evs:[
-      ev("~12:00","Mercado de Pisac","Comida boa no 2º andar. Melhor mercado de tecido andino.","food"),
+      ev("~12:00","Mercado San Pedro","Sucos exóticos, tamales, caldo, balcões locais.","food"),
     ]},
     {p:"TARDE",evs:[
-      ev("~14:00","Chinchero","Sítio arqueológico + igreja colonial + oficinas de tecelagem.","activity"),
-      ev("~17:00","Volta a Ollanta","Colectivo Chinchero → Urubamba → Ollanta.","bus"),
-    ]},
-  ]},
-  {d:7,date:"SÁB 04/JUL",city:"OLLANTAYTAMBO",title:"Maras + Moray",periods:[
-    {p:"MANHÃ",evs:[
-      ev("~08:00","Moray","Táxi compartilhado ~S/ 80 ou motorista o dia (~S/ 150–180). Terraços circulares.","activity"),
-      ev("~10:30","Salineras de Maras","~7km de Moray. Milhares de piscinas de sal. Entrada S/ 10.","nature"),
-    ]},
-    {p:"TARDE / NOITE",evs:[
-      ev("~14:00","Volta e descanso","Amanhã é dia de trem à noite.","info"),
-    ]},
-  ]},
-  {d:8,date:"DOM 05/JUL",city:"OLLANTA → AG. CALIENTES",title:"Fortaleza + trem noturno",periods:[
-    {p:"MANHÃ",evs:[
-      ev("09:00","Fortaleza de Ollantaytambo","Boleto Turístico. Subida puxada, vista magnífica. ~2–3h.","activity"),
-    ]},
-    {p:"TARDE",evs:[
-      ev("~13:00","Almoço + preparar bagagem","Levar mochila pequena pra AC. Malas maiores ficam no Airbnb.","info"),
+      ev("~13:00","Check-out + malas","Voltar ao Airbnb, checar tudo.","info"),
+      ev("~13:30","Colectivo Cusco → Ollantaytambo","Av. Grau (Pavitos): Cusco→Urubamba (S/15) + Urubamba→Ollanta (S/3). ~1h30–2h.","bus"),
+      ev("~15:30","Check-in Airbnb Ollantaytambo","Cidade pequena, tudo a pé.","lodge"),
+      ev("Tarde","Reconhecimento devagar","Plaza, ruas de pedra, Rio Patacancha.","walk"),
     ]},
     {p:"NOITE",evs:[
-      ev("19:27","Trem Inca Rail The Voyager Light","Estação Ollantaytambo. USD 66/pax. Chegada AC 21:09. Reserva #651755.","train"),
-      ev("~21:30","Check-in + dormir cedo","Despertador 04:30.","lodge"),
+      ev("Jantar","🎂 Jantar de aniversário","Chuncho (Virgilio Martínez, reservar antes) ou Hearts Café.","bday"),
+    ]},
+  ]},
+  {d:6,date:"SEX 03/JUL",city:"OLLANTAYTAMBO",title:"Maras + Moray + Chinchero — motorista privado",periods:[
+    {p:"MANHÃ",evs:[
+      ev("~07:00","Sair com motorista privado","S/250–300/dia · contratar na Plaza ou pelo Airbnb no dia anterior.","bus"),
+      ev("~08:00","Salineras de Maras","S/10 · 3.000+ piscinas de sal · luz melhor de manhã.","nature"),
+      ev("~10:30","Moray","No Boleto · terraços circulares, laboratório agrícola inca.","activity"),
+    ]},
+    {p:"ALMOÇO",evs:[
+      ev("~13:00","Almoço em Urubamba","Caminho natural da rota.","food"),
+    ]},
+    {p:"TARDE / NOITE",evs:[
+      ev("~15:00","Chinchero","No Boleto · vilarejo tecelão, ruínas + igreja colonial + ateliês têxteis.","activity"),
+      ev("~18:00","Volta a Ollantaytambo","","bus"),
+      ev("Jantar","Jantar leve em Ollanta","","food"),
+    ]},
+  ]},
+  {d:7,date:"SÁB 04/JUL",city:"OLLANTAYTAMBO",title:"Pisac — dia inteiro",periods:[
+    {p:"MANHÃ",evs:[
+      ev("~08:00","Colectivo Ollanta → Pisac","Via Urubamba · S/8–10/pessoa · ~1h30.","bus"),
+      ev("Manhã","Ruínas de Pisac","No Boleto · subir cedo antes dos tours. Templo del Sol, Intihuatana, Baños de la Princesa. Táxi pra subir (S/30) ou trilha (1h30, puxada).","activity"),
+    ]},
+    {p:"ALMOÇO",evs:[
+      ev("~13:00","Almoço em Pisac","Ulrike's Café ou Cuchara de Palo.","food"),
+    ]},
+    {p:"TARDE / NOITE",evs:[
+      ev("Tarde","Mercado Artesanal de Pisac","O mais famoso do Vale — têxteis e cerâmica.","activity"),
+      ev("~18:00","Colectivo de volta a Ollantaytambo","","bus"),
+      ev("Jantar","Jantar em Ollanta","","food"),
+    ]},
+  ]},
+  {d:8,date:"DOM 05/JUL",city:"OLLANTA → AG. CALIENTES",title:"Fortaleza + trem pra Aguas Calientes",periods:[
+    {p:"MANHÃ",evs:[
+      ev("08:00","Fortaleza de Ollantaytambo","No Boleto · sítio megalítico, terraços, Templo do Sol. Cedo antes da multidão. ~2–3h.","activity"),
+    ]},
+    {p:"ALMOÇO",evs:[
+      ev("Almoço","Almoço leve em Ollanta","Levar mochila pequena pra AC. Malas maiores ficam no Airbnb.","food"),
+    ]},
+    {p:"TARDE / NOITE",evs:[
+      ev("Tarde","Trem Inca Rail — Ollanta → Aguas Calientes","Horário a confirmar. Reserva #651755.","train"),
+      ev("Noite","Check-in Airbnb AC + jantar leve","Dormir cedo — despertador 04:30.","lodge"),
     ]},
   ]},
   {d:9,date:"SEG 06/JUL",city:"MACHU PICCHU → CUSCO",title:"⭐ Machu Picchu — Circuito 3A",periods:[
     {p:"MADRUGADA",evs:[
-      ev("04:30","Acordar","Mochila: água, snacks, protetor, chuva, ingressos, passaporte.","alert"),
-      ev("05:00","Subida a pé (opção A)","1h30 de trilha íngreme. Grátis. Chega ~06:30.","hike"),
-      ev("05:30","Ônibus Consettur (opção B)","USD 24 ida+volta. Fila começa 05:00.","bus"),
+      ev("04:30","Despertar","Mochila: água, snacks, protetor, chuva, ingressos, passaporte.","alert"),
+      ev("05:00","Café + ônibus Consettur","USD 24 ida e volta · comprar dia antes. Ou trilha a pé (1h30).","bus"),
+      ev("06:45","No portão de entrada","","info"),
     ]},
     {p:"MANHÃ",evs:[
-      ev("07:00","Entrada Machu Picchu — Circuito 3A ✓","Templo do Sol, Casa do Inca, espelhos d'água. ~2h30.","activity"),
-      ev("~10:00","Descida + almoço em AC","A pé (40min) ou ônibus.","walk"),
+      ev("07:00","Entrada Machu Picchu — Circuito 3A Realeza ✓","Tolerância de 30min. Templo do Sol, Casa do Inca, espelhos d'água.","activity"),
+      ev("~12:00","Descer pra Aguas Calientes + almoço","A pé (40min) ou ônibus.","walk"),
     ]},
     {p:"TARDE / NOITE",evs:[
       ev("13:07","Check-in estação Machu Picchu","PeruRail — estar na estação às 13:07. Frequência 204, coche E, asientos 39 (Pedro) e 40 (Marina).","train"),
-      ev("13:37","PeruRail EXPEDITION 204 — MP → Ollantaytambo","Bimodal (trem + ônibus). USD 119/pax. Reserva WEB2876847.","train"),
+      ev("13:37","PeruRail EXPEDITION 204 — MP → Ollantaytambo","Bimodal (trem + ônibus). USD 119/pax. Reserva WEB2876847. NÃO embarcar pra Poroy.","train"),
       ev("15:15","Ônibus PeruRail — Ollantaytambo → Wanchaq (Cusco)","Check-in 14:45 na estação. Chegada prevista 17:30.","bus"),
-      ev("~19:00","Check-in Loft Retama — Cusco","Av. del Ejército 1655-E · HMDCEKED8B · Muña +51 918 882 049. Dormir cedo — sair 06:10.","lodge"),
+      ev("~19:00","Check-in Loft Retama — Cusco","Av. del Ejército 1655-E · HMDCEKED8B · Muña +51 918 882 049. Jantar leve, dormir cedo.","lodge"),
     ]},
   ]},
   {d:10,date:"TER 07/JUL",city:"CUSCO → PUNO",title:"Inca Express — Ruta del Sol",periods:[
     {p:"MANHÃ",evs:[
-      ev("06:10","Estar na estação Inka Express","Alameda Pachacuteq 499b. Ônibus sai 06:40. Procurar placa INKA EXPRESS. Ref. #1395123673.","bus"),
+      ev("06:20","Pickup Inca Express no Airbnb","A confirmar com a empresa. Ref. #1395123673.","bus"),
+      ev("06:30","Saída do terminal","Bairro San Antonio. Procurar placa INKA EXPRESS.","bus"),
       ev("~09:00","Andahuaylillas + Raqchi","'Capela Sistina das Américas' + Templo de Wiracocha.","activity"),
     ]},
     {p:"ALMOÇO",evs:[
