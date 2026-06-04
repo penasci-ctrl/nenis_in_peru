@@ -157,6 +157,15 @@ main{max-width:760px;margin:0 auto;padding:14px 20px 100px}
 .s-tr{background:var(--c-tr)}.s-ac{background:var(--c-ac)}
 .s-fd{background:var(--c-fd)}.s-lo{background:var(--c-lo)}
 .s-al{background:var(--c-al)}.s-in{background:var(--c-in)}
+.ev.s-tr{background:var(--c-tr-bg)}.ev.s-ac{background:var(--c-ac-bg)}
+.ev.s-fd{background:var(--c-fd-bg)}.ev.s-lo{background:var(--c-lo-bg)}
+.ev.s-al{background:var(--c-al-bg)}.ev.s-in{background:var(--c-in-bg)}
+.hoje-ev.s-tr{background:var(--c-tr-bg);border-radius:6px;padding:8px 10px;margin:2px 0}
+.hoje-ev.s-ac{background:var(--c-ac-bg);border-radius:6px;padding:8px 10px;margin:2px 0}
+.hoje-ev.s-fd{background:var(--c-fd-bg);border-radius:6px;padding:8px 10px;margin:2px 0}
+.hoje-ev.s-lo{background:var(--c-lo-bg);border-radius:6px;padding:8px 10px;margin:2px 0}
+.hoje-ev.s-al{background:var(--c-al-bg);border-radius:6px;padding:8px 10px;margin:2px 0}
+.hoje-ev.s-in{background:var(--c-in-bg);border-radius:6px;padding:8px 10px;margin:2px 0}
 .ev-body{flex:1;min-width:0}
 .ev-top{display:flex;align-items:baseline;gap:6px}
 .ev-time{font-family:var(--mono);font-size:11px;color:var(--ink-3);
@@ -405,6 +414,7 @@ const DOCS=[
   {id:"doc-incarail",name:"Inca Rail The Voyager Light",sub:"Trem Ollantaytambo → Aguas Calientes · 05/jul · #651755",icon:"🚂",url:"https://drive.google.com/file/d/1-QpV6qBeCk2XVrw4JAp910L88YnJdfBM/view?usp=share_link"},
   {id:"doc-inkaexpress",name:"Inka Express — Ruta del Sol",sub:"Cusco → Puno · 07/jul · #1395123673",icon:"🚌",url:"https://drive.google.com/file/d/1rGEEJ-caFMvMPJHSMU9IFaoSb14OIWpe/view?usp=sharing"},
   {id:"doc-perurail",name:"PeruRail EXPEDITION (Bimodal)",sub:"Trem MP → Ollanta + Ônibus → Cusco · 06/jul · WEB2876847",icon:"🚂",url:"https://drive.google.com/file/d/1dlnBVoyK6mUfvXIDHneZ_CPv_0wwbIfo/view?usp=share_link"},
+  {id:"doc-arequipa",name:"Estancia El Solar — Arequipa",sub:"09–12/jul · Cruz Verde · Booking #5407.972.167 · PIN 1737",icon:"🏨",url:"https://drive.google.com/file/d/1ZyDn9g5fjTtDCuiqBWMbaXw4bJmZ9dZ-/view?usp=share_link"},
 ];
 
 const CFG={
@@ -432,7 +442,6 @@ const CATS=Object.keys(CAT);
 ================================================================ */
 const CHECKLIST=[
   {g:"COMPRAR COM URGÊNCIA",items:[
-    {id:"c-ht",t:"Hampton by Hilton Arequipa",m:"09–12/jul · 3 noites · cancelamento flexível",tags:[["RESERVAR","w"]],deadline:"2026-06-15"},
     {id:"c-ob",t:"Ônibus Puno → Arequipa",m:"09/jul · Cruz del Sur ou Tepsa · ~5–6h",tags:[["PENDENTE","w"]]},
   ]},
   {g:"COMPRAR NA CHEGADA",items:[
@@ -454,6 +463,7 @@ const CHECKLIST=[
     {id:"d-ab",t:"Airbnbs reservados",m:"Lima (HMWS3MEX8N) · Cusco (HM4PSMQ4ZZ) · Ollanta (HMXSS5EBAB) · AC · Cusco pós-MP (HMDCEKED8B)"},
     {id:"d-pu",t:"Sumaq Puno — Booking #5612.684.830",m:"07–09/jul · PIN 7239 · pagar no local · café incluído"},
     {id:"d-mk",t:"Mauka Cusco",m:"01/jul · 20:00 · reserva confirmada"},
+    {id:"d-aq",t:"Estancia El Solar — Arequipa",m:"09–12/jul · Cruz Verde · Booking #5407.972.167 · PIN 1737 · café incluído · pagar no local (só dinheiro/USD) · +51 906 771 042"},
   ]},
 ];
 
@@ -625,7 +635,7 @@ const AGENDA_DEFAULT=[
       ev("07:00","Ônibus Puno → Arequipa","Cruz del Sur ou Tepsa · ~5–6h · S/ 30–60.","bus"),
     ]},
     {p:"TARDE",evs:[
-      ev("~13:30","Chegada + check-in Hampton","Táxi do terminal ~S/ 20.","lodge"),
+      ev("~13:30","Chegada + check-in Estancia El Solar","Cruz Verde · Booking #5407.972.167 · PIN 1737 · táxi do terminal ~S/20.","lodge"),
       ev("~15:00","Plaza de Armas + Yanahuara","Sillar branco. Mirante dos vulcões.","activity"),
     ]},
     {p:"NOITE",evs:[
@@ -676,7 +686,7 @@ const RESERVAS=[
   {city:"OLLANTAYTAMBO",items:[{k:"HOSPEDAGEM",v:"Airbnb — Double, Plaza de Armas",sub:"02–05/jul · Plaza de Armas s/n · HMXSS5EBAB · Katia +51 979 520 055",s:"ok"}]},
   {city:"AGUAS CALIENTES",items:[{k:"HOSPEDAGEM",v:"Airbnb",sub:"05/jul · 1 noite",s:"ok"}]},
   {city:"PUNO",items:[{k:"HOSPEDAGEM",v:"Sumaq Puno — pagar no local",sub:"07–09/jul · Jiron Cajamarca 554 · #5612.684.830 · PIN 7239 · café incluído",s:"ok"}]},
-  {city:"AREQUIPA",items:[{k:"HOSPEDAGEM",v:"Hampton by Hilton",sub:"09–12/jul · 3 noites",s:"pen"}]},
+  {city:"AREQUIPA",items:[{k:"HOSPEDAGEM",v:"Estancia El Solar",sub:"09–12/jul · Cruz Verde · Booking #5407.972.167 · PIN 1737 · café incluído · pagar no local (USD) · +51 906 771 042",s:"ok"}]},
   {city:"TREM + MACHU PICCHU",items:[
     {k:"TREM IDA",v:"Inca Rail The Voyager Light",sub:"05/jul · 19:27→21:09 · USD 132 total · #651755",s:"ok"},
     {k:"TREM VOLTA",v:"PeruRail EXPEDITION 204 (Bimodal)",sub:"06/jul · 13:37 MP→Ollanta + ônibus 15:15→17:30 Cusco · USD 119/pax · WEB2876847",s:"ok"},
@@ -1180,7 +1190,7 @@ const CATS_OPTS=CATS.map(k=>`<option value="${k}">${CAT[k].i} ${k}</option>`).jo
 function makeEvEl(ev,dayNum){
   const cat=CAT[ev.c]||CAT.info;
   const div=document.createElement("div");
-  div.className="ev";div.dataset.cat=ev.c;
+  div.className=`ev ${cat.s}`;div.dataset.cat=ev.c;
   div.innerHTML=`
     <span class="ev-handle" style="display:none;align-items:center">⠿</span>
     <div class="ev-stripe ${cat.s}"></div>
@@ -1263,6 +1273,7 @@ function bindDayEl(dayEl,dayNum){
     const sel=evEl.querySelector(".ev-cat-sel");
     sel.addEventListener("change",()=>{
       const c=sel.value;evEl.dataset.cat=c;const cat=CAT[c]||CAT.info;
+      evEl.className=`ev ${cat.s}`;
       evEl.querySelector(".ev-stripe").className=`ev-stripe ${cat.s}`;
       evEl.querySelector(".ev-icon").textContent=cat.i;
       autoSave();
@@ -1359,7 +1370,7 @@ function renderHoje(){
       </div>
       <div style="padding:14px 16px 4px">
         ${allEvs.map(e=>{const cat=CAT[e.c]||CAT.info;return`
-          <div class="hoje-ev">
+          <div class="hoje-ev ${cat.s}">
             <div class="hoje-ev-time">${e.t}</div>
             <div class="hoje-ev-stripe ${cat.s}"></div>
             <div><div class="hoje-ev-name">${cat.i} ${e.n}</div>
@@ -1624,6 +1635,8 @@ function renderInfo(){
          ["CONSULADO BR","Lima: +51 1 512-0830","Av. José Pardo 850, Miraflores"],
          ["INCA RAIL","+51 84 233030","incarail.com"],
          ["INCA EXPRESS","+51 84 247887","inkaexpress.com"],
+         ["PERURAIL","+51 84 581414","perurail.com"],
+         ["ESTANCIA EL SOLAR","+51 906 771 042","Arequipa · Cruz Verde"],
       ].map(([k,v,s])=>`<div class="res-row">
         <div class="res-k">${k}</div>
         <div class="res-v">${v}<span class="sub">${s}</span></div>
